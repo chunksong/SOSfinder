@@ -1,12 +1,12 @@
 #include "SOSfinder.h"
 
-int TargetTokenize(std::fstream& fsTarget,std::string& szTargetString) {
+int TargetTokenize(std::fstream& fsTarget,std::string szTargetString) {
 	
 
 	return D_SUCC;
 }
 
-int GetTarget(std::fstream& fsTarget, std::string& szTargetFileName, std::string& szTargetString) {
+int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string szTargetString) {
 	
 	int iRtn;
 	
@@ -31,7 +31,7 @@ int GetTarget(std::fstream& fsTarget, std::string& szTargetFileName, std::string
 	return D_SUCC;
 }
 
-int ChekcLength(std::string& szSigStr, std::string& szTargetStr, int& iWinSize) {
+int ChekcLength(std::string szSigStr, std::string szTargetStr, int& iWinSize) {
 	
 	if (szTargetStr.length() < 24) {
 		std::cout << "Error : target file size is too small to compare.." << std::endl;
@@ -49,11 +49,11 @@ int ChekcLength(std::string& szSigStr, std::string& szTargetStr, int& iWinSize) 
 	return D_SUCC;
 }
 
-int CmpSigTarget(std::string& szSigStr, std::string& szTargetStr, int iWinSize) {
+int CmpSigTarget(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 	return D_SUCC;
 }
 
-int GetSimilarity(std::string& szSigStr, std::string& szTargetStr, int iWindowSize) {
+int GetSimilarity(std::string szSigStr, std::string szTargetStr, int iWindowSize) {
 	
 	int iRtn;
 	int iMaxJI = -1;
@@ -72,7 +72,7 @@ int GetSimilarity(std::string& szSigStr, std::string& szTargetStr, int iWindowSi
 	CmpSigTarget(szSigStr, szTargetStr, iWindowSize);
 
 }
-int GetSignature(std::string& szSigStr) {
+int GetSignature(std::string szSigStr) {
 
 	
 	szSigStr = ""; // need to modi
