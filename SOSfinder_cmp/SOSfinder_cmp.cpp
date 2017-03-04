@@ -31,7 +31,7 @@ int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string 
 	return D_SUCC;
 }
 
-int ChekcLength(std::string szSigStr, std::string szTargetStr, int& iWinSize) {
+int ChekcLength(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 	
 	if (szTargetStr.length() < 24) {
 		std::cout << "Error : target file size is too small to compare.." << std::endl;
