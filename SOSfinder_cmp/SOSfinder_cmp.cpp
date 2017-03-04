@@ -1,12 +1,12 @@
 #include "SOSfinder.h"
 
-int TargetTokenize(std::fstream& fsTarget,char* szTargetString) {
+int TargetTokenize(std::fstream& fsTarget,std::string& szTargetString) {
 	
 
 	return D_SUCC;
 }
 
-int GetTarget(std::fstream& fsTarget, char* szTargetFileName, char* szTargetString) {
+int GetTarget(std::fstream& fsTarget, std::string& szTargetFileName, std::string& szTargetString) {
 	
 	int iRtn;
 	
@@ -31,15 +31,29 @@ int GetTarget(std::fstream& fsTarget, char* szTargetFileName, char* szTargetStri
 	return D_SUCC;
 }
 
-int ChekcLength(char* szSigStr, char* szTargetStr, int iWinSize) {
+int ChekcLength(std::string& szSigStr, std::string& szTargetStr, int& iWinSize) {
+	
+	if (szTargetStr.length() < 24) {
+		std::cout << "Error : target file size is too small to compare.." << std::endl;
+		return D_FAIL;
+	}
+
+	if (szTargetStr.length() < szSigStr.length()) {
+		iWinSize = szTargetStr.length();
+		szSigStr = szSigStr.substr(0, iWinSize);
+	}
+	else {
+		iWinSize = szSigStr.length();
+	}
+	
 	return D_SUCC;
 }
 
-int CmpSigTarget(char* szSigStr, char* szTargetStr, int iWinSize) {
+int CmpSigTarget(std::string& szSigStr, std::string& szTargetStr, int iWinSize) {
 	return D_SUCC;
 }
 
-int GetSimilarity(char* szSigStr, char* szTargetStr, int iWindowSize) {
+int GetSimilarity(std::string& szSigStr, std::string& szTargetStr, int iWindowSize) {
 	
 	int iRtn;
 	int iMaxJI = -1;
@@ -58,10 +72,10 @@ int GetSimilarity(char* szSigStr, char* szTargetStr, int iWindowSize) {
 	CmpSigTarget(szSigStr, szTargetStr, iWindowSize);
 
 }
-int GetSignature(char* szSigStr) {
+int GetSignature(std::string& szSigStr) {
 
 	
-	szSigStr = 0; // need to modi
+	szSigStr = ""; // need to modi
 	
 	return D_SUCC;
 }
