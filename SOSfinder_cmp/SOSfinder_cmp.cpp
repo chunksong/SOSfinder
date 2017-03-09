@@ -8,11 +8,11 @@ int GetSignature(MYSQL_ROW row, std::string szSigStr);
 int GetSimilarity(std::string szSigStr, std::string szTargetStr, int iWindowSize);
 
 
-struct stSigniture {
+typedef struct stSignature {
 	std::string szSigName;
 	std::string szSigCVENum;
 	std::string szSignature;
-};
+}stSig;
 
 
 int main(int argc, char* argv[]) {
@@ -88,6 +88,7 @@ int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 int CmpSigTarget(stSigniture stSig, std::string szTargetStr, int iWinSize) {
 
 
+	double dJaccardIndex;
 
 
 
@@ -96,15 +97,15 @@ int CmpSigTarget(stSigniture stSig, std::string szTargetStr, int iWinSize) {
 	return D_SUCC;
 }
 
-int GetSignature(MYSQL_ROW row, stSigniture stSig) {
+int GetSignature(MYSQL_ROW row, stSignature stSign) {
 	
 	// row[0] => name_of_vuln 
 	// row[1] => number_of_CVE  
 	// row[2] => Tokenized_binary_code_of_vuln
 
-	stSig.szSigName = row[0];
-	stSig.szSigCVENum = row[1];
-	stSig.szSignature = row[2];
+	stSign.szSigName = row[0];
+	stSign.szSigCVENum = row[1];
+	stSign.szSignature = row[2];
 	
 	return D_SUCC;
 }
@@ -134,7 +135,7 @@ int GetSimilarity(std::string szTargetStr, int iWindowSize) {
 
 	while ((row = mysql_fetch_row(res)) != NULL) {
 		
-		stSigniture stSigObject;
+		stSig stSigObject;
 
 		iRtn = GetSignature(row,stSigObject);
 		if (iRtn == D_FAIL) {
