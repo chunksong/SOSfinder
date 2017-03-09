@@ -7,11 +7,18 @@ int CmpSigTarget(std::string szSigStr, std::string szTargetStr, int iWinSize);
 int GetSignature(MYSQL_ROW row, std::string szSigStr);
 int GetSimilarity(std::string szSigStr, std::string szTargetStr, int iWindowSize);
 
+
+struct stSigniture {
+	std::string szSigName;
+	std::string szSigCVENum;
+	std::string szSignature;
+};
+
+
 int main(int argc, char* argv[]) {
 	// useage : SOSfinder <input file name/dir(optional)> 
 	int iRtn;
 	std::string szTargetString;
-	std::string szSignatureString;
 	int iWindowSize;
 	std::fstream fsTargetFile;
 
@@ -23,7 +30,7 @@ int main(int argc, char* argv[]) {
 	iRtn = GetTarget(fsTargetFile, argv[1], szTargetString);
 	if (iRtn == D_FAIL) return -1;
 
-	GetSimilarity(szSignatureString, szTargetString, iWindowSize);
+	GetSimilarity(szTargetString, iWindowSize);
 	if (iRtn == D_FAIL) return -1;
 
 	return 0;
@@ -78,8 +85,7 @@ int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 	return D_SUCC;
 }
 
-int CmpSigTarget(std::string szSigStr, std::string szTargetStr, int iWinSize) {
-
+int CmpSigTarget(stSigniture stSig, std::string szTargetStr, int iWinSize) {
 
 
 
@@ -90,25 +96,31 @@ int CmpSigTarget(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 	return D_SUCC;
 }
 
-int GetSignature(MYSQL_ROW row, std::string szSigStr) {
+int GetSignature(MYSQL_ROW row, stSigniture stSig) {
 	
-	szSigStr = row[0];
+	// row[0] => name_of_vuln 
+	// row[1] => number_of_CVE  
+	// row[2] => Tokenized_binary_code_of_vuln
+
+	stSig.szSigName = row[0];
+	stSig.szSigCVENum = row[1];
+	stSig.szSignature = row[2];
 	
 	return D_SUCC;
 }
 
-int GetSimilarity(std::string szSigStr, std::string szTargetStr, int iWindowSize) {
+int GetSimilarity(std::string szTargetStr, int iWindowSize) {
 
 	int iRtn;
 	int iMaxJI = -1;
 	MYSQL_RES *res;	// the results
 	MYSQL_ROW row;	// the results row (line by line)
 
-	char* szDBQuery = "SELECT * FROM vuln";
+	char* szDBQuery = "SELECT * FROM vuln_list";
 
 	//DB connect
 	MYSQL *connection = mysql_init(NULL);
-	if (!mysql_real_connect(connection, "localhost", "root", "qwer1234", "vuln", 0, NULL, 0)) {
+	if (!mysql_real_connect(connection, "localhost", "root", "1234", "vuln", 0, NULL, 0)) {
 		std::cout << "DB Conection error : " << mysql_error(connection) << "\n" << std::endl;
 		exit(1);
 	}
@@ -121,15 +133,17 @@ int GetSimilarity(std::string szSigStr, std::string szTargetStr, int iWindowSize
 	res = mysql_use_result(connection);
 
 	while ((row = mysql_fetch_row(res)) != NULL) {
+		
+		stSigniture stSigObject;
 
-		iRtn = GetSignature(row, szSigStr);
+		iRtn = GetSignature(row,stSigObject);
 		if (iRtn == D_FAIL) {
 			std::cout << "Read SignatureFile from DB error.." << std::endl;
 		}
 
-		CheckLength(szSigStr, szTargetStr, iWindowSize);
+		CheckLength(stSigObject.szSignature, szTargetStr, iWindowSize);
 
-		CmpSigTarget(szSigStr, szTargetStr, iWindowSize);
+		CmpSigTarget(stSigObject, szTargetStr, iWindowSize);
 	}
 
 	return D_SUCC;
