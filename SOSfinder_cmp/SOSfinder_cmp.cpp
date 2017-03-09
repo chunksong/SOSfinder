@@ -85,11 +85,12 @@ int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 	return D_SUCC;
 }
 
-int CmpSigTarget(stSigniture stSig, std::string szTargetStr, int iWinSize) {
+int CmpSigTarget(stSignature stSign, std::string szTargetStr, int iWinSize) {
 
-
+	int iNGram;
 	double dJaccardIndex;
-
+	std::set<std::string> setSigGram;
+	std::set<std::string> setTargetGram;
 
 
 
