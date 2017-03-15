@@ -69,7 +69,7 @@ int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string 
 
 int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 
-	if (szTargetStr.length() < 24) {
+	if (szTargetStr.length() < 24) { // 24 == gram(8) * 3 인스트로덕션이 3글자이기 때문에
 		std::cout << "Error : target file size is too small to compare.." << std::endl;
 		return D_FAIL;
 	}
@@ -88,13 +88,28 @@ int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 int CmpSigTarget(stSignature stSign, std::string szTargetStr, int iWinSize) {
 
 	int iNGram;
+	int iCursor;
 	double dJaccardIndex;
+	std::string szTemp;
 	std::set<std::string> setSigGram;
 	std::set<std::string> setTargetGram;
+	std::vector<std::string> vIntersection;
+	std::vector<std::string> vUnion;
 
-
-
-
+	//construct gram set
+/*
+	iCursor = 0;
+	for(int iter = 0; iter < iNGram; iCursor++)		
+		szTemp += stSign.szSignature
+		setSigGram.insert()
+*/
+	std::set_intersection(setSigGram.begin(), setSigGram.end(), setTargetGram.begin(), setTargetGram.end(), std::back_inserter(vIntersection));
+	std::set_union(setSigGram.begin(), setSigGram.end(), setTargetGram.begin(), setTargetGram.end(), std::back_inserter(vUnion));
+	dJaccardIndex = (double)vIntersection.size() / (double)vUnion.size();
+	
+	//need to modi : print out when upper threshold
+	std::cout << "Jaccard Index is " << dJaccardIndex << std::endl;
+	
 	return D_SUCC;
 }
 
