@@ -38,7 +38,41 @@ int main(int argc, char* argv[]) {
 }
 
 int TargetTokenize(std::fstream& fsTarget, std::string szTargetString) {
+	std::set<std::string> address;
+	std::set<std::string> mnemonic;
+	std::set<std::string> regist;
+	std::set<std::string> offset;
+	std::string str;
 
+	while (std::getline(fsTarget, szTargetString))
+		str += szTargetString + ' ';
+	szTargetString = "";
+
+	for (size_t i = 0; i < str.length(); i++)
+	{
+		if (str.at(i) == ':')
+		{
+			address.insert(szTargetString);
+			szTargetString = "";
+		}
+		else if (str.at(i - 7) == ':' || str.at(i - 8) == ':')
+		{
+			mnemonic.insert(szTargetString);
+			szTargetString = "";
+		}
+		else if (str.at(i + 1) == '#')
+		{
+			regist.insert(szTargetString);
+			szTargetString = "";
+		}
+		else if (str.at(i) == '\n')
+		{
+			offset.insert(szTargetString);
+			szTargetString = "";
+		}
+		else
+			szTargetString.push_back(str.at(i));
+	}
 	return D_SUCC;
 }
 
