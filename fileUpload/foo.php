@@ -2,6 +2,7 @@
 
 include("upload.php");
 include("updateDB.php");
+include("applyModule.php");
 
 $fileSavePath = "C:\\Bitnami\\wampstack-5.6.30-1\\apache2\\htdocs\\";
 $fileName = basename($_FILES["fileUpload"]["name"]);
@@ -12,8 +13,13 @@ uploadFile($fileSavePath, $fileName, $fileExt, $_FILES["fileUpload"]["tmp_name"]
 
 
 // update server database
-updateDB("localhost", "root", "tjdals12", "sosfinder_sm", "tb_upfile_info", $fileName, $fileExt, $fileSavePath, "seongmin");
+updateDB("localhost", "root", "tjdals12", "sosfinder_sm", "tb_upfile_info", $fileName, $fileExt, $fileSavePath, "seongmin"); // 사용자 이름으로 받도록 해야 한다. 현재는 seongmin으로 고정했다.
 
+$result = compareSimilarity("sosfinder_test.exe", $fileName);
+
+echo "result: $result[0]";
+//print_r($result);
+echo "<br>";
 
 //echo("<script>location.replace('cmpResult.html'); </script>");
 

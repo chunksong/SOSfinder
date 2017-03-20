@@ -16,7 +16,7 @@ function updateDB($db_host, $db_user, $db_pw, $dbName, $tableName, $upfileName, 
 
 	mysql_query($query); // query: 해당 table에 원소 추가
 
-	///////////////// extract metadata ////////////////////
+	echo "DB update success!<br/>";
 
 	mysql_free_result($query);
 	mysql_close($db);
