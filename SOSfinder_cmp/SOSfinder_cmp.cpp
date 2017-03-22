@@ -103,7 +103,7 @@ int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string 
 
 int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 
-	if (szTargetStr.length() < 24) { // 24 == gram(8) * 3 ÀÎ½ºÆ®·Î´ö¼ÇÀÌ 3±ÛÀÚÀÌ±â ¶§¹®¿¡
+	if (szTargetStr.length() < 24) { // 24 == gram(8) * 3 ì¸ìŠ¤íŠ¸ë¡œë•ì…˜ì´ 3ê¸€ìžì´ê¸° ë•Œë¬¸ì—
 		std::cout << "Error : target file size is too small to compare.." << std::endl;
 		return D_FAIL;
 	}
@@ -122,28 +122,64 @@ int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 int CmpSigTarget(stSignature stSign, std::string szTargetStr, int iWinSize) {
 
 	int iNGram;
-	int iCursor;
+	int iCounter = 0;
+	std::string::size_type iCursor = 0;
+	std::string::size_type iPrev = 0;
+	std::string::size_type iStart = 0;
 	double dJaccardIndex;
-	std::string szTemp;
+	//std::string szTemp;
+	std::string szNGramElement;
 	std::set<std::string> setSigGram;
 	std::set<std::string> setTargetGram;
 	std::vector<std::string> vIntersection;
 	std::vector<std::string> vUnion;
 
 	//construct gram set
-/*
+	iNGram = iWinSize;
+	iStart = iPrev;
+
+	while ((iCursor = stSign.szSignature.find("\n", iStart) != std::string::npos)) {
+		szNGramElement += stSign.szSignature.substr(iPrev, iCursor - iPrev);
+		iStart = iPrev;
+		iCounter = 1;
+		while (iCounter <= iNGram) {
+			iCursor = stSign.szSignature.find("\n", iPrev);
+			szNGramElement += stSign.szSignature.substr(iPrev, iCursor - iPrev);
+			iCounter++;
+		}
+		setSigGram.insert(szNGramElement);
+	}
+	
+	iStart = 0;
+	iPrev = 0;
 	iCursor = 0;
-	for(int iter = 0; iter < iNGram; iCursor++)		
-		szTemp += stSign.szSignature
-		setSigGram.insert()
-*/
+	
+	while ((iCursor = szTargetStr.find("\n", iStart) != std::string::npos)) {
+		szNGramElement += szTargetStr.substr(iPrev, iCursor - iPrev);
+		iStart = iPrev;
+		iCounter = 1;
+		while (iCounter <= iNGram) {
+			iCursor = szTargetStr.find("\n", iPrev);
+			szNGramElement += szTargetStr.substr(iPrev, iCursor - iPrev);
+			iCounter++;
+		}
+		setTargetGram.insert(szNGramElement);
+	}
+	/*
+	for (int iter = 0; iter < iNGram; iter++) {
+		stSign.szSignature. '\n');
+		szNGramElement += (szTemp);
+	}
+	setSigGram.insert();
+	*/
+
 	std::set_intersection(setSigGram.begin(), setSigGram.end(), setTargetGram.begin(), setTargetGram.end(), std::back_inserter(vIntersection));
 	std::set_union(setSigGram.begin(), setSigGram.end(), setTargetGram.begin(), setTargetGram.end(), std::back_inserter(vUnion));
 	dJaccardIndex = (double)vIntersection.size() / (double)vUnion.size();
-	
+
 	//need to modi : print out when upper threshold
 	std::cout << "Jaccard Index is " << dJaccardIndex << std::endl;
-	
+
 	return D_SUCC;
 }
 
