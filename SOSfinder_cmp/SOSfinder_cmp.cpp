@@ -116,6 +116,14 @@ int TargetTokenize(std::fstream& fsTarget, std::string szTargetString)
 			szTargetString += "str";
 		else if (str.find("ldr") != -1)
 			szTargetString += "ldr";
+		else if (str.find("blx") != -1)
+			szTargetString += "blx";
+		else if (str.find("bl") != -1)
+			szTargetString += "bl";
+		else if (str.find("b.") != -1)
+			szTargetString += "b";
+		else
+			szTargetString += "instruction";
 
 		if ((str.find(",") != -1) && (str.find("#") != -1))
 		{
