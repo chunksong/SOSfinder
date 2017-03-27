@@ -1,9 +1,9 @@
 <?php
 
-function updateDB($db_host, $db_user, $db_pw, $dbName, $tableName, $upfileName, $upfileExt, $upfilePath, $upfileUserName) {
+function updateDB($dbHost, $dbUser, $dbPasswd, $dbName, $tableName, $upfileName, $upfileExt, $upfilePath, $upfileUserName) {
 	///////////////// DB Connection ////////////////////
 
-	$db = mysql_connect($db_host, $db_user, $db_pw, ""); // db login
+	$db = mysql_connect($dbHost, $dbUser, $dbPasswd, ""); // db login
 
 	if(!$db) die("Connection failed: ". mysql_error()); // db alive check
 
