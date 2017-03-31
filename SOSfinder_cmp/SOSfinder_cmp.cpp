@@ -123,7 +123,10 @@ int TargetTokenize(std::fstream& fsTarget, std::string szTargetString)
 		else if (str.find("b.") != -1)
 			szTargetString += "b";
 		else
-			szTargetString += "instruction";
+		{
+			szTargetString += "instruction\n";
+			continue;
+		}
 
 		if ((str.find(",") != -1) && (str.find("#") != -1))
 		{
