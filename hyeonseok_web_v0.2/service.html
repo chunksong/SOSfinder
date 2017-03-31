@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Modern Business - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="home.html">SOS Finder</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="service.html">About</a>
+                    </li>
+                    <li>
+                        <a href="#">SOS Finder</a>
+                    </li>
+                    <li>
+                        <a href="#">Board</a>
+                    </li>
+                    <li>
+                        <a href="#">Lv.1 정현석</a>
+                    </li>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Service
+                    <small>서비스 소개</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="home.html">Home</a>
+                    </li>
+                    <li class="active">Service</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Sidebar Column -->
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a href="service.html" class="list-group-item">서비스 소개</a>
+                    <a href="team.html" class="list-group-item">팀원 소개</a>
+                </div>
+            </div>
+            <!-- Content Column -->
+            <div class="col-md-9">
+                <img class="img-responsive" src="img/간호사.png">
+                <p>SOSFinder는 IoT기기의 오픈소스를 점검하여 취약성에 대해 진단해주는, 마치 간호사와 같은 역할을 하는 웹 서비스를 제공합니다. </p>
+                <hr>
+                <img class="img-responsive" src="img/타겟.png">
+                <p>SOS Finder 웹 사이트에 자신의 IoT기기에 있는 실행파일을 업로드합니다.(실행파일 추출하는 방법은 매뉴얼을 참조 바랍니다.) 이것이 Target Binary가 됩니다.</p>
+                <hr>
+                <img class="img-responsive" src="img/모듈.png">
+                <p>SOS Finder Database에는 IoT에 사용된 취약한 오픈소스를 컴파일 하여 추출한 바이너리 정보가 저장되어 있습니다.</p>
+                <hr>
+                <img class="img-responsive" src="img/유사도.png">
+                <p>Target Binary 와 Vulnerable Binary 를 <b>SOFA</b>만의 유사도 비교를 통해 자신의 기기가 얼마나 취약한가를 다음과 같이 수치화 및 가시화 하여 보여준다.</p>
+                <hr>
+                <table>
+                	<td>
+                  <img class="img-responsive" src="img/예상UI.png">
+                  </td>
+                  <td>
+                  <img class="img-responsive" src="img/예상UI2.png">
+                  </td>
+                </table>
+                <br>
+                <p>SOS Finder는 사용자들에게 경각심을 주고, 실행파일로 검사하는 비교적 손쉬운 서비스를 제공하고, 기기 위에 올려지는 무거운 형태의 보안이 아닌
+                	웹 서비스라는 새로운 형태를 제안해서 접근성이 높다.  또한, 사용자들로부터 취약한 펌웨어를 게시판에 업로드할 수 있게 하여 CVE나 GitHub와 비슷한
+                	커뮤니티를 형성해 확장성까지 갖춘 서비스이다.
+                <center><img class="img-responsive" src="img/CVE&GitHub.png"></center>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; SOFA 2017</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
