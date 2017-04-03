@@ -5,8 +5,8 @@ int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string 
 int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize);
 int CmpSigTarget(std::string szSigStr, std::string szTargetStr, int iWinSize);
 int GetSignature(MYSQL_ROW row, std::string szSigStr);
-int GetSimilarity(std::string szSigStr, std::string szTargetStr, int iWindowSize);
-
+int GetSimilarity(std::string szTargetStr, int iWindowSize);
+int InsertSignature(std::string szFileName);
 
 typedef struct stSignature {
 	std::string szSigName;
@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
 		std::cout << "Usage : SOSfinder <input file name>" << std::endl;
 		return -1;
 	}
-
+	//InsertSignature(argv[1]);
 	iRtn = GetTarget(fsTargetFile, argv[1], szTargetString);
 	if (iRtn == D_FAIL) return -1;
 
@@ -238,13 +238,6 @@ int CmpSigTarget(stSignature stSign, std::string szTargetStr, int iWinSize) {
 		}
 		setTargetGram.insert(szNGramElement);
 	}
-	/*
-	for (int iter = 0; iter < iNGram; iter++) {
-		stSign.szSignature. '\n');
-		szNGramElement += (szTemp);
-	}
-	setSigGram.insert();
-	*/
 
 	std::set_intersection(setSigGram.begin(), setSigGram.end(), setTargetGram.begin(), setTargetGram.end(), std::back_inserter(vIntersection));
 	std::set_union(setSigGram.begin(), setSigGram.end(), setTargetGram.begin(), setTargetGram.end(), std::back_inserter(vUnion));
@@ -261,7 +254,6 @@ int GetSignature(MYSQL_ROW row, stSignature stSign) {
 	// row[0] => name_of_vuln 
 	// row[1] => number_of_CVE  
 	// row[2] => Tokenized_binary_code_of_vuln
-
 	stSign.szSigName = row[0];
 	stSign.szSigCVENum = row[1];
 	stSign.szSignature = row[2];
@@ -276,7 +268,7 @@ int GetSimilarity(std::string szTargetStr, int iWindowSize) {
 	MYSQL_RES *res;	// the results
 	MYSQL_ROW row;	// the results row (line by line)
 
-	char* szDBQuery = "SELECT * FROM vuln_list";
+	std::string szDBQuery = "SELECT * FROM vuln";
 
 	//DB connect
 	MYSQL *connection = mysql_init(NULL);
@@ -284,25 +276,22 @@ int GetSimilarity(std::string szTargetStr, int iWindowSize) {
 		std::cout << "DB Conection error : " << mysql_error(connection) << "\n" << std::endl;
 		exit(1);
 	}
-	if (mysql_query(connection, szDBQuery))
+	if (mysql_query(connection, szDBQuery.c_str()))
 	{
 		std::cout << "MySQL query error : " << mysql_error(connection) << "\n" << std::endl;
 		exit(1);
 	}
 
 	res = mysql_use_result(connection);
-
 	while ((row = mysql_fetch_row(res)) != NULL) {
-		
-		stSig stSigObject;
 
-		iRtn = GetSignature(row,stSigObject);
+		stSig stSigObject;
+		iRtn = GetSignature(row,stSigObject);		//problem point // not storeing result 
 		if (iRtn == D_FAIL) {
 			std::cout << "Read SignatureFile from DB error.." << std::endl;
 		}
-
+		std::cout << stSigObject.szSignature.length() << " " << szTargetStr.length() << std::endl; 
 		CheckLength(stSigObject.szSignature, szTargetStr, iWindowSize);
-
 		CmpSigTarget(stSigObject, szTargetStr, iWindowSize);
 	}
 
@@ -310,7 +299,7 @@ int GetSimilarity(std::string szTargetStr, int iWindowSize) {
 
 }
 
-int InsertSignature() {
+int InsertSignature(std::string szFileName) {
 
 	std::fstream fsSignatureFile;
 		
@@ -318,11 +307,11 @@ int InsertSignature() {
 	std::string CVENum;
 	std::string BinCode;
 	std::string szLine;
-	FileName = "";
-	CVENum = "";
+	FileName = szFileName;
+	CVENum = "test";
 	BinCode = "";
 
-	fsSignatureFile.open("#filename#", "r");
+	fsSignatureFile.open(szFileName.c_str(), std::ios::in);
 	while (std::getline(fsSignatureFile, szLine)) {
 		std::cout << szLine << std::endl;
 		BinCode += szLine;
