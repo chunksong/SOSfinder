@@ -1,18 +1,12 @@
 #include "SOSfinder.h"
 
-int TargetTokenize(std::fstream& fsTarget, std::string szTargetString);
-int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string szTargetString);
+int TargetTokenize(std::fstream& fsTarget, std::string &szTargetString);
+int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string &szTargetString);
 int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize);
 int CmpSigTarget(std::string szSigStr, std::string szTargetStr, int iWinSize);
-int GetSignature(MYSQL_ROW row, std::string szSigStr);
-int GetSimilarity(std::string szTargetStr, int iWindowSize);
+int GetSignature(MYSQL_ROW row, stSig &stSign);
+int GetSimilarity(std::string &szTargetStr, int iWindowSize);
 int InsertSignature(std::string szFileName);
-
-typedef struct stSignature {
-	std::string szSigName;
-	std::string szSigCVENum;
-	std::string szSignature;
-}stSig;
 
 
 int main(int argc, char* argv[]) {
@@ -37,7 +31,7 @@ int main(int argc, char* argv[]) {
 
 }
 
-int TargetTokenize(std::fstream& fsTarget, std::string szTargetString)
+int TargetTokenize(std::fstream& fsTarget, std::string& szTargetString)
 {
 	std::string str;
 	int cnt;
@@ -149,7 +143,7 @@ int TargetTokenize(std::fstream& fsTarget, std::string szTargetString)
 	return D_SUCC;
 }
 
-int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string szTargetString) {
+int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string &szTargetString) {
 
 	int iRtn;
 
@@ -249,7 +243,7 @@ int CmpSigTarget(stSignature stSign, std::string szTargetStr, int iWinSize) {
 	return D_SUCC;
 }
 
-int GetSignature(MYSQL_ROW row, stSignature stSign) {
+int GetSignature(MYSQL_ROW row, stSig &stSign) {
 	
 	// row[0] => name_of_vuln 
 	// row[1] => number_of_CVE  
@@ -261,7 +255,7 @@ int GetSignature(MYSQL_ROW row, stSignature stSign) {
 	return D_SUCC;
 }
 
-int GetSimilarity(std::string szTargetStr, int iWindowSize) {
+int GetSimilarity(std::string &szTargetStr, int iWindowSize) {
 
 	int iRtn;
 	int iMaxJI = -1;
@@ -290,7 +284,7 @@ int GetSimilarity(std::string szTargetStr, int iWindowSize) {
 		if (iRtn == D_FAIL) {
 			std::cout << "Read SignatureFile from DB error.." << std::endl;
 		}
-		std::cout << stSigObject.szSignature.length() << " " << szTargetStr.length() << std::endl; 
+		std::cout << stSigObject.szSignature.length() << " "<< szTargetStr.length() << std::endl; 
 		CheckLength(stSigObject.szSignature, szTargetStr, iWindowSize);
 		CmpSigTarget(stSigObject, szTargetStr, iWindowSize);
 	}
