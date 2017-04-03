@@ -13,3 +13,10 @@
 
 #define D_SUCC 15
 #define D_FAIL 14
+
+
+typedef struct stSignature {
+	std::string szSigName;
+	std::string szSigCVENum;
+	std::string szSignature;
+}stSig;
