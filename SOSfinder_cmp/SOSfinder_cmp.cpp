@@ -309,3 +309,41 @@ int GetSimilarity(std::string szTargetStr, int iWindowSize) {
 	return D_SUCC;
 
 }
+
+int InsertSignature() {
+
+	std::fstream fsSignatureFile;
+		
+	std::string FileName;
+	std::string CVENum;
+	std::string BinCode;
+	std::string szLine;
+	FileName = "";
+	CVENum = "";
+	BinCode = "";
+
+	fsSignatureFile.open("#filename#", "r");
+	while (std::getline(fsSignatureFile, szLine)) {
+		std::cout << szLine << std::endl;
+		BinCode += szLine;
+	}
+
+
+	//-----------------------------------------------------------------------------------------------
+	std::string szDBQuery = "INSERT INTO vuln (name,CVENum,BinCode) VALUES ('"+ FileName +"','"+ CVENum +"','"+ BinCode +"')";
+	//-----------------------------------------------------------------------------------------------
+	
+	
+	//DB connect
+	MYSQL *connection = mysql_init(NULL);
+	if (!mysql_real_connect(connection, "localhost", "root", "1234", "vuln", 0, NULL, 0)) {
+		std::cout << "DB Conection error : " << mysql_error(connection) << "\n" << std::endl;
+		exit(1);
+	}
+	if (mysql_query(connection, szDBQuery.c_str()))
+	{
+		std::cout << "MySQL query error : " << mysql_error(connection) << "\n" << std::endl;
+		exit(1);
+	}
+	return D_SUCC;
+}
