@@ -13,7 +13,7 @@ int main(int argc, char* argv[]) {
 	// useage : SOSfinder <input file name/dir(optional)> 
 	int iRtn;
 	std::string szTargetString;
-	int iWindowSize;
+	int iWindowSize = 3;
 	std::fstream fsTargetFile;
 
 	if (argc != 2) {
@@ -188,7 +188,7 @@ int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 
 int CmpSigTarget(stSignature stSign, std::string szTargetStr, int iWinSize) {
 
-	int iNGram;
+	int iNGram,iFlag;
 	int iCounter = 0;
 	std::string::size_type iCursor = 0;
 	std::string::size_type iPrev = 0;
@@ -203,43 +203,83 @@ int CmpSigTarget(stSignature stSign, std::string szTargetStr, int iWinSize) {
 
 	//construct gram set
 	iNGram = iWinSize;
-	iStart = iPrev;
-
-	while ((iCursor = stSign.szSignature.find("\n", iStart) != std::string::npos)) {
-		szNGramElement += stSign.szSignature.substr(iPrev, iCursor - iPrev);
-		iStart = iPrev;
+	iFlag = 0;
+	iStart = iPrev;  //do not work
+	while ((iCursor = stSign.szSignature.find("\n", iStart + 1) < stSign.szSignature.length())) {
+		
+		szNGramElement = "";		
+		//std::cout << szNGramElement << std::endl;		
+	
+		iStart = stSign.szSignature.find("\n", iStart + 1);
+		iPrev = iStart;
+		
 		iCounter = 1;
+		
 		while (iCounter <= iNGram) {
-			iCursor = stSign.szSignature.find("\n", iPrev);
+				 
+			iCursor = stSign.szSignature.find("\n", iPrev + 1);
+			if(iCursor > stSign.szSignature.length()){
+				iFlag = 1;
+				break;
+			}
+			
 			szNGramElement += stSign.szSignature.substr(iPrev, iCursor - iPrev);
-			iCounter++;
+			iPrev = iCursor;
+			iCounter ++;				
 		}
+		if(iFlag)	break;
+		//std::cout << "iCursor : " << iCursor << " iPrev : " << iPrev << std::endl;
+
 		setSigGram.insert(szNGramElement);
+				
+		
 	}
 	
 	iStart = 0;
 	iPrev = 0;
 	iCursor = 0;
-	
-	while ((iCursor = szTargetStr.find("\n", iStart) != std::string::npos)) {
-		szNGramElement += szTargetStr.substr(iPrev, iCursor - iPrev);
-		iStart = iPrev;
+	iFlag = 0;
+
+	while ((iCursor = szTargetStr.find("\n", iStart + 1) < szTargetStr.length())) {
+		
+		szNGramElement = "";		
+		//std::cout << szNGramElement << std::endl;		
+		//std::cout << "iCursor : " << iCursor << " iPrev : " << iPrev << std::endl;
+
+		iStart = szTargetStr.find("\n", iStart + 1);
+		iPrev = iStart;
+		
 		iCounter = 1;
+		
 		while (iCounter <= iNGram) {
-			iCursor = szTargetStr.find("\n", iPrev);
+				 
+			iCursor = szTargetStr.find("\n", iPrev + 1);
+			if(iCursor > szTargetStr.length()){
+				iFlag = 1;
+				break;
+			}
+			
 			szNGramElement += szTargetStr.substr(iPrev, iCursor - iPrev);
-			iCounter++;
+			//std::cout << szTargetStr.substr(iPrev, iCursor - iPrev) << std::endl;
+			iPrev = iCursor;
+			iCounter ++;				
 		}
+		if(iFlag)	break;
+		//std::cout << "iCursor : " << iCursor << " iPrev : " << iPrev << std::endl;
+
 		setTargetGram.insert(szNGramElement);
 	}
-
+	
 	std::set_intersection(setSigGram.begin(), setSigGram.end(), setTargetGram.begin(), setTargetGram.end(), std::back_inserter(vIntersection));
 	std::set_union(setSigGram.begin(), setSigGram.end(), setTargetGram.begin(), setTargetGram.end(), std::back_inserter(vUnion));
+	
+	std::cout << setSigGram.size() << " " << setTargetGram.size() << std::endl;
+	std::cout << (double)vIntersection.size() << " " << (double)vUnion.size()<< std::endl;
 	dJaccardIndex = (double)vIntersection.size() / (double)vUnion.size();
 
 	//need to modi : print out when upper threshold
 	std::cout << "Jaccard Index is " << dJaccardIndex << std::endl;
-
+	
 	return D_SUCC;
 }
 
@@ -280,11 +320,11 @@ int GetSimilarity(std::string &szTargetStr, int iWindowSize) {
 	while ((row = mysql_fetch_row(res)) != NULL) {
 
 		stSig stSigObject;
-		iRtn = GetSignature(row,stSigObject);		//problem point // not storeing result 
+		iRtn = GetSignature(row,stSigObject);		 
 		if (iRtn == D_FAIL) {
 			std::cout << "Read SignatureFile from DB error.." << std::endl;
 		}
-		std::cout << stSigObject.szSignature.length() << " "<< szTargetStr.length() << std::endl; 
+		std::cout << stSigObject.szSigName << " : " <<stSigObject.szSignature.length() << " " << "input : " << szTargetStr.length() << std::endl; 
 		CheckLength(stSigObject.szSignature, szTargetStr, iWindowSize);
 		CmpSigTarget(stSigObject, szTargetStr, iWindowSize);
 	}
@@ -306,11 +346,7 @@ int InsertSignature(std::string szFileName) {
 	BinCode = "";
 
 	fsSignatureFile.open(szFileName.c_str(), std::ios::in);
-	while (std::getline(fsSignatureFile, szLine)) {
-		std::cout << szLine << std::endl;
-		BinCode += szLine;
-	}
-
+	TargetTokenize(fsSignatureFile, BinCode);
 
 	//-----------------------------------------------------------------------------------------------
 	std::string szDBQuery = "INSERT INTO vuln (name,CVENum,BinCode) VALUES ('"+ FileName +"','"+ CVENum +"','"+ BinCode +"')";
