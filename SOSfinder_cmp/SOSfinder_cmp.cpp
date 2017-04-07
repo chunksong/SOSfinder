@@ -2,10 +2,14 @@
 
 int TargetTokenize(std::fstream& fsTarget, std::string &szTargetString);
 int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string &szTargetString);
-int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize);
-int CmpSigTarget(std::string szSigStr, std::string szTargetStr, int iWinSize);
+int CheckLength(std::string szSigStr, std::string& szTargetStr, int& iSigSize);
+double CmpSigTarget(std::string szSigStr, std::string szTargetStr, int iWinSize);
 int GetSignature(MYSQL_ROW row, stSig &stSign);
 int GetSimilarity(std::string &szTargetStr, int iWindowSize);
+//--------------------------------------------------------------------------------
+int GetSimilarity2(std::string &szTargetStr, int iWindowSize);
+int GetSimilarity3(std::string &szTargetStr, int iWindowSize);
+//--------------------------------------------------------------------------------
 int InsertSignature(std::string szFileName);
 
 
@@ -13,7 +17,7 @@ int main(int argc, char* argv[]) {
 	// useage : SOSfinder <input file name/dir(optional)> 
 	int iRtn;
 	std::string szTargetString;
-	int iWindowSize = 3;
+	int iWindowSize = 8;
 	std::fstream fsTargetFile;
 
 	if (argc != 2) {
@@ -168,7 +172,7 @@ int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string 
 	return D_SUCC;
 }
 
-int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize) {
+int CheckLength(std::string szSigStr, std::string& szTargetStr, int& iSigSize) {
 
 	if (szTargetStr.length() < 24) { // 24 == gram(8) * 3 인스트로덕션이 3글자이기 때문에
 		std::cout << "Error : target file size is too small to compare.." << std::endl;
@@ -176,17 +180,17 @@ int CheckLength(std::string szSigStr, std::string szTargetStr, int iWinSize) {
 	}
 
 	if (szTargetStr.length() < szSigStr.length()) {
-		iWinSize = szTargetStr.length();
-		szSigStr = szSigStr.substr(0, iWinSize);
-	}
+		iSigSize = szTargetStr.length();
+		szSigStr = szSigStr.substr(0, iSigSize);
+	} 
 	else {
-		iWinSize = szSigStr.length();
+		iSigSize = szSigStr.length();
 	}
 
 	return D_SUCC;
 }
 
-int CmpSigTarget(stSignature stSign, std::string szTargetStr, int iWinSize) {
+double CmpSigTarget(stSignature stSign, std::string szTargetStr, int iWinSize) {
 
 	int iNGram,iFlag;
 	int iCounter = 0;
@@ -228,7 +232,7 @@ int CmpSigTarget(stSignature stSign, std::string szTargetStr, int iWinSize) {
 			iCounter ++;				
 		}
 		if(iFlag)	break;
-		//std::cout << "iCursor : " << iCursor << " iPrev : " << iPrev << std::endl;
+		//std::cout << "--------------------" << std::endl <<"iCursor : " << iCursor << std::endl << "------------------" << szNGramElement << std::endl;
 
 		setSigGram.insert(szNGramElement);
 				
@@ -273,14 +277,14 @@ int CmpSigTarget(stSignature stSign, std::string szTargetStr, int iWinSize) {
 	std::set_intersection(setSigGram.begin(), setSigGram.end(), setTargetGram.begin(), setTargetGram.end(), std::back_inserter(vIntersection));
 	std::set_union(setSigGram.begin(), setSigGram.end(), setTargetGram.begin(), setTargetGram.end(), std::back_inserter(vUnion));
 	
-	std::cout << setSigGram.size() << " " << setTargetGram.size() << std::endl;
-	std::cout << (double)vIntersection.size() << " " << (double)vUnion.size()<< std::endl;
+	//std::cout << setSigGram.size() << " " << setTargetGram.size() << std::endl;
+	//std::cout << (double)vIntersection.size() << " " << (double)vUnion.size()<< std::endl;
 	dJaccardIndex = (double)vIntersection.size() / (double)vUnion.size();
 
 	//need to modi : print out when upper threshold
-	std::cout << "Jaccard Index is " << dJaccardIndex << std::endl;
+	//std::cout << "Jaccard Index is " << dJaccardIndex << std::endl;
 	
-	return D_SUCC;
+	return dJaccardIndex;
 }
 
 int GetSignature(MYSQL_ROW row, stSig &stSign) {
@@ -299,6 +303,11 @@ int GetSimilarity(std::string &szTargetStr, int iWindowSize) {
 
 	int iRtn;
 	int iMaxJI = -1;
+	int iSigSize;
+	double dResultJaccard = 0;
+	double dTempJaccard = 0;
+	std::string::size_type iStart = 0;
+	
 	MYSQL_RES *res;	// the results
 	MYSQL_ROW row;	// the results row (line by line)
 
@@ -325,14 +334,144 @@ int GetSimilarity(std::string &szTargetStr, int iWindowSize) {
 			std::cout << "Read SignatureFile from DB error.." << std::endl;
 		}
 		std::cout << stSigObject.szSigName << " : " <<stSigObject.szSignature.length() << " " << "input : " << szTargetStr.length() << std::endl; 
-		CheckLength(stSigObject.szSignature, szTargetStr, iWindowSize);
-		CmpSigTarget(stSigObject, szTargetStr, iWindowSize);
+		dResultJaccard = 0;
+		iStart = 0;		
+		CheckLength(stSigObject.szSignature, szTargetStr, iSigSize);		
+		//need to compare same size window
+		//CmpSigTarget(stSigObject, szTargetStr, iWindowSize);
+		double start_time = clock();				
+		while( iStart + iSigSize  <= szTargetStr.length()){
+			dTempJaccard = CmpSigTarget(stSigObject, szTargetStr.substr(iStart, iSigSize), iWindowSize);
+			iStart = szTargetStr.find("\n", iStart + 1);
+			dResultJaccard = dResultJaccard > dTempJaccard ? dResultJaccard : dTempJaccard;
+		}
+		double end_time = clock();
+		std::cout << "total time : " << ((end_time - start_time)/CLOCKS_PER_SEC) << std::endl;
+		std::cout << "JaccardIndex is : " << dResultJaccard << std::endl << std::endl;	
 	}
 
 	return D_SUCC;
 
 }
+//----------------------------------------------------------------------------------------------------
+int GetSimilarity2(std::string &szTargetStr, int iWindowSize) {
 
+	int iRtn;
+	int iMaxJI = -1;
+	int iSigSize;
+	double dResultJaccard = 0;
+	double dTempJaccard = 0;
+	std::string::size_type iStart = 0;
+	
+	MYSQL_RES *res;	// the results
+	MYSQL_ROW row;	// the results row (line by line)
+
+	std::string szDBQuery = "SELECT * FROM vuln";
+
+	//DB connect
+	MYSQL *connection = mysql_init(NULL);
+	if (!mysql_real_connect(connection, "localhost", "root", "1234", "vuln", 0, NULL, 0)) {
+		std::cout << "DB Conection error : " << mysql_error(connection) << "\n" << std::endl;
+		exit(1);
+	}
+	if (mysql_query(connection, szDBQuery.c_str()))
+	{
+		std::cout << "MySQL query error : " << mysql_error(connection) << "\n" << std::endl;
+		exit(1);
+	}
+
+	res = mysql_use_result(connection);
+	while ((row = mysql_fetch_row(res)) != NULL) {
+
+		stSig stSigObject;
+		iRtn = GetSignature(row,stSigObject);		 
+		if (iRtn == D_FAIL) {
+			std::cout << "Read SignatureFile from DB error.." << std::endl;
+		}
+		std::cout << stSigObject.szSigName << " : " <<stSigObject.szSignature.length() << " " << "input : " << szTargetStr.length() << std::endl; 
+		dResultJaccard = 0;
+		iStart = 0;		
+		CheckLength(stSigObject.szSignature, szTargetStr, iSigSize);
+		double start_time = clock();		
+		//need to compare same size window
+		//CmpSigTarget(stSigObject, szTargetStr, iWindowSize);
+		if(2 * iSigSize >= szTargetStr.length()){
+			while( iStart + iSigSize  <= szTargetStr.length()){
+				dTempJaccard = CmpSigTarget(stSigObject, szTargetStr.substr(iStart, iSigSize), iWindowSize);
+				iStart = szTargetStr.find("\n", iStart + 1);
+				dResultJaccard = dResultJaccard > dTempJaccard ? dResultJaccard : dTempJaccard;
+			}
+		}
+		else{
+			while( iStart + (2 * iSigSize)  <= szTargetStr.length()){
+				dTempJaccard = CmpSigTarget(stSigObject, szTargetStr.substr(iStart, 2*iSigSize), iWindowSize);
+				iStart += iSigSize;
+				dResultJaccard = dResultJaccard > dTempJaccard ? dResultJaccard : dTempJaccard;
+			}
+			dTempJaccard = CmpSigTarget(stSigObject, szTargetStr.substr(iStart, szTargetStr.length() - (2*iSigSize) + 1), iWindowSize);
+			dResultJaccard = dResultJaccard > dTempJaccard ? dResultJaccard : dTempJaccard;
+		}
+		double end_time = clock();
+		std::cout << "total time : " << ((end_time - start_time)/CLOCKS_PER_SEC) << std::endl;
+		std::cout << "JaccardIndex is : " << dResultJaccard << std::endl << std::endl;	
+	}
+
+	return D_SUCC;
+
+}
+int GetSimilarity3(std::string &szTargetStr, int iWindowSize) {
+
+	int iRtn;
+	int iMaxJI = -1;
+	int iSigSize;
+	double dResultJaccard = 0;
+	double dTempJaccard = 0;
+	std::string::size_type iStart = 0;
+	
+	MYSQL_RES *res;	// the results
+	MYSQL_ROW row;	// the results row (line by line)
+
+	std::string szDBQuery = "SELECT * FROM vuln";
+
+	//DB connect
+	MYSQL *connection = mysql_init(NULL);
+	if (!mysql_real_connect(connection, "localhost", "root", "1234", "vuln", 0, NULL, 0)) {
+		std::cout << "DB Conection error : " << mysql_error(connection) << "\n" << std::endl;
+		exit(1);
+	}
+	if (mysql_query(connection, szDBQuery.c_str()))
+	{
+		std::cout << "MySQL query error : " << mysql_error(connection) << "\n" << std::endl;
+		exit(1);
+	}
+
+	res = mysql_use_result(connection);
+	while ((row = mysql_fetch_row(res)) != NULL) {
+
+		stSig stSigObject;
+		iRtn = GetSignature(row,stSigObject);		 
+		if (iRtn == D_FAIL) {
+			std::cout << "Read SignatureFile from DB error.." << std::endl;
+		}
+		std::cout << stSigObject.szSigName << " : " <<stSigObject.szSignature.length() << " " << "input : " << szTargetStr.length() << std::endl; 
+		dResultJaccard = 0;
+		iStart = 0;		
+		CheckLength(stSigObject.szSignature, szTargetStr, iSigSize);		
+		// need to compare same size window
+		// CmpSigTarget(stSigObject, szTargetStr, iWindowSize);
+		double start_time = clock();		
+		while( iStart + iSigSize  <= szTargetStr.length()){
+			// need to modify for third method
+		}
+		double end_time = clock();
+		std::cout << "total time : " << ((end_time - start_time)/CLOCKS_PER_SEC) << std::endl;
+		std::cout << "JaccardIndex is : " << dResultJaccard << std::endl << std::endl;	
+	}
+
+	return D_SUCC;
+
+}
+//---------------------------------------------------------------------------------------------------
 int InsertSignature(std::string szFileName) {
 
 	std::fstream fsSignatureFile;
