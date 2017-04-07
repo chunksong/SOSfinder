@@ -10,6 +10,7 @@
 #include <set>
 #include <algorithm>
 #include <iterator>
+#include <time.h>
 
 #define D_SUCC 15
 #define D_FAIL 14
