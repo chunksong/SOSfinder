@@ -1,0 +1,10 @@
+<link href="css/login.css" rel='stylesheet' type='text/css'>
+<div class="logo"></div>
+<div class="login-block">
+    <h1>Login</h1>
+    <input type="text" value="" placeholder="Username" id="username" />
+    <input type="password" value="" placeholder="Password" id="password" />
+    <button type="button" onclick="location.href='home.html'">·Î±×ÀÎ</button>
+    <button>sing up</button>
+    <button>forgot password?</button>
+</div>

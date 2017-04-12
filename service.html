@@ -96,7 +96,18 @@
             <!-- Content Column -->
             <div class="col-lg-9">
                 <h2 class="page-header">서비스 추진 배경</h2>
-                <h4>IoT기기 사용 현황 관련 설문조사</h4>
+                <div class="col-md-6">
+            		<img class="img-responsive" src="img/사물인터넷.png" alt="">
+            	   </div>
+            	   <div class="col-md-6">
+                <h3>지금은 제 4차 산업혁명의 시대</h3>
+                <p>현 시대는 초연결성, 초지능성에 의한 생산성 향상을 기대하는 제 4차 산업혁명을 맞이하고 있다. 그 중 단연 IoT 즉 사물인터넷이
+                	우리와 가장 밀접하다고 할 수 있다.<br><br><br><br><br><br><br><br></p>
+                </div>
+                	
+                <h3>IoT기기 사용 현황 관련 설문조사</h3>
+                <p>본 서비스를 개발 하기에 앞서 사람들의 IoT 사용 현황에 대해 설문조사를 진행했다. SNS를 통해 설문조사를 실시 했고
+                	대상자는  IT 지식이 있는 사람부터 관련 지식이 전혀 없는 사람까지 포괄적으로 했고 5일 동안 302명이 응답했다.</p>
                 
                 <ul id="myTab" class="nav nav-tabs nav-justified">
                     <li class="active"><a href="#service-one" data-toggle="tab"> Survey One</a>
@@ -127,19 +138,38 @@
                         <img class="img-responsive img-portfolio" src="img/survey5.png" alt="">
                     </div>
                 </div>
-
-                <img class="img-responsive" src="img/간호사.png">
-                <p>SOSFinder는 IoT기기의 오픈소스를 점검하여 취약성에 대해 진단해주는, 마치 간호사와 같은 역할을 하는 웹 서비스를 제공합니다. </p>
-                <hr>
-                <img class="img-responsive" src="img/타겟.png">
-                <p>SOS Finder 웹 사이트에 자신의 IoT기기에 있는 실행파일을 업로드합니다.(실행파일 추출하는 방법은 매뉴얼을 참조 바랍니다.) 이것이 Target Binary가 됩니다.</p>
-                <hr>
-                <img class="img-responsive" src="img/모듈.png">
+                
+                <h2 class="page-header">SOS Finder 자세히보기</h2>
+                
+                <div class="col-md-6">
+                <img class="img-responsive" src="img/sosfinder.png" alt="">
+                </div>
+                <div class="col-md-6">
+                <h3>SOS Finder 는 IoT 간호사</h3>
+                <p>SOSFinder는 IoT기기의 오픈소스를 점검하여 취약성에 대해 진단해주는, 마치 간호사와 같은 역할을 하는 웹 서비스를 제공합니다.
+                	<br><br><br><br><br><br><br><br><br><br><br></p>
+                </div>
+                
+                <div class="col-md-6">
+                <img class="img-responsive" src="img/homeimg.png" alt="">
+                </div>
+                <div class="col-md-6">
+                <h3>펌웨어로 하는 보안 점검</h3>
+                <p>SOS Finder 웹 사이트에 자신의 IoT기기에 있는 펌웨어(실행파일)을 업로드합니다.(실행파일 추출하는 방법은 매뉴얼을 참조 
+                	바랍니다.) 이것이 Target Binary가 됩니다.<br><br><br><br><br><br><br><br><br></p>
+                </div>
+                
+                <div class="col-md-7">
+                <img class="img-responsive" src="img/구조도.png" alt="">
+                </div>
+                <div class="col-md-5">
+                <h3>취약점 데이터베이스 비교 분석</h3>
                 <p>SOS Finder Database에는 IoT에 사용된 취약한 오픈소스를 컴파일 하여 추출한 바이너리 정보가 저장되어 있습니다.</p>
-                <hr>
-                <img class="img-responsive" src="img/유사도.png">
-                <p>Target Binary 와 Vulnerable Binary 를 <b>SOFA</b>만의 유사도 비교를 통해 자신의 기기가 얼마나 취약한가를 다음과 같이 수치화 및 가시화 하여 보여준다.</p>
-                <hr>
+                <p>Target Binary 와 Vulnerable Binary 를 <b>SOFA</b>만의 유사도 비교를 통해 자신의 기기가 얼마나 취약한가를 다음과 같이 
+                	수치화 및 가시화 하여 보여준다.<br><br><br><br></p>
+                </div>
+                
+                <div class="col-md-6">
                 <table>
                 	<td>
                   <img class="img-responsive" src="img/예상UI.png">
@@ -148,11 +178,22 @@
                   <img class="img-responsive" src="img/예상UI2.png">
                   </td>
                 </table>
-                <br>
+                </div>
+                <div class="col-md-6">
+                <h3>접근성을 높인 웹 서비스</h3>
                 <p>SOS Finder는 사용자들에게 경각심을 주고, 실행파일로 검사하는 비교적 손쉬운 서비스를 제공하고, 기기 위에 올려지는 무거운 형태의 보안이 아닌
-                	웹 서비스라는 새로운 형태를 제안해서 접근성이 높다.  또한, 사용자들로부터 취약한 펌웨어를 게시판에 업로드할 수 있게 하여 CVE나 GitHub와 비슷한
-                	커뮤니티를 형성해 확장성까지 갖춘 서비스이다.
-                <center><img class="img-responsive" src="img/CVE&GitHub.png"></center>
+                	웹 서비스라는 새로운 형태를 제안해서 접근성이 높다.<br><br><br><br><br><br><br></p>
+                </div>
+                
+                <div class="col-md-6">
+                <img class="img-responsive" src="img/CVE&GitHub.png">
+                </div>
+                <div class="col-md-6">
+                <h3>커뮤니티 운영을 통한 확장성</h3>
+                <p>사용자들로부터 취약한 펌웨어를 게시판에 업로드할 수 있게 하여 CVE나 GitHub와 비슷한
+                	커뮤니티를 형성해 확장성까지 갖춘 서비스이다.</p>
+                </div>
+
             </div>
         </div>
         <!-- /.row -->

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Modern Business - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/modern-business.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="home.html">SOS Finder</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="service.html">About</a>
+                    </li>
+                    <li>
+                        <a href="#">SOS Finder</a>
+                    </li>
+                    <li>
+                        <a href="#">Board</a>
+                    </li>
+                    <li>
+                        <a href="#">Lv.1 정현석</a>
+                    </li>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Header Carousel -->
+    <header id="myCarousel" class="carousel slide">
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div style="background-image:url('img/homeback.png'); height:100%; width:100%; background-position:center; background-repeat:no-repeat;"></div>
+                <div class="carousel-caption">
+                    <table>
+                    	 <td>
+                        <h1>여러분의 IoT 기기는　안전한가요?</h1>
+                    	  <h1>지금 SOS Finder에서 점검해보세요!</h1>
+                      </td>
+                      <td>
+                     	  <img class="img-responsive" src="img/homeimg.png" alt="">
+                      </td>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+
+    </header>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    IoT 기기 보안 솔루션 SOS Finder
+                </h1>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-check"></i> SOS Finder 란?</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>여러분의 IoT 기기의 펌웨어에 대해 바이너리 코드를 분석 비교하여 보안 상태를 점검하고 해결방안을 권고해드립니다.<br><br></p>
+                        <a href="service.html" class="btn btn-default">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-gift"></i> SOS Finder 사용절차</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>IoT 기기 실행 파일 추출 또는 다운로드<br>
+                        	→ 파일 업로드<br>
+                        	→ 취약한 오픈소스 검색<br>
+                        	→ 해결방안 참조 후 조치</p>
+                        <a href="#" class="btn btn-default">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw fa-compass"></i> 커뮤니티</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>취약점 데이터베이스 커뮤니티를 형성하고자 합니다. 그래서 다양한 플랫폼에서 수집된 취약한 버전의 펌웨어와 소스코드에 대한 모듈을 보유하려 합니다.<br><br></p>
+                        <a href="#" class="btn btn-default">자세히 보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Features Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">SOS Finder의 차별화</h2>
+            </div>
+            <div class="col-md-6">
+                <p><b>'B'사의 'P'제품</b></p>
+                <ul>
+                    <li>'B'사의 'P'제품은 소프트웨어 속 오픈소스를 탐지하는 서비스를 제공하고 있다. 하지만 취약점 탐지가 아닌 라이선스에 관한 법적 문제를 해결하는 데에 중점을 두고있다.</li>
+                </ul>
+                <p><b>'K'대 'I'서비스</b></p>
+                <ul>
+                	 <li>'K'대 'I'서비스는 바이너리 기반이 아닌 소스 코드를 분석해 IoT 기기의 취약점 검사를 진행 해주기는 한다. 그러나 사용자들의 입장에서는 소스코드에 인지하지 못하는 경우가 대부분이며, 
+                	 	소프트웨어를 구성하는 소스코드를  구하는 것은 쉽지 않은 일이다.</li>
+                </ul>
+                <p><b>SOS Finder의 차별화</b></p>
+                <ul>
+                	 <li>SOS Finder는 IoT기기의 펌웨어를 이용하는 보안 기관 같은 곳이나, 파워유저를 중심 대상으로 서비스를 시작합니다. 더 나아가
+                	 	일반 사용자들 대상으로는 매뉴얼을 제공하여 누구나 쉽게 자신의 기기를 점검 하고 취약한 정도를 대시 보드를 통해 가시화 하여 보여줍니다.
+                	 	그리하여 자신의 기기에 맞는 펌웨어를 업데이트 하는 등 적절한 조치를 취할 수 있도록 권고합니다.</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <img class="img-responsive" src="img/blackduck.png" alt="">
+                <img class="img-responsive" src="img/iotcube.png" alt="">
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; SOFA 2017</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+</body>
+
+</html>
