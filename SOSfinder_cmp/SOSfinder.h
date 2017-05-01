@@ -21,3 +21,4 @@ typedef struct stSignature {
 	std::string szSigCVENum;
 	std::string szSignature;
 }stSig;
+
