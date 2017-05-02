@@ -8,7 +8,7 @@ int GetSignature(MYSQL_ROW row, stSig &stSign);
 int GetSimilarity(std::string &szTargetStr, int iWindowSize);
 //--------------------------------------------------------------------------------
 double CmpSigTarget_contain(stSignature stSign, std::string szTargetStr, int iWinSize);
-double BinSearch(int iFront, int iLast, std::string szTargetStr, stSignature stSign, int iLenOfWin, int iWindowSize);
+double BinSearch(int iFront, int iLast, std::string szTargetStr, stSignature stSign, int iLenOfWin, int iWindowSize, int iCompLen);
 int GetSimilarity2(std::string &szTargetStr, int iWindowSize);
 int GetSimilarity3(std::string &szTargetStr, int iWindowSize);
 //--------------------------------------------------------------------------------
@@ -175,11 +175,6 @@ int GetTarget(std::fstream& fsTarget, std::string szTargetFileName, std::string 
 }
 
 int CheckLength(std::string szSigStr, std::string& szTargetStr, int& iSigSize) {
-
-	if (szTargetStr.length() < 24) { // 24 == gram(8) * 3 인스트로덕션이 3글자이기 때문에
-		std::cout << "Error : target file size is too small to compare.." << std::endl;
-		return D_FAIL;
-	}
 
 	if (szTargetStr.length() < szSigStr.length()) {
 		iSigSize = szTargetStr.length();
@@ -455,8 +450,8 @@ int GetSimilarity3(std::string &szTargetStr, int iWindowSize) {
 		int iLast = szTargetStr.length();
 		int iLengthOfWindow = szTargetStr.length()/2 + iSigSize;
 		double start_time = clock();
-		if(CmpSigTarget_contain(stSigObject, szTargetStr, iWindowSize) >= 0.9)		
-			dResultJaccard = BinSearch(iFront, iLast, szTargetStr, stSigObject, iLengthOfWindow, iWindowSize);
+		if(CmpSigTarget_contain(stSigObject, szTargetStr, iWindowSize) >= 0.8)		
+			dResultJaccard = BinSearch(iFront, iLast, szTargetStr, stSigObject, iLengthOfWindow, iWindowSize,iSigSize);
 		double end_time = clock();
 		//std::cout << "total time : " << ((end_time - start_time)/CLOCKS_PER_SEC) << std::endl;
 		//std::cout << "JaccardIndex is : " << dResultJaccard << std::endl << std::endl;
@@ -468,26 +463,29 @@ int GetSimilarity3(std::string &szTargetStr, int iWindowSize) {
 	return D_SUCC;
 }
 
-double BinSearch(int iFront, int iLast, std::string szTargetStr, stSignature stSign ,int iLenOfWin, int iWindowSize){	
+double BinSearch(int iFront, int iLast, std::string szTargetStr, stSignature stSign ,int iLenOfWin, int iWindowSize, int iCompLen){	
 	double dResultJaccard,dTempJaccard;
 	double dTempJaccardFront= 0;
 	double dTempJaccardBack = 0;
-		
+	//std::cout << iLenOfWin/stSign.szSignature.length() << std::endl;	
 	if(iLenOfWin <= 2.6 * stSign.szSignature.length()){
+		//std::cout << stSign.szSignature.length() << " : " << iCompLen << std::endl;
 		int iStart = iFront;
-		while( iStart + stSign.szSignature.length()  <= iLast){
-			dTempJaccard = CmpSigTarget(stSign, szTargetStr.substr(iStart, stSign.szSignature.length()), iWindowSize);
+		while( iStart + iCompLen  <= iLast){\
+		//	std::cout << "." << std::endl;
+			dTempJaccard = CmpSigTarget(stSign, szTargetStr.substr(iStart, iCompLen), iWindowSize);
 			iStart = szTargetStr.find("\n", iStart + 1);
 			dResultJaccard = dResultJaccard > dTempJaccard ? dResultJaccard : dTempJaccard;
+
 		}
 		return	dResultJaccard;
 	}
 
 	if(CmpSigTarget_contain(stSign, szTargetStr.substr(iFront, iLenOfWin), iWindowSize) > 0.8)
-		dTempJaccardFront = BinSearch(iFront, iFront + iLenOfWin, szTargetStr, stSign, iLenOfWin/2, iWindowSize);		
+		dTempJaccardFront = BinSearch(iFront, iFront + iLenOfWin, szTargetStr, stSign, iLenOfWin/2, iWindowSize,iCompLen);		
 
 	if(CmpSigTarget_contain(stSign, szTargetStr.substr(iLast - iLenOfWin, iLenOfWin), iWindowSize) > 0.8)	
-		dTempJaccardBack = BinSearch(iLast - iLenOfWin, iLast, szTargetStr, stSign, iLenOfWin/2, iWindowSize);
+		dTempJaccardBack = BinSearch(iLast - iLenOfWin, iLast, szTargetStr, stSign, iLenOfWin/2, iWindowSize,iCompLen);
 	dResultJaccard = dTempJaccardFront > dTempJaccardBack ? dTempJaccardFront : dTempJaccardBack;
 	return dResultJaccard;
 	
@@ -580,7 +578,7 @@ int InsertSignature(std::string szFileName) {
 	std::string szLine;
 	std::string szVulnName;
 	FileName = szFileName;
-	CVENum = "CVE-2014-0160";
+	CVENum = "CVE-2014-0160" // need to change when use 'insert' module;
 	BinCode = "";
 
 	fsSignatureFile.open(szFileName.c_str(), std::ios::in);
