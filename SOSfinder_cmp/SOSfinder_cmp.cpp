@@ -410,6 +410,7 @@ int GetSimilarity3(std::string &szTargetStr, int iWindowSize) {
 	double dResultJaccard = 0;
 	double dTempJaccard = 0;
 	std::string::size_type iStart = 0;
+	stSig stSigObject;
 	
 	MYSQL_RES *res;	// the results
 	MYSQL_ROW row;	// the results row (line by line)
@@ -432,15 +433,24 @@ int GetSimilarity3(std::string &szTargetStr, int iWindowSize) {
 	}
 	
 	res = mysql_store_result(connection);
-	std::cout << "[" << mysql_num_rows(res) << "]" << std::endl;
+	std::string szFrontCVE= "";
+	std::string szCurrentCVE;
+	double dJaccardOfCVE = 0;
+	std::cout << "{" << std::endl;
+	std::cout << "\t\"vuln\": [" << std::endl;
 	while ((row = mysql_fetch_row(res)) != NULL) {
-
-		stSig stSigObject;
+		
+		
 		iRtn = GetSignature(row,stSigObject);		 
 		if (iRtn == D_FAIL) {
 			std::cout << "Read SignatureFile from DB error.." << std::endl;
 		}
-		//std::cout << stSigObject.szSigName << " : " <<stSigObject.szSignature.length() << " " << "input : " << szTargetStr.length() << std::endl; 
+		szCurrentCVE = stSigObject.szSigCVENum;
+		if(szFrontCVE != "" && szFrontCVE != szCurrentCVE){
+			std::cout << "\t\t{ " << "\"CVEnumber\"" << ": \"" << stSigObject.szSigCVENum << "\",\"similarity\"" <<": " << dJaccardOfCVE << " }," << std::endl;
+			dJaccardOfCVE = 0;
+		}
+
 		dResultJaccard = 0;
 		iStart = 0;		
 		CheckLength(stSigObject.szSignature, szTargetStr, iSigSize);
@@ -449,17 +459,14 @@ int GetSimilarity3(std::string &szTargetStr, int iWindowSize) {
 		int iFront = 0;
 		int iLast = szTargetStr.length();
 		int iLengthOfWindow = szTargetStr.length()/2 + iSigSize;
-		double start_time = clock();
-		if(CmpSigTarget_contain(stSigObject, szTargetStr, iWindowSize) >= 0.8)		
+		if(CmpSigTarget_contain(stSigObject, szTargetStr, iWindowSize) >= 0.6)		
 			dResultJaccard = BinSearch(iFront, iLast, szTargetStr, stSigObject, iLengthOfWindow, iWindowSize,iSigSize);
-		double end_time = clock();
-		//std::cout << "total time : " << ((end_time - start_time)/CLOCKS_PER_SEC) << std::endl;
-		//std::cout << "JaccardIndex is : " << dResultJaccard << std::endl << std::endl;
-		if(dResultJaccard != 0){
-			std::cout << stSigObject.szSigName << " : " << stSigObject.szSigCVENum << std::endl; 
-			std::cout << "total time : " << ((end_time - start_time)/CLOCKS_PER_SEC) << std::endl << "JaccardIndex is : " << dResultJaccard << std::endl << std::endl;
-		}
+		dJaccardOfCVE = dResultJaccard > dJaccardOfCVE ? dResultJaccard : dJaccardOfCVE;
+		szFrontCVE = szCurrentCVE;
 	}
+	std::cout << "\t\t{ " << "\"CVEnumber\"" << ": \"" << stSigObject.szSigCVENum << "\",\"similarity\"" <<": " << dJaccardOfCVE << " }" << std::endl << "\t]"<< std::endl << "}" << std::endl;
+	dJaccardOfCVE = 0;
+		
 	return D_SUCC;
 }
 
@@ -481,10 +488,10 @@ double BinSearch(int iFront, int iLast, std::string szTargetStr, stSignature stS
 		return	dResultJaccard;
 	}
 
-	if(CmpSigTarget_contain(stSign, szTargetStr.substr(iFront, iLenOfWin), iWindowSize) > 0.8)
+	if(CmpSigTarget_contain(stSign, szTargetStr.substr(iFront, iLenOfWin), iWindowSize) > 0.6)
 		dTempJaccardFront = BinSearch(iFront, iFront + iLenOfWin, szTargetStr, stSign, iLenOfWin/2, iWindowSize,iCompLen);		
 
-	if(CmpSigTarget_contain(stSign, szTargetStr.substr(iLast - iLenOfWin, iLenOfWin), iWindowSize) > 0.8)	
+	if(CmpSigTarget_contain(stSign, szTargetStr.substr(iLast - iLenOfWin, iLenOfWin), iWindowSize) > 0.6)
 		dTempJaccardBack = BinSearch(iLast - iLenOfWin, iLast, szTargetStr, stSign, iLenOfWin/2, iWindowSize,iCompLen);
 	dResultJaccard = dTempJaccardFront > dTempJaccardBack ? dTempJaccardFront : dTempJaccardBack;
 	return dResultJaccard;
@@ -578,7 +585,7 @@ int InsertSignature(std::string szFileName) {
 	std::string szLine;
 	std::string szVulnName;
 	FileName = szFileName;
-	CVENum = "CVE-2014-0160" // need to change when use 'insert' module;
+	CVENum = "CVE-2014-0160";
 	BinCode = "";
 
 	fsSignatureFile.open(szFileName.c_str(), std::ios::in);
