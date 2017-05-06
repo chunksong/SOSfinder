@@ -1,0 +1,3760 @@
+
+d1_both.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <dtls1_hm_fragment_new>:
+       0:	push	{fp, lr}
+       4:	add	fp, sp, #4
+       8:	sub	sp, sp, #24
+       c:	str	r0, [fp, #-24]	; 0xffffffe8
+      10:	str	r1, [fp, #-28]	; 0xffffffe4
+      14:	mov	r3, #0
+      18:	str	r3, [fp, #-16]
+      1c:	mov	r3, #0
+      20:	str	r3, [fp, #-8]
+      24:	mov	r3, #0
+      28:	str	r3, [fp, #-12]
+      2c:	mov	r2, #179	; 0xb3
+      30:	movw	r1, #0
+      34:	movt	r1, #0
+      38:	mov	r0, #52	; 0x34
+      3c:	bl	0 <CRYPTO_malloc>
+      40:	str	r0, [fp, #-16]
+      44:	ldr	r3, [fp, #-16]
+      48:	cmp	r3, #0
+      4c:	bne	58 <dtls1_hm_fragment_new+0x58>
+      50:	mov	r3, #0
+      54:	b	134 <dtls1_hm_fragment_new+0x134>
+      58:	ldr	r3, [fp, #-24]	; 0xffffffe8
+      5c:	cmp	r3, #0
+      60:	beq	9c <dtls1_hm_fragment_new+0x9c>
+      64:	ldr	r3, [fp, #-24]	; 0xffffffe8
+      68:	mov	r2, #185	; 0xb9
+      6c:	movw	r1, #0
+      70:	movt	r1, #0
+      74:	mov	r0, r3
+      78:	bl	0 <CRYPTO_malloc>
+      7c:	str	r0, [fp, #-8]
+      80:	ldr	r3, [fp, #-8]
+      84:	cmp	r3, #0
+      88:	bne	9c <dtls1_hm_fragment_new+0x9c>
+      8c:	ldr	r0, [fp, #-16]
+      90:	bl	0 <CRYPTO_free>
+      94:	mov	r3, #0
+      98:	b	134 <dtls1_hm_fragment_new+0x134>
+      9c:	ldr	r3, [fp, #-16]
+      a0:	ldr	r2, [fp, #-8]
+      a4:	str	r2, [r3, #44]	; 0x2c
+      a8:	ldr	r3, [fp, #-28]	; 0xffffffe4
+      ac:	cmp	r3, #0
+      b0:	beq	124 <dtls1_hm_fragment_new+0x124>
+      b4:	ldr	r3, [fp, #-24]	; 0xffffffe8
+      b8:	add	r3, r3, #7
+      bc:	lsr	r3, r3, #3
+      c0:	mov	r2, #199	; 0xc7
+      c4:	movw	r1, #0
+      c8:	movt	r1, #0
+      cc:	mov	r0, r3
+      d0:	bl	0 <CRYPTO_malloc>
+      d4:	str	r0, [fp, #-12]
+      d8:	ldr	r3, [fp, #-12]
+      dc:	cmp	r3, #0
+      e0:	bne	108 <dtls1_hm_fragment_new+0x108>
+      e4:	ldr	r3, [fp, #-8]
+      e8:	cmp	r3, #0
+      ec:	beq	f8 <dtls1_hm_fragment_new+0xf8>
+      f0:	ldr	r0, [fp, #-8]
+      f4:	bl	0 <CRYPTO_free>
+      f8:	ldr	r0, [fp, #-16]
+      fc:	bl	0 <CRYPTO_free>
+     100:	mov	r3, #0
+     104:	b	134 <dtls1_hm_fragment_new+0x134>
+     108:	ldr	r3, [fp, #-24]	; 0xffffffe8
+     10c:	add	r3, r3, #7
+     110:	lsr	r3, r3, #3
+     114:	mov	r2, r3
+     118:	mov	r1, #0
+     11c:	ldr	r0, [fp, #-12]
+     120:	bl	0 <memset>
+     124:	ldr	r3, [fp, #-16]
+     128:	ldr	r2, [fp, #-12]
+     12c:	str	r2, [r3, #48]	; 0x30
+     130:	ldr	r3, [fp, #-16]
+     134:	mov	r0, r3
+     138:	sub	sp, fp, #4
+     13c:	pop	{fp, pc}
+
+00000140 <dtls1_hm_fragment_free>:
+     140:	push	{fp, lr}
+     144:	add	fp, sp, #4
+     148:	sub	sp, sp, #8
+     14c:	str	r0, [fp, #-8]
+     150:	ldr	r3, [fp, #-8]
+     154:	ldr	r3, [r3, #20]
+     158:	cmp	r3, #0
+     15c:	beq	180 <dtls1_hm_fragment_free+0x40>
+     160:	ldr	r3, [fp, #-8]
+     164:	ldr	r3, [r3, #24]
+     168:	mov	r0, r3
+     16c:	bl	0 <EVP_CIPHER_CTX_free>
+     170:	ldr	r3, [fp, #-8]
+     174:	ldr	r3, [r3, #28]
+     178:	mov	r0, r3
+     17c:	bl	0 <EVP_MD_CTX_destroy>
+     180:	ldr	r3, [fp, #-8]
+     184:	ldr	r3, [r3, #44]	; 0x2c
+     188:	cmp	r3, #0
+     18c:	beq	1a0 <dtls1_hm_fragment_free+0x60>
+     190:	ldr	r3, [fp, #-8]
+     194:	ldr	r3, [r3, #44]	; 0x2c
+     198:	mov	r0, r3
+     19c:	bl	0 <CRYPTO_free>
+     1a0:	ldr	r3, [fp, #-8]
+     1a4:	ldr	r3, [r3, #48]	; 0x30
+     1a8:	cmp	r3, #0
+     1ac:	beq	1c0 <dtls1_hm_fragment_free+0x80>
+     1b0:	ldr	r3, [fp, #-8]
+     1b4:	ldr	r3, [r3, #48]	; 0x30
+     1b8:	mov	r0, r3
+     1bc:	bl	0 <CRYPTO_free>
+     1c0:	ldr	r0, [fp, #-8]
+     1c4:	bl	0 <CRYPTO_free>
+     1c8:	nop	{0}
+     1cc:	sub	sp, fp, #4
+     1d0:	pop	{fp, pc}
+
+000001d4 <dtls1_do_write>:
+     1d4:	push	{r4, fp, lr}
+     1d8:	add	fp, sp, #8
+     1dc:	sub	sp, sp, #68	; 0x44
+     1e0:	str	r0, [fp, #-56]	; 0xffffffc8
+     1e4:	str	r1, [fp, #-60]	; 0xffffffc4
+     1e8:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     1ec:	ldr	r3, [r3, #92]	; 0x5c
+     1f0:	ldr	r4, [r3, #600]	; 0x258
+     1f4:	bl	3188 <dtls1_min_mtu>
+     1f8:	mov	r3, r0
+     1fc:	cmp	r4, r3
+     200:	bcs	2c4 <dtls1_do_write+0xf0>
+     204:	mov	r3, #0
+     208:	mov	r2, #0
+     20c:	mov	r1, #32
+     210:	ldr	r0, [fp, #-56]	; 0xffffffc8
+     214:	bl	0 <SSL_ctrl>
+     218:	mov	r3, r0
+     21c:	and	r3, r3, #4096	; 0x1000
+     220:	cmp	r3, #0
+     224:	bne	2c4 <dtls1_do_write+0xf0>
+     228:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     22c:	ldr	r4, [r3, #92]	; 0x5c
+     230:	ldr	r0, [fp, #-56]	; 0xffffffc8
+     234:	bl	0 <SSL_get_wbio>
+     238:	mov	r3, #0
+     23c:	mov	r2, #0
+     240:	mov	r1, #40	; 0x28
+     244:	bl	0 <BIO_ctrl>
+     248:	mov	r3, r0
+     24c:	str	r3, [r4, #600]	; 0x258
+     250:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     254:	ldr	r3, [r3, #92]	; 0x5c
+     258:	ldr	r4, [r3, #600]	; 0x258
+     25c:	bl	3188 <dtls1_min_mtu>
+     260:	mov	r3, r0
+     264:	cmp	r4, r3
+     268:	bcs	2c4 <dtls1_do_write+0xf0>
+     26c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     270:	ldr	r3, [r3, #92]	; 0x5c
+     274:	mov	r2, #0
+     278:	str	r2, [r3, #600]	; 0x258
+     27c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     280:	ldr	r4, [r3, #92]	; 0x5c
+     284:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     288:	ldr	r3, [r3, #92]	; 0x5c
+     28c:	ldr	r3, [r3, #600]	; 0x258
+     290:	mov	r0, r3
+     294:	bl	31ac <dtls1_guess_mtu>
+     298:	mov	r3, r0
+     29c:	str	r3, [r4, #600]	; 0x258
+     2a0:	ldr	r0, [fp, #-56]	; 0xffffffc8
+     2a4:	bl	0 <SSL_get_wbio>
+     2a8:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     2ac:	ldr	r3, [r3, #92]	; 0x5c
+     2b0:	ldr	r3, [r3, #600]	; 0x258
+     2b4:	mov	r2, r3
+     2b8:	mov	r3, #0
+     2bc:	mov	r1, #42	; 0x2a
+     2c0:	bl	0 <BIO_ctrl>
+     2c4:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     2c8:	ldr	r3, [r3, #92]	; 0x5c
+     2cc:	ldr	r4, [r3, #600]	; 0x258
+     2d0:	bl	3188 <dtls1_min_mtu>
+     2d4:	mov	r3, r0
+     2d8:	cmp	r4, r3
+     2dc:	bcs	2f8 <dtls1_do_write+0x124>
+     2e0:	movw	r2, #0
+     2e4:	movt	r2, #0
+     2e8:	movw	r1, #274	; 0x112
+     2ec:	movw	r0, #0
+     2f0:	movt	r0, #0
+     2f4:	bl	0 <OpenSSLDie>
+     2f8:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     2fc:	ldr	r3, [r3, #72]	; 0x48
+     300:	cmp	r3, #0
+     304:	bne	34c <dtls1_do_write+0x178>
+     308:	ldr	r3, [fp, #-60]	; 0xffffffc4
+     30c:	cmp	r3, #22
+     310:	bne	34c <dtls1_do_write+0x178>
+     314:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     318:	ldr	r2, [r3, #68]	; 0x44
+     31c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     320:	ldr	r3, [r3, #92]	; 0x5c
+     324:	ldr	r3, [r3, #608]	; 0x260
+     328:	add	r3, r3, #12
+     32c:	cmp	r2, r3
+     330:	beq	34c <dtls1_do_write+0x178>
+     334:	movw	r2, #0
+     338:	movt	r2, #0
+     33c:	movw	r1, #278	; 0x116
+     340:	movw	r0, #0
+     344:	movt	r0, #0
+     348:	bl	0 <OpenSSLDie>
+     34c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     350:	ldr	r3, [r3, #144]	; 0x90
+     354:	cmp	r3, #0
+     358:	beq	384 <dtls1_do_write+0x1b0>
+     35c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     360:	ldr	r3, [r3, #144]	; 0x90
+     364:	mov	r0, r3
+     368:	bl	0 <EVP_MD_CTX_md>
+     36c:	mov	r3, r0
+     370:	mov	r0, r3
+     374:	bl	0 <EVP_MD_size>
+     378:	mov	r3, r0
+     37c:	str	r3, [fp, #-28]	; 0xffffffe4
+     380:	b	38c <dtls1_do_write+0x1b8>
+     384:	mov	r3, #0
+     388:	str	r3, [fp, #-28]	; 0xffffffe4
+     38c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     390:	ldr	r3, [r3, #140]	; 0x8c
+     394:	cmp	r3, #0
+     398:	beq	3e4 <dtls1_do_write+0x210>
+     39c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     3a0:	ldr	r3, [r3, #140]	; 0x8c
+     3a4:	ldr	r3, [r3]
+     3a8:	mov	r0, r3
+     3ac:	bl	0 <EVP_CIPHER_flags>
+     3b0:	mov	r3, r0
+     3b4:	and	r3, r3, #2
+     3b8:	cmp	r3, #0
+     3bc:	beq	3e4 <dtls1_do_write+0x210>
+     3c0:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     3c4:	ldr	r3, [r3, #140]	; 0x8c
+     3c8:	ldr	r3, [r3]
+     3cc:	mov	r0, r3
+     3d0:	bl	0 <EVP_CIPHER_block_size>
+     3d4:	mov	r3, r0
+     3d8:	lsl	r3, r3, #1
+     3dc:	str	r3, [fp, #-32]	; 0xffffffe0
+     3e0:	b	3ec <dtls1_do_write+0x218>
+     3e4:	mov	r3, #0
+     3e8:	str	r3, [fp, #-32]	; 0xffffffe0
+     3ec:	mov	r3, #0
+     3f0:	str	r3, [fp, #-24]	; 0xffffffe8
+     3f4:	b	950 <dtls1_do_write+0x77c>
+     3f8:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     3fc:	ldr	r3, [r3, #92]	; 0x5c
+     400:	ldr	r4, [r3, #600]	; 0x258
+     404:	ldr	r0, [fp, #-56]	; 0xffffffc8
+     408:	bl	0 <SSL_get_wbio>
+     40c:	mov	r3, #0
+     410:	mov	r2, #0
+     414:	mov	r1, #13
+     418:	bl	0 <BIO_ctrl>
+     41c:	mov	r3, r0
+     420:	sub	r2, r4, r3
+     424:	ldr	r3, [fp, #-28]	; 0xffffffe4
+     428:	sub	r2, r2, r3
+     42c:	ldr	r3, [fp, #-32]	; 0xffffffe0
+     430:	sub	r3, r2, r3
+     434:	sub	r3, r3, #13
+     438:	str	r3, [fp, #-16]
+     43c:	ldr	r3, [fp, #-16]
+     440:	cmp	r3, #12
+     444:	bgt	49c <dtls1_do_write+0x2c8>
+     448:	ldr	r0, [fp, #-56]	; 0xffffffc8
+     44c:	bl	0 <SSL_get_wbio>
+     450:	mov	r3, #0
+     454:	mov	r2, #0
+     458:	mov	r1, #11
+     45c:	bl	0 <BIO_ctrl>
+     460:	str	r0, [fp, #-44]	; 0xffffffd4
+     464:	ldr	r3, [fp, #-44]	; 0xffffffd4
+     468:	cmp	r3, #0
+     46c:	bgt	478 <dtls1_do_write+0x2a4>
+     470:	ldr	r3, [fp, #-44]	; 0xffffffd4
+     474:	b	964 <dtls1_do_write+0x790>
+     478:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     47c:	ldr	r3, [r3, #92]	; 0x5c
+     480:	ldr	r2, [r3, #600]	; 0x258
+     484:	ldr	r3, [fp, #-28]	; 0xffffffe4
+     488:	sub	r2, r2, r3
+     48c:	ldr	r3, [fp, #-32]	; 0xffffffe0
+     490:	sub	r3, r2, r3
+     494:	sub	r3, r3, #13
+     498:	str	r3, [fp, #-16]
+     49c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     4a0:	ldr	r2, [r3, #68]	; 0x44
+     4a4:	ldr	r3, [fp, #-16]
+     4a8:	cmp	r2, r3
+     4ac:	ble	4bc <dtls1_do_write+0x2e8>
+     4b0:	ldr	r3, [fp, #-16]
+     4b4:	str	r3, [fp, #-20]	; 0xffffffec
+     4b8:	b	4c8 <dtls1_do_write+0x2f4>
+     4bc:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     4c0:	ldr	r3, [r3, #68]	; 0x44
+     4c4:	str	r3, [fp, #-20]	; 0xffffffec
+     4c8:	ldr	r3, [fp, #-60]	; 0xffffffc4
+     4cc:	cmp	r3, #22
+     4d0:	bne	5c0 <dtls1_do_write+0x3ec>
+     4d4:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     4d8:	ldr	r3, [r3, #72]	; 0x48
+     4dc:	cmp	r3, #0
+     4e0:	beq	560 <dtls1_do_write+0x38c>
+     4e4:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     4e8:	ldr	r3, [r3, #72]	; 0x48
+     4ec:	cmp	r3, #12
+     4f0:	bgt	50c <dtls1_do_write+0x338>
+     4f4:	movw	r2, #0
+     4f8:	movt	r2, #0
+     4fc:	movw	r1, #318	; 0x13e
+     500:	movw	r0, #0
+     504:	movt	r0, #0
+     508:	bl	0 <OpenSSLDie>
+     50c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     510:	ldr	r3, [r3, #72]	; 0x48
+     514:	sub	r2, r3, #12
+     518:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     51c:	str	r2, [r3, #72]	; 0x48
+     520:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     524:	ldr	r3, [r3, #68]	; 0x44
+     528:	add	r2, r3, #12
+     52c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     530:	str	r2, [r3, #68]	; 0x44
+     534:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     538:	ldr	r2, [r3, #68]	; 0x44
+     53c:	ldr	r3, [fp, #-16]
+     540:	cmp	r2, r3
+     544:	ble	554 <dtls1_do_write+0x380>
+     548:	ldr	r3, [fp, #-16]
+     54c:	str	r3, [fp, #-20]	; 0xffffffec
+     550:	b	560 <dtls1_do_write+0x38c>
+     554:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     558:	ldr	r3, [r3, #68]	; 0x44
+     55c:	str	r3, [fp, #-20]	; 0xffffffec
+     560:	ldr	r3, [fp, #-20]	; 0xffffffec
+     564:	sub	r3, r3, #12
+     568:	mov	r2, r3
+     56c:	ldr	r1, [fp, #-24]	; 0xffffffe8
+     570:	ldr	r0, [fp, #-56]	; 0xffffffc8
+     574:	bl	2fa0 <dtls1_fix_message_header>
+     578:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     57c:	ldr	r3, [r3, #60]	; 0x3c
+     580:	ldr	r3, [r3, #4]
+     584:	ldr	r2, [fp, #-56]	; 0xffffffc8
+     588:	ldr	r2, [r2, #72]	; 0x48
+     58c:	add	r3, r3, r2
+     590:	mov	r1, r3
+     594:	ldr	r0, [fp, #-56]	; 0xffffffc8
+     598:	bl	2ff0 <dtls1_write_message_header>
+     59c:	ldr	r3, [fp, #-20]	; 0xffffffec
+     5a0:	cmp	r3, #11
+     5a4:	bhi	5c0 <dtls1_do_write+0x3ec>
+     5a8:	movw	r2, #0
+     5ac:	movt	r2, #0
+     5b0:	movw	r1, #333	; 0x14d
+     5b4:	movw	r0, #0
+     5b8:	movt	r0, #0
+     5bc:	bl	0 <OpenSSLDie>
+     5c0:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     5c4:	ldr	r3, [r3, #60]	; 0x3c
+     5c8:	ldr	r3, [r3, #4]
+     5cc:	ldr	r2, [fp, #-56]	; 0xffffffc8
+     5d0:	ldr	r2, [r2, #72]	; 0x48
+     5d4:	add	r2, r3, r2
+     5d8:	ldr	r3, [fp, #-20]	; 0xffffffec
+     5dc:	ldr	r1, [fp, #-60]	; 0xffffffc4
+     5e0:	ldr	r0, [fp, #-56]	; 0xffffffc8
+     5e4:	bl	0 <dtls1_write_bytes>
+     5e8:	str	r0, [fp, #-44]	; 0xffffffd4
+     5ec:	ldr	r3, [fp, #-44]	; 0xffffffd4
+     5f0:	cmp	r3, #0
+     5f4:	bge	650 <dtls1_do_write+0x47c>
+     5f8:	ldr	r0, [fp, #-56]	; 0xffffffc8
+     5fc:	bl	0 <SSL_get_wbio>
+     600:	mov	r3, #0
+     604:	mov	r2, #0
+     608:	mov	r1, #43	; 0x2b
+     60c:	bl	0 <BIO_ctrl>
+     610:	mov	r3, r0
+     614:	cmp	r3, #0
+     618:	ble	648 <dtls1_do_write+0x474>
+     61c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     620:	ldr	r4, [r3, #92]	; 0x5c
+     624:	ldr	r0, [fp, #-56]	; 0xffffffc8
+     628:	bl	0 <SSL_get_wbio>
+     62c:	mov	r3, #0
+     630:	mov	r2, #0
+     634:	mov	r1, #40	; 0x28
+     638:	bl	0 <BIO_ctrl>
+     63c:	mov	r3, r0
+     640:	str	r3, [r4, #600]	; 0x258
+     644:	b	950 <dtls1_do_write+0x77c>
+     648:	mvn	r3, #0
+     64c:	b	964 <dtls1_do_write+0x790>
+     650:	ldr	r3, [fp, #-44]	; 0xffffffd4
+     654:	ldr	r2, [fp, #-20]	; 0xffffffec
+     658:	cmp	r2, r3
+     65c:	beq	678 <dtls1_do_write+0x4a4>
+     660:	movw	r2, #0
+     664:	movt	r2, #0
+     668:	movw	r1, #358	; 0x166
+     66c:	movw	r0, #0
+     670:	movt	r0, #0
+     674:	bl	0 <OpenSSLDie>
+     678:	ldr	r3, [fp, #-60]	; 0xffffffc4
+     67c:	cmp	r3, #22
+     680:	bne	860 <dtls1_do_write+0x68c>
+     684:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     688:	ldr	r3, [r3, #92]	; 0x5c
+     68c:	ldr	r3, [r3, #736]	; 0x2e0
+     690:	cmp	r3, #0
+     694:	bne	860 <dtls1_do_write+0x68c>
+     698:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     69c:	ldr	r3, [r3, #60]	; 0x3c
+     6a0:	ldr	r3, [r3, #4]
+     6a4:	ldr	r2, [fp, #-56]	; 0xffffffc8
+     6a8:	ldr	r2, [r2, #72]	; 0x48
+     6ac:	add	r3, r3, r2
+     6b0:	str	r3, [fp, #-36]	; 0xffffffdc
+     6b4:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     6b8:	ldr	r3, [r3, #92]	; 0x5c
+     6bc:	add	r3, r3, #604	; 0x25c
+     6c0:	str	r3, [fp, #-48]	; 0xffffffd0
+     6c4:	ldr	r3, [fp, #-24]	; 0xffffffe8
+     6c8:	cmp	r3, #0
+     6cc:	bne	838 <dtls1_do_write+0x664>
+     6d0:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     6d4:	ldr	r3, [r3]
+     6d8:	cmp	r3, #256	; 0x100
+     6dc:	beq	838 <dtls1_do_write+0x664>
+     6e0:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     6e4:	add	r2, r3, #1
+     6e8:	str	r2, [fp, #-36]	; 0xffffffdc
+     6ec:	ldr	r2, [fp, #-48]	; 0xffffffd0
+     6f0:	ldrb	r2, [r2]
+     6f4:	strb	r2, [r3]
+     6f8:	ldr	r3, [fp, #-48]	; 0xffffffd0
+     6fc:	ldr	r3, [r3, #4]
+     700:	lsr	r3, r3, #16
+     704:	uxtb	r2, r3
+     708:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     70c:	strb	r2, [r3]
+     710:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     714:	add	r3, r3, #1
+     718:	ldr	r2, [fp, #-48]	; 0xffffffd0
+     71c:	ldr	r2, [r2, #4]
+     720:	lsr	r2, r2, #8
+     724:	uxtb	r2, r2
+     728:	strb	r2, [r3]
+     72c:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     730:	add	r3, r3, #2
+     734:	ldr	r2, [fp, #-48]	; 0xffffffd0
+     738:	ldr	r2, [r2, #4]
+     73c:	uxtb	r2, r2
+     740:	strb	r2, [r3]
+     744:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     748:	add	r3, r3, #3
+     74c:	str	r3, [fp, #-36]	; 0xffffffdc
+     750:	ldr	r3, [fp, #-48]	; 0xffffffd0
+     754:	ldrh	r3, [r3, #8]
+     758:	lsr	r3, r3, #8
+     75c:	uxth	r3, r3
+     760:	uxtb	r2, r3
+     764:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     768:	strb	r2, [r3]
+     76c:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     770:	add	r3, r3, #1
+     774:	ldr	r2, [fp, #-48]	; 0xffffffd0
+     778:	ldrh	r2, [r2, #8]
+     77c:	uxtb	r2, r2
+     780:	strb	r2, [r3]
+     784:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     788:	add	r3, r3, #2
+     78c:	str	r3, [fp, #-36]	; 0xffffffdc
+     790:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     794:	mov	r2, #0
+     798:	strb	r2, [r3]
+     79c:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     7a0:	add	r3, r3, #1
+     7a4:	mov	r2, #0
+     7a8:	strb	r2, [r3]
+     7ac:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     7b0:	add	r3, r3, #2
+     7b4:	mov	r2, #0
+     7b8:	strb	r2, [r3]
+     7bc:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     7c0:	add	r3, r3, #3
+     7c4:	str	r3, [fp, #-36]	; 0xffffffdc
+     7c8:	ldr	r3, [fp, #-48]	; 0xffffffd0
+     7cc:	ldr	r3, [r3, #4]
+     7d0:	lsr	r3, r3, #16
+     7d4:	uxtb	r2, r3
+     7d8:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     7dc:	strb	r2, [r3]
+     7e0:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     7e4:	add	r3, r3, #1
+     7e8:	ldr	r2, [fp, #-48]	; 0xffffffd0
+     7ec:	ldr	r2, [r2, #4]
+     7f0:	lsr	r2, r2, #8
+     7f4:	uxtb	r2, r2
+     7f8:	strb	r2, [r3]
+     7fc:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     800:	add	r3, r3, #2
+     804:	ldr	r2, [fp, #-48]	; 0xffffffd0
+     808:	ldr	r2, [r2, #4]
+     80c:	uxtb	r2, r2
+     810:	strb	r2, [r3]
+     814:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     818:	add	r3, r3, #3
+     81c:	str	r3, [fp, #-36]	; 0xffffffdc
+     820:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     824:	sub	r3, r3, #12
+     828:	str	r3, [fp, #-36]	; 0xffffffdc
+     82c:	ldr	r3, [fp, #-44]	; 0xffffffd4
+     830:	str	r3, [fp, #-40]	; 0xffffffd8
+     834:	b	850 <dtls1_do_write+0x67c>
+     838:	ldr	r3, [fp, #-36]	; 0xffffffdc
+     83c:	add	r3, r3, #12
+     840:	str	r3, [fp, #-36]	; 0xffffffdc
+     844:	ldr	r3, [fp, #-44]	; 0xffffffd4
+     848:	sub	r3, r3, #12
+     84c:	str	r3, [fp, #-40]	; 0xffffffd8
+     850:	ldr	r2, [fp, #-40]	; 0xffffffd8
+     854:	ldr	r1, [fp, #-36]	; 0xffffffdc
+     858:	ldr	r0, [fp, #-56]	; 0xffffffc8
+     85c:	bl	0 <ssl3_finish_mac>
+     860:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     864:	ldr	r2, [r3, #68]	; 0x44
+     868:	ldr	r3, [fp, #-44]	; 0xffffffd4
+     86c:	cmp	r2, r3
+     870:	bne	900 <dtls1_do_write+0x72c>
+     874:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     878:	ldr	r3, [r3, #100]	; 0x64
+     87c:	cmp	r3, #0
+     880:	beq	8e0 <dtls1_do_write+0x70c>
+     884:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     888:	ldr	r4, [r3, #100]	; 0x64
+     88c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     890:	ldr	r1, [r3]
+     894:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     898:	ldr	r3, [r3, #60]	; 0x3c
+     89c:	ldr	r0, [r3, #4]
+     8a0:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     8a4:	ldr	r2, [r3, #72]	; 0x48
+     8a8:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     8ac:	ldr	r3, [r3, #68]	; 0x44
+     8b0:	add	r3, r2, r3
+     8b4:	mov	r2, r3
+     8b8:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     8bc:	ldr	r3, [r3, #104]	; 0x68
+     8c0:	str	r3, [sp, #8]
+     8c4:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     8c8:	str	r3, [sp, #4]
+     8cc:	str	r2, [sp]
+     8d0:	mov	r3, r0
+     8d4:	ldr	r2, [fp, #-60]	; 0xffffffc4
+     8d8:	mov	r0, #1
+     8dc:	blx	r4
+     8e0:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     8e4:	mov	r2, #0
+     8e8:	str	r2, [r3, #72]	; 0x48
+     8ec:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     8f0:	mov	r2, #0
+     8f4:	str	r2, [r3, #68]	; 0x44
+     8f8:	mov	r3, #1
+     8fc:	b	964 <dtls1_do_write+0x790>
+     900:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     904:	ldr	r2, [r3, #72]	; 0x48
+     908:	ldr	r3, [fp, #-44]	; 0xffffffd4
+     90c:	add	r2, r2, r3
+     910:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     914:	str	r2, [r3, #72]	; 0x48
+     918:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     91c:	ldr	r2, [r3, #68]	; 0x44
+     920:	ldr	r3, [fp, #-44]	; 0xffffffd4
+     924:	sub	r2, r2, r3
+     928:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     92c:	str	r2, [r3, #68]	; 0x44
+     930:	ldr	r3, [fp, #-44]	; 0xffffffd4
+     934:	sub	r3, r3, #12
+     938:	str	r3, [fp, #-44]	; 0xffffffd4
+     93c:	ldr	r3, [fp, #-44]	; 0xffffffd4
+     940:	mov	r2, r3
+     944:	ldr	r3, [fp, #-24]	; 0xffffffe8
+     948:	add	r3, r3, r2
+     94c:	str	r3, [fp, #-24]	; 0xffffffe8
+     950:	ldr	r3, [fp, #-56]	; 0xffffffc8
+     954:	ldr	r3, [r3, #68]	; 0x44
+     958:	cmp	r3, #0
+     95c:	bne	3f8 <dtls1_do_write+0x224>
+     960:	mov	r3, #0
+     964:	mov	r0, r3
+     968:	sub	sp, fp, #8
+     96c:	pop	{r4, fp, pc}
+
+00000970 <dtls1_get_message>:
+     970:	push	{r4, fp, lr}
+     974:	add	fp, sp, #8
+     978:	sub	sp, sp, #60	; 0x3c
+     97c:	str	r0, [fp, #-40]	; 0xffffffd8
+     980:	str	r1, [fp, #-44]	; 0xffffffd4
+     984:	str	r2, [fp, #-48]	; 0xffffffd0
+     988:	str	r3, [fp, #-52]	; 0xffffffcc
+     98c:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     990:	ldr	r3, [r3, #88]	; 0x58
+     994:	ldr	r3, [r3, #852]	; 0x354
+     998:	cmp	r3, #0
+     99c:	beq	a6c <dtls1_get_message+0xfc>
+     9a0:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     9a4:	ldr	r3, [r3, #88]	; 0x58
+     9a8:	mov	r2, #0
+     9ac:	str	r2, [r3, #852]	; 0x354
+     9b0:	ldr	r3, [fp, #-52]	; 0xffffffcc
+     9b4:	cmp	r3, #0
+     9b8:	blt	a24 <dtls1_get_message+0xb4>
+     9bc:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     9c0:	ldr	r3, [r3, #88]	; 0x58
+     9c4:	ldr	r2, [r3, #832]	; 0x340
+     9c8:	ldr	r3, [fp, #-52]	; 0xffffffcc
+     9cc:	cmp	r2, r3
+     9d0:	beq	a24 <dtls1_get_message+0xb4>
+     9d4:	mov	r3, #10
+     9d8:	str	r3, [fp, #-24]	; 0xffffffe8
+     9dc:	movw	r3, #430	; 0x1ae
+     9e0:	str	r3, [sp]
+     9e4:	movw	r3, #0
+     9e8:	movt	r3, #0
+     9ec:	mov	r2, #244	; 0xf4
+     9f0:	mov	r1, #252	; 0xfc
+     9f4:	mov	r0, #20
+     9f8:	bl	0 <ERR_put_error>
+     9fc:	nop	{0}
+     a00:	ldr	r2, [fp, #-24]	; 0xffffffe8
+     a04:	mov	r1, #2
+     a08:	ldr	r0, [fp, #-40]	; 0xffffffd8
+     a0c:	bl	0 <ssl3_send_alert>
+     a10:	ldr	r3, [fp, #8]
+     a14:	mov	r2, #0
+     a18:	str	r2, [r3]
+     a1c:	mvn	r3, #0
+     a20:	b	d20 <dtls1_get_message+0x3b0>
+     a24:	ldr	r3, [fp, #8]
+     a28:	mov	r2, #1
+     a2c:	str	r2, [r3]
+     a30:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     a34:	ldr	r3, [r3, #60]	; 0x3c
+     a38:	ldr	r3, [r3, #4]
+     a3c:	add	r2, r3, #12
+     a40:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     a44:	str	r2, [r3, #64]	; 0x40
+     a48:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     a4c:	ldr	r3, [r3, #88]	; 0x58
+     a50:	ldr	r3, [r3, #828]	; 0x33c
+     a54:	mov	r2, r3
+     a58:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     a5c:	str	r2, [r3, #68]	; 0x44
+     a60:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     a64:	ldr	r3, [r3, #68]	; 0x44
+     a68:	b	d20 <dtls1_get_message+0x3b0>
+     a6c:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     a70:	ldr	r3, [r3, #92]	; 0x5c
+     a74:	add	r3, r3, #648	; 0x288
+     a78:	str	r3, [fp, #-28]	; 0xffffffe4
+     a7c:	mov	r2, #44	; 0x2c
+     a80:	mov	r1, #0
+     a84:	ldr	r0, [fp, #-28]	; 0xffffffe4
+     a88:	bl	0 <memset>
+     a8c:	ldr	r3, [fp, #8]
+     a90:	str	r3, [sp]
+     a94:	ldr	r3, [fp, #4]
+     a98:	ldr	r2, [fp, #-48]	; 0xffffffd0
+     a9c:	ldr	r1, [fp, #-44]	; 0xffffffd4
+     aa0:	ldr	r0, [fp, #-40]	; 0xffffffd8
+     aa4:	bl	1a0c <dtls1_get_message_fragment>
+     aa8:	str	r0, [fp, #-32]	; 0xffffffe0
+     aac:	ldr	r3, [fp, #-32]	; 0xffffffe0
+     ab0:	cmn	r3, #2
+     ab4:	beq	a8c <dtls1_get_message+0x11c>
+     ab8:	ldr	r3, [fp, #-32]	; 0xffffffe0
+     abc:	cmn	r3, #3
+     ac0:	beq	a8c <dtls1_get_message+0x11c>
+     ac4:	ldr	r3, [fp, #-32]	; 0xffffffe0
+     ac8:	cmp	r3, #0
+     acc:	bgt	ae8 <dtls1_get_message+0x178>
+     ad0:	ldr	r3, [fp, #8]
+     ad4:	ldr	r3, [r3]
+     ad8:	cmp	r3, #0
+     adc:	bne	ae8 <dtls1_get_message+0x178>
+     ae0:	ldr	r3, [fp, #-32]	; 0xffffffe0
+     ae4:	b	d20 <dtls1_get_message+0x3b0>
+     ae8:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     aec:	ldr	r3, [r3, #60]	; 0x3c
+     af0:	ldr	r3, [r3, #4]
+     af4:	str	r3, [fp, #-16]
+     af8:	ldr	r3, [fp, #-28]	; 0xffffffe4
+     afc:	ldr	r3, [r3, #4]
+     b00:	str	r3, [fp, #-20]	; 0xffffffec
+     b04:	ldr	r3, [fp, #-16]
+     b08:	add	r2, r3, #1
+     b0c:	str	r2, [fp, #-16]
+     b10:	ldr	r2, [fp, #-28]	; 0xffffffe4
+     b14:	ldrb	r2, [r2]
+     b18:	strb	r2, [r3]
+     b1c:	ldr	r3, [fp, #-20]	; 0xffffffec
+     b20:	lsr	r3, r3, #16
+     b24:	uxtb	r2, r3
+     b28:	ldr	r3, [fp, #-16]
+     b2c:	strb	r2, [r3]
+     b30:	ldr	r3, [fp, #-16]
+     b34:	add	r3, r3, #1
+     b38:	ldr	r2, [fp, #-20]	; 0xffffffec
+     b3c:	lsr	r2, r2, #8
+     b40:	uxtb	r2, r2
+     b44:	strb	r2, [r3]
+     b48:	ldr	r3, [fp, #-16]
+     b4c:	add	r3, r3, #2
+     b50:	ldr	r2, [fp, #-20]	; 0xffffffec
+     b54:	uxtb	r2, r2
+     b58:	strb	r2, [r3]
+     b5c:	ldr	r3, [fp, #-16]
+     b60:	add	r3, r3, #3
+     b64:	str	r3, [fp, #-16]
+     b68:	ldr	r3, [fp, #-28]	; 0xffffffe4
+     b6c:	ldrh	r3, [r3, #8]
+     b70:	lsr	r3, r3, #8
+     b74:	uxth	r3, r3
+     b78:	uxtb	r2, r3
+     b7c:	ldr	r3, [fp, #-16]
+     b80:	strb	r2, [r3]
+     b84:	ldr	r3, [fp, #-16]
+     b88:	add	r3, r3, #1
+     b8c:	ldr	r2, [fp, #-28]	; 0xffffffe4
+     b90:	ldrh	r2, [r2, #8]
+     b94:	uxtb	r2, r2
+     b98:	strb	r2, [r3]
+     b9c:	ldr	r3, [fp, #-16]
+     ba0:	add	r3, r3, #2
+     ba4:	str	r3, [fp, #-16]
+     ba8:	ldr	r3, [fp, #-16]
+     bac:	mov	r2, #0
+     bb0:	strb	r2, [r3]
+     bb4:	ldr	r3, [fp, #-16]
+     bb8:	add	r3, r3, #1
+     bbc:	mov	r2, #0
+     bc0:	strb	r2, [r3]
+     bc4:	ldr	r3, [fp, #-16]
+     bc8:	add	r3, r3, #2
+     bcc:	mov	r2, #0
+     bd0:	strb	r2, [r3]
+     bd4:	ldr	r3, [fp, #-16]
+     bd8:	add	r3, r3, #3
+     bdc:	str	r3, [fp, #-16]
+     be0:	ldr	r3, [fp, #-20]	; 0xffffffec
+     be4:	lsr	r3, r3, #16
+     be8:	uxtb	r2, r3
+     bec:	ldr	r3, [fp, #-16]
+     bf0:	strb	r2, [r3]
+     bf4:	ldr	r3, [fp, #-16]
+     bf8:	add	r3, r3, #1
+     bfc:	ldr	r2, [fp, #-20]	; 0xffffffec
+     c00:	lsr	r2, r2, #8
+     c04:	uxtb	r2, r2
+     c08:	strb	r2, [r3]
+     c0c:	ldr	r3, [fp, #-16]
+     c10:	add	r3, r3, #2
+     c14:	ldr	r2, [fp, #-20]	; 0xffffffec
+     c18:	uxtb	r2, r2
+     c1c:	strb	r2, [r3]
+     c20:	ldr	r3, [fp, #-16]
+     c24:	add	r3, r3, #3
+     c28:	str	r3, [fp, #-16]
+     c2c:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     c30:	ldr	r3, [r3]
+     c34:	cmp	r3, #256	; 0x100
+     c38:	beq	c54 <dtls1_get_message+0x2e4>
+     c3c:	ldr	r3, [fp, #-16]
+     c40:	sub	r3, r3, #12
+     c44:	str	r3, [fp, #-16]
+     c48:	ldr	r3, [fp, #-20]	; 0xffffffec
+     c4c:	add	r3, r3, #12
+     c50:	str	r3, [fp, #-20]	; 0xffffffec
+     c54:	ldr	r3, [fp, #-20]	; 0xffffffec
+     c58:	mov	r2, r3
+     c5c:	ldr	r1, [fp, #-16]
+     c60:	ldr	r0, [fp, #-40]	; 0xffffffd8
+     c64:	bl	0 <ssl3_finish_mac>
+     c68:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     c6c:	ldr	r3, [r3, #100]	; 0x64
+     c70:	cmp	r3, #0
+     c74:	beq	cb4 <dtls1_get_message+0x344>
+     c78:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     c7c:	ldr	r4, [r3, #100]	; 0x64
+     c80:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     c84:	ldr	r1, [r3]
+     c88:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     c8c:	ldr	r3, [r3, #104]	; 0x68
+     c90:	str	r3, [sp, #8]
+     c94:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     c98:	str	r3, [sp, #4]
+     c9c:	ldr	r3, [fp, #-20]	; 0xffffffec
+     ca0:	str	r3, [sp]
+     ca4:	ldr	r3, [fp, #-16]
+     ca8:	mov	r2, #22
+     cac:	mov	r0, #0
+     cb0:	blx	r4
+     cb4:	mov	r2, #44	; 0x2c
+     cb8:	mov	r1, #0
+     cbc:	ldr	r0, [fp, #-28]	; 0xffffffe4
+     cc0:	bl	0 <memset>
+     cc4:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     cc8:	ldr	r3, [r3, #92]	; 0x5c
+     ccc:	ldr	r3, [r3, #596]	; 0x254
+     cd0:	cmp	r3, #0
+     cd4:	bne	d00 <dtls1_get_message+0x390>
+     cd8:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     cdc:	ldr	r1, [r3, #92]	; 0x5c
+     ce0:	mov	r3, r1
+     ce4:	add	r3, r3, #552	; 0x228
+     ce8:	ldrh	r3, [r3]
+     cec:	add	r3, r3, #1
+     cf0:	uxth	r2, r3
+     cf4:	mov	r3, r1
+     cf8:	add	r3, r3, #552	; 0x228
+     cfc:	strh	r2, [r3]
+     d00:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     d04:	ldr	r3, [r3, #60]	; 0x3c
+     d08:	ldr	r3, [r3, #4]
+     d0c:	add	r2, r3, #12
+     d10:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     d14:	str	r2, [r3, #64]	; 0x40
+     d18:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     d1c:	ldr	r3, [r3, #68]	; 0x44
+     d20:	mov	r0, r3
+     d24:	sub	sp, fp, #8
+     d28:	pop	{r4, fp, pc}
+
+00000d2c <dtls1_preprocess_fragment>:
+     d2c:	push	{fp, lr}
+     d30:	add	fp, sp, #4
+     d34:	sub	sp, sp, #40	; 0x28
+     d38:	str	r0, [fp, #-24]	; 0xffffffe8
+     d3c:	str	r1, [fp, #-28]	; 0xffffffe4
+     d40:	str	r2, [fp, #-32]	; 0xffffffe0
+     d44:	ldr	r3, [fp, #-28]	; 0xffffffe4
+     d48:	ldr	r3, [r3, #4]
+     d4c:	str	r3, [fp, #-8]
+     d50:	ldr	r3, [fp, #-28]	; 0xffffffe4
+     d54:	ldr	r3, [r3, #12]
+     d58:	str	r3, [fp, #-12]
+     d5c:	ldr	r3, [fp, #-28]	; 0xffffffe4
+     d60:	ldr	r3, [r3, #16]
+     d64:	str	r3, [fp, #-16]
+     d68:	ldr	r2, [fp, #-12]
+     d6c:	ldr	r3, [fp, #-16]
+     d70:	add	r2, r2, r3
+     d74:	ldr	r3, [fp, #-8]
+     d78:	cmp	r2, r3
+     d7c:	bls	da8 <dtls1_preprocess_fragment+0x7c>
+     d80:	movw	r3, #497	; 0x1f1
+     d84:	str	r3, [sp]
+     d88:	movw	r3, #0
+     d8c:	movt	r3, #0
+     d90:	mov	r2, #152	; 0x98
+     d94:	mov	r1, #288	; 0x120
+     d98:	mov	r0, #20
+     d9c:	bl	0 <ERR_put_error>
+     da0:	mov	r3, #47	; 0x2f
+     da4:	b	ef8 <dtls1_preprocess_fragment+0x1cc>
+     da8:	ldr	r2, [fp, #-12]
+     dac:	ldr	r3, [fp, #-16]
+     db0:	add	r2, r2, r3
+     db4:	ldr	r3, [fp, #-32]	; 0xffffffe0
+     db8:	cmp	r2, r3
+     dbc:	bls	de8 <dtls1_preprocess_fragment+0xbc>
+     dc0:	movw	r3, #503	; 0x1f7
+     dc4:	str	r3, [sp]
+     dc8:	movw	r3, #0
+     dcc:	movt	r3, #0
+     dd0:	mov	r2, #152	; 0x98
+     dd4:	mov	r1, #288	; 0x120
+     dd8:	mov	r0, #20
+     ddc:	bl	0 <ERR_put_error>
+     de0:	mov	r3, #47	; 0x2f
+     de4:	b	ef8 <dtls1_preprocess_fragment+0x1cc>
+     de8:	ldr	r3, [fp, #-24]	; 0xffffffe8
+     dec:	ldr	r3, [r3, #92]	; 0x5c
+     df0:	ldr	r3, [r3, #660]	; 0x294
+     df4:	cmp	r3, #0
+     df8:	bne	eb4 <dtls1_preprocess_fragment+0x188>
+     dfc:	ldr	r3, [fp, #-24]	; 0xffffffe8
+     e00:	ldr	r2, [r3, #60]	; 0x3c
+     e04:	ldr	r3, [fp, #-8]
+     e08:	add	r3, r3, #12
+     e0c:	mov	r1, r3
+     e10:	mov	r0, r2
+     e14:	bl	0 <BUF_MEM_grow_clean>
+     e18:	mov	r3, r0
+     e1c:	cmp	r3, #0
+     e20:	bne	e4c <dtls1_preprocess_fragment+0x120>
+     e24:	movw	r3, #513	; 0x201
+     e28:	str	r3, [sp]
+     e2c:	movw	r3, #0
+     e30:	movt	r3, #0
+     e34:	mov	r2, #7
+     e38:	mov	r1, #288	; 0x120
+     e3c:	mov	r0, #20
+     e40:	bl	0 <ERR_put_error>
+     e44:	mov	r3, #80	; 0x50
+     e48:	b	ef8 <dtls1_preprocess_fragment+0x1cc>
+     e4c:	ldr	r3, [fp, #-24]	; 0xffffffe8
+     e50:	ldr	r3, [r3, #88]	; 0x58
+     e54:	ldr	r2, [fp, #-8]
+     e58:	str	r2, [r3, #828]	; 0x33c
+     e5c:	ldr	r3, [fp, #-24]	; 0xffffffe8
+     e60:	ldr	r3, [r3, #92]	; 0x5c
+     e64:	ldr	r2, [fp, #-8]
+     e68:	str	r2, [r3, #652]	; 0x28c
+     e6c:	ldr	r3, [fp, #-24]	; 0xffffffe8
+     e70:	ldr	r3, [r3, #88]	; 0x58
+     e74:	ldr	r2, [fp, #-28]	; 0xffffffe4
+     e78:	ldrb	r2, [r2]
+     e7c:	str	r2, [r3, #832]	; 0x340
+     e80:	ldr	r3, [fp, #-24]	; 0xffffffe8
+     e84:	ldr	r3, [r3, #92]	; 0x5c
+     e88:	ldr	r2, [fp, #-28]	; 0xffffffe4
+     e8c:	ldrb	r2, [r2]
+     e90:	strb	r2, [r3, #648]	; 0x288
+     e94:	ldr	r3, [fp, #-24]	; 0xffffffe8
+     e98:	ldr	r1, [r3, #92]	; 0x5c
+     e9c:	ldr	r3, [fp, #-28]	; 0xffffffe4
+     ea0:	ldrh	r2, [r3, #8]
+     ea4:	mov	r3, r1
+     ea8:	add	r3, r3, #656	; 0x290
+     eac:	strh	r2, [r3]
+     eb0:	b	ef4 <dtls1_preprocess_fragment+0x1c8>
+     eb4:	ldr	r3, [fp, #-24]	; 0xffffffe8
+     eb8:	ldr	r3, [r3, #92]	; 0x5c
+     ebc:	ldr	r2, [r3, #652]	; 0x28c
+     ec0:	ldr	r3, [fp, #-8]
+     ec4:	cmp	r2, r3
+     ec8:	beq	ef4 <dtls1_preprocess_fragment+0x1c8>
+     ecc:	movw	r3, #527	; 0x20f
+     ed0:	str	r3, [sp]
+     ed4:	movw	r3, #0
+     ed8:	movt	r3, #0
+     edc:	mov	r2, #152	; 0x98
+     ee0:	mov	r1, #288	; 0x120
+     ee4:	mov	r0, #20
+     ee8:	bl	0 <ERR_put_error>
+     eec:	mov	r3, #47	; 0x2f
+     ef0:	b	ef8 <dtls1_preprocess_fragment+0x1cc>
+     ef4:	mov	r3, #0
+     ef8:	mov	r0, r3
+     efc:	sub	sp, fp, #4
+     f00:	pop	{fp, pc}
+
+00000f04 <dtls1_retrieve_buffered_fragment>:
+     f04:	push	{fp, lr}
+     f08:	add	fp, sp, #4
+     f0c:	sub	sp, sp, #40	; 0x28
+     f10:	str	r0, [fp, #-32]	; 0xffffffe0
+     f14:	str	r1, [fp, #-36]	; 0xffffffdc
+     f18:	str	r2, [fp, #-40]	; 0xffffffd8
+     f1c:	ldr	r3, [fp, #-40]	; 0xffffffd8
+     f20:	mov	r2, #0
+     f24:	str	r2, [r3]
+     f28:	ldr	r3, [fp, #-32]	; 0xffffffe0
+     f2c:	ldr	r3, [r3, #92]	; 0x5c
+     f30:	ldr	r3, [r3, #580]	; 0x244
+     f34:	mov	r0, r3
+     f38:	bl	0 <pqueue_peek>
+     f3c:	str	r0, [fp, #-8]
+     f40:	ldr	r3, [fp, #-8]
+     f44:	cmp	r3, #0
+     f48:	bne	f54 <dtls1_retrieve_buffered_fragment+0x50>
+     f4c:	mov	r3, #0
+     f50:	b	107c <dtls1_retrieve_buffered_fragment+0x178>
+     f54:	ldr	r3, [fp, #-8]
+     f58:	ldr	r3, [r3, #8]
+     f5c:	str	r3, [fp, #-12]
+     f60:	ldr	r3, [fp, #-12]
+     f64:	ldr	r3, [r3, #48]	; 0x30
+     f68:	cmp	r3, #0
+     f6c:	beq	f78 <dtls1_retrieve_buffered_fragment+0x74>
+     f70:	mov	r3, #0
+     f74:	b	107c <dtls1_retrieve_buffered_fragment+0x178>
+     f78:	ldr	r3, [fp, #-32]	; 0xffffffe0
+     f7c:	ldr	r3, [r3, #92]	; 0x5c
+     f80:	add	r3, r3, #552	; 0x228
+     f84:	ldrh	r2, [r3]
+     f88:	ldr	r3, [fp, #-12]
+     f8c:	ldrh	r3, [r3, #8]
+     f90:	cmp	r2, r3
+     f94:	bne	1078 <dtls1_retrieve_buffered_fragment+0x174>
+     f98:	ldr	r3, [fp, #-12]
+     f9c:	ldr	r3, [r3, #16]
+     fa0:	str	r3, [fp, #-16]
+     fa4:	ldr	r3, [fp, #-32]	; 0xffffffe0
+     fa8:	ldr	r3, [r3, #92]	; 0x5c
+     fac:	ldr	r3, [r3, #580]	; 0x244
+     fb0:	mov	r0, r3
+     fb4:	bl	0 <pqueue_pop>
+     fb8:	ldr	r3, [fp, #-12]
+     fbc:	ldr	r2, [fp, #-36]	; 0xffffffdc
+     fc0:	mov	r1, r3
+     fc4:	ldr	r0, [fp, #-32]	; 0xffffffe0
+     fc8:	bl	d2c <dtls1_preprocess_fragment>
+     fcc:	str	r0, [fp, #-20]	; 0xffffffec
+     fd0:	ldr	r3, [fp, #-20]	; 0xffffffec
+     fd4:	cmp	r3, #0
+     fd8:	bne	1018 <dtls1_retrieve_buffered_fragment+0x114>
+     fdc:	ldr	r3, [fp, #-32]	; 0xffffffe0
+     fe0:	ldr	r3, [r3, #60]	; 0x3c
+     fe4:	ldr	r3, [r3, #4]
+     fe8:	add	r3, r3, #12
+     fec:	str	r3, [fp, #-24]	; 0xffffffe8
+     ff0:	ldr	r3, [fp, #-12]
+     ff4:	ldr	r3, [r3, #12]
+     ff8:	ldr	r2, [fp, #-24]	; 0xffffffe8
+     ffc:	add	r0, r2, r3
+    1000:	ldr	r3, [fp, #-12]
+    1004:	ldr	r1, [r3, #44]	; 0x2c
+    1008:	ldr	r3, [fp, #-12]
+    100c:	ldr	r3, [r3, #16]
+    1010:	mov	r2, r3
+    1014:	bl	0 <memcpy>
+    1018:	ldr	r0, [fp, #-12]
+    101c:	bl	140 <dtls1_hm_fragment_free>
+    1020:	ldr	r0, [fp, #-8]
+    1024:	bl	0 <pitem_free>
+    1028:	ldr	r3, [fp, #-20]	; 0xffffffec
+    102c:	cmp	r3, #0
+    1030:	bne	1048 <dtls1_retrieve_buffered_fragment+0x144>
+    1034:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    1038:	mov	r2, #1
+    103c:	str	r2, [r3]
+    1040:	ldr	r3, [fp, #-16]
+    1044:	b	107c <dtls1_retrieve_buffered_fragment+0x178>
+    1048:	ldr	r2, [fp, #-20]	; 0xffffffec
+    104c:	mov	r1, #2
+    1050:	ldr	r0, [fp, #-32]	; 0xffffffe0
+    1054:	bl	0 <ssl3_send_alert>
+    1058:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    105c:	mov	r2, #0
+    1060:	str	r2, [r3, #68]	; 0x44
+    1064:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    1068:	mov	r2, #0
+    106c:	str	r2, [r3]
+    1070:	mvn	r3, #0
+    1074:	b	107c <dtls1_retrieve_buffered_fragment+0x178>
+    1078:	mov	r3, #0
+    107c:	mov	r0, r3
+    1080:	sub	sp, fp, #4
+    1084:	pop	{fp, pc}
+
+00001088 <dtls1_reassemble_fragment>:
+    1088:	push	{r4, fp, lr}
+    108c:	add	fp, sp, #8
+    1090:	sub	sp, sp, #332	; 0x14c
+    1094:	str	r0, [fp, #-320]	; 0xfffffec0
+    1098:	str	r1, [fp, #-324]	; 0xfffffebc
+    109c:	str	r2, [fp, #-328]	; 0xfffffeb8
+    10a0:	mov	r3, #0
+    10a4:	str	r3, [fp, #-16]
+    10a8:	mov	r3, #0
+    10ac:	str	r3, [fp, #-20]	; 0xffffffec
+    10b0:	mvn	r3, #0
+    10b4:	str	r3, [fp, #-24]	; 0xffffffe8
+    10b8:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    10bc:	ldr	r3, [r3, #16]
+    10c0:	str	r3, [fp, #-32]	; 0xffffffe0
+    10c4:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    10c8:	ldr	r2, [r3, #12]
+    10cc:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    10d0:	add	r2, r2, r3
+    10d4:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    10d8:	ldr	r3, [r3, #4]
+    10dc:	cmp	r2, r3
+    10e0:	bhi	1638 <dtls1_reassemble_fragment+0x5b0>
+    10e4:	ldr	r3, [fp, #-320]	; 0xfffffec0
+    10e8:	ldr	r3, [r3, #264]	; 0x108
+    10ec:	movw	r2, #17740	; 0x454c
+    10f0:	cmp	r3, r2
+    10f4:	ble	1108 <dtls1_reassemble_fragment+0x80>
+    10f8:	ldr	r3, [fp, #-320]	; 0xfffffec0
+    10fc:	ldr	r3, [r3, #264]	; 0x108
+    1100:	str	r3, [fp, #-36]	; 0xffffffdc
+    1104:	b	1110 <dtls1_reassemble_fragment+0x88>
+    1108:	movw	r3, #17740	; 0x454c
+    110c:	str	r3, [fp, #-36]	; 0xffffffdc
+    1110:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    1114:	ldr	r2, [r3, #12]
+    1118:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    111c:	add	r2, r2, r3
+    1120:	ldr	r3, [fp, #-36]	; 0xffffffdc
+    1124:	cmp	r2, r3
+    1128:	bhi	1640 <dtls1_reassemble_fragment+0x5b8>
+    112c:	sub	r3, fp, #56	; 0x38
+    1130:	mov	r2, #8
+    1134:	mov	r1, #0
+    1138:	mov	r0, r3
+    113c:	bl	0 <memset>
+    1140:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    1144:	ldrh	r3, [r3, #8]
+    1148:	lsr	r3, r3, #8
+    114c:	uxth	r3, r3
+    1150:	uxtb	r3, r3
+    1154:	strb	r3, [fp, #-50]	; 0xffffffce
+    1158:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    115c:	ldrh	r3, [r3, #8]
+    1160:	uxtb	r3, r3
+    1164:	strb	r3, [fp, #-49]	; 0xffffffcf
+    1168:	ldr	r3, [fp, #-320]	; 0xfffffec0
+    116c:	ldr	r3, [r3, #92]	; 0x5c
+    1170:	ldr	r3, [r3, #580]	; 0x244
+    1174:	sub	r2, fp, #56	; 0x38
+    1178:	mov	r1, r2
+    117c:	mov	r0, r3
+    1180:	bl	0 <pqueue_find>
+    1184:	str	r0, [fp, #-20]	; 0xffffffec
+    1188:	ldr	r3, [fp, #-20]	; 0xffffffec
+    118c:	cmp	r3, #0
+    1190:	bne	11ec <dtls1_reassemble_fragment+0x164>
+    1194:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    1198:	ldr	r3, [r3, #4]
+    119c:	mov	r1, #1
+    11a0:	mov	r0, r3
+    11a4:	bl	0 <dtls1_hm_fragment_new>
+    11a8:	str	r0, [fp, #-16]
+    11ac:	ldr	r3, [fp, #-16]
+    11b0:	cmp	r3, #0
+    11b4:	beq	1648 <dtls1_reassemble_fragment+0x5c0>
+    11b8:	ldr	r3, [fp, #-16]
+    11bc:	mov	r2, #44	; 0x2c
+    11c0:	ldr	r1, [fp, #-324]	; 0xfffffebc
+    11c4:	mov	r0, r3
+    11c8:	bl	0 <memcpy>
+    11cc:	ldr	r3, [fp, #-16]
+    11d0:	ldr	r2, [r3, #4]
+    11d4:	ldr	r3, [fp, #-16]
+    11d8:	str	r2, [r3, #16]
+    11dc:	ldr	r3, [fp, #-16]
+    11e0:	mov	r2, #0
+    11e4:	str	r2, [r3, #12]
+    11e8:	b	11f8 <dtls1_reassemble_fragment+0x170>
+    11ec:	ldr	r3, [fp, #-20]	; 0xffffffec
+    11f0:	ldr	r3, [r3, #8]
+    11f4:	str	r3, [fp, #-16]
+    11f8:	ldr	r3, [fp, #-16]
+    11fc:	ldr	r3, [r3, #48]	; 0x30
+    1200:	cmp	r3, #0
+    1204:	bne	127c <dtls1_reassemble_fragment+0x1f4>
+    1208:	b	1268 <dtls1_reassemble_fragment+0x1e0>
+    120c:	ldr	r3, [fp, #-320]	; 0xfffffec0
+    1210:	ldr	r3, [r3, #8]
+    1214:	ldr	r4, [r3, #52]	; 0x34
+    1218:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    121c:	cmp	r3, #256	; 0x100
+    1220:	movcc	r3, r3
+    1224:	movcs	r3, #256	; 0x100
+    1228:	mov	r1, r3
+    122c:	sub	r2, fp, #312	; 0x138
+    1230:	mov	r3, #0
+    1234:	str	r3, [sp]
+    1238:	mov	r3, r1
+    123c:	mov	r1, #22
+    1240:	ldr	r0, [fp, #-320]	; 0xfffffec0
+    1244:	blx	r4
+    1248:	str	r0, [fp, #-24]	; 0xffffffe8
+    124c:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1250:	cmp	r3, #0
+    1254:	ble	1650 <dtls1_reassemble_fragment+0x5c8>
+    1258:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    125c:	ldr	r2, [fp, #-32]	; 0xffffffe0
+    1260:	sub	r3, r2, r3
+    1264:	str	r3, [fp, #-32]	; 0xffffffe0
+    1268:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    126c:	cmp	r3, #0
+    1270:	bne	120c <dtls1_reassemble_fragment+0x184>
+    1274:	mvn	r3, #2
+    1278:	b	1694 <dtls1_reassemble_fragment+0x60c>
+    127c:	ldr	r3, [fp, #-320]	; 0xfffffec0
+    1280:	ldr	r3, [r3, #8]
+    1284:	ldr	r4, [r3, #52]	; 0x34
+    1288:	ldr	r3, [fp, #-16]
+    128c:	ldr	r2, [r3, #44]	; 0x2c
+    1290:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    1294:	ldr	r3, [r3, #12]
+    1298:	add	r2, r2, r3
+    129c:	ldr	r1, [fp, #-32]	; 0xffffffe0
+    12a0:	mov	r3, #0
+    12a4:	str	r3, [sp]
+    12a8:	mov	r3, r1
+    12ac:	mov	r1, #22
+    12b0:	ldr	r0, [fp, #-320]	; 0xfffffec0
+    12b4:	blx	r4
+    12b8:	str	r0, [fp, #-24]	; 0xffffffe8
+    12bc:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    12c0:	cmp	r3, #0
+    12c4:	ble	165c <dtls1_reassemble_fragment+0x5d4>
+    12c8:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    12cc:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    12d0:	cmp	r2, r3
+    12d4:	bne	165c <dtls1_reassemble_fragment+0x5d4>
+    12d8:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    12dc:	cmp	r3, #8
+    12e0:	bgt	1378 <dtls1_reassemble_fragment+0x2f0>
+    12e4:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    12e8:	ldr	r3, [r3, #12]
+    12ec:	str	r3, [fp, #-40]	; 0xffffffd8
+    12f0:	b	1354 <dtls1_reassemble_fragment+0x2cc>
+    12f4:	ldr	r3, [fp, #-16]
+    12f8:	ldr	r3, [r3, #48]	; 0x30
+    12fc:	ldr	r2, [fp, #-40]	; 0xffffffd8
+    1300:	asr	r2, r2, #3
+    1304:	add	r3, r3, r2
+    1308:	ldr	r2, [fp, #-16]
+    130c:	ldr	r2, [r2, #48]	; 0x30
+    1310:	ldr	r1, [fp, #-40]	; 0xffffffd8
+    1314:	asr	r1, r1, #3
+    1318:	add	r2, r2, r1
+    131c:	ldrb	r2, [r2]
+    1320:	sxtb	r1, r2
+    1324:	ldr	r2, [fp, #-40]	; 0xffffffd8
+    1328:	and	r2, r2, #7
+    132c:	mov	r0, #1
+    1330:	lsl	r2, r0, r2
+    1334:	sxtb	r2, r2
+    1338:	orr	r2, r1, r2
+    133c:	sxtb	r2, r2
+    1340:	uxtb	r2, r2
+    1344:	strb	r2, [r3]
+    1348:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    134c:	add	r3, r3, #1
+    1350:	str	r3, [fp, #-40]	; 0xffffffd8
+    1354:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    1358:	ldr	r2, [r3, #12]
+    135c:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1360:	add	r3, r2, r3
+    1364:	mov	r2, r3
+    1368:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    136c:	cmp	r2, r3
+    1370:	bgt	12f4 <dtls1_reassemble_fragment+0x26c>
+    1374:	b	14a8 <dtls1_reassemble_fragment+0x420>
+    1378:	ldr	r3, [fp, #-16]
+    137c:	ldr	r3, [r3, #48]	; 0x30
+    1380:	ldr	r2, [fp, #-324]	; 0xfffffebc
+    1384:	ldr	r2, [r2, #12]
+    1388:	asr	r2, r2, #3
+    138c:	add	r2, r3, r2
+    1390:	ldr	r3, [fp, #-16]
+    1394:	ldr	r3, [r3, #48]	; 0x30
+    1398:	ldr	r1, [fp, #-324]	; 0xfffffebc
+    139c:	ldr	r1, [r1, #12]
+    13a0:	asr	r1, r1, #3
+    13a4:	add	r3, r3, r1
+    13a8:	ldrb	r1, [r3]
+    13ac:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    13b0:	ldr	r3, [r3, #12]
+    13b4:	and	r0, r3, #7
+    13b8:	movw	r3, #0
+    13bc:	movt	r3, #0
+    13c0:	ldrb	r3, [r3, r0]
+    13c4:	orr	r3, r1, r3
+    13c8:	uxtb	r3, r3
+    13cc:	strb	r3, [r2]
+    13d0:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    13d4:	ldr	r3, [r3, #12]
+    13d8:	asr	r3, r3, #3
+    13dc:	add	r3, r3, #1
+    13e0:	str	r3, [fp, #-44]	; 0xffffffd4
+    13e4:	b	140c <dtls1_reassemble_fragment+0x384>
+    13e8:	ldr	r3, [fp, #-16]
+    13ec:	ldr	r2, [r3, #48]	; 0x30
+    13f0:	ldr	r3, [fp, #-44]	; 0xffffffd4
+    13f4:	add	r3, r2, r3
+    13f8:	mvn	r2, #0
+    13fc:	strb	r2, [r3]
+    1400:	ldr	r3, [fp, #-44]	; 0xffffffd4
+    1404:	add	r3, r3, #1
+    1408:	str	r3, [fp, #-44]	; 0xffffffd4
+    140c:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    1410:	ldr	r2, [r3, #12]
+    1414:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1418:	add	r3, r2, r3
+    141c:	sub	r3, r3, #1
+    1420:	asr	r2, r3, #3
+    1424:	ldr	r3, [fp, #-44]	; 0xffffffd4
+    1428:	cmp	r2, r3
+    142c:	bgt	13e8 <dtls1_reassemble_fragment+0x360>
+    1430:	ldr	r3, [fp, #-16]
+    1434:	ldr	r3, [r3, #48]	; 0x30
+    1438:	ldr	r2, [fp, #-324]	; 0xfffffebc
+    143c:	ldr	r1, [r2, #12]
+    1440:	ldr	r2, [fp, #-32]	; 0xffffffe0
+    1444:	add	r2, r1, r2
+    1448:	sub	r2, r2, #1
+    144c:	asr	r2, r2, #3
+    1450:	add	r2, r3, r2
+    1454:	ldr	r3, [fp, #-16]
+    1458:	ldr	r3, [r3, #48]	; 0x30
+    145c:	ldr	r1, [fp, #-324]	; 0xfffffebc
+    1460:	ldr	r0, [r1, #12]
+    1464:	ldr	r1, [fp, #-32]	; 0xffffffe0
+    1468:	add	r1, r0, r1
+    146c:	sub	r1, r1, #1
+    1470:	asr	r1, r1, #3
+    1474:	add	r3, r3, r1
+    1478:	ldrb	r1, [r3]
+    147c:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    1480:	ldr	r0, [r3, #12]
+    1484:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1488:	add	r3, r0, r3
+    148c:	and	r0, r3, #7
+    1490:	movw	r3, #0
+    1494:	movt	r3, #0
+    1498:	ldrb	r3, [r3, r0]
+    149c:	orr	r3, r1, r3
+    14a0:	uxtb	r3, r3
+    14a4:	strb	r3, [r2]
+    14a8:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    14ac:	ldr	r3, [r3, #4]
+    14b0:	cmp	r3, #0
+    14b4:	bgt	14d0 <dtls1_reassemble_fragment+0x448>
+    14b8:	movw	r2, #0
+    14bc:	movt	r2, #0
+    14c0:	mov	r1, #660	; 0x294
+    14c4:	movw	r0, #0
+    14c8:	movt	r0, #0
+    14cc:	bl	0 <OpenSSLDie>
+    14d0:	mov	r3, #1
+    14d4:	str	r3, [fp, #-28]	; 0xffffffe4
+    14d8:	ldr	r3, [fp, #-16]
+    14dc:	ldr	r3, [r3, #48]	; 0x30
+    14e0:	ldr	r2, [fp, #-324]	; 0xfffffebc
+    14e4:	ldr	r2, [r2, #4]
+    14e8:	sub	r2, r2, #1
+    14ec:	asr	r2, r2, #3
+    14f0:	add	r3, r3, r2
+    14f4:	ldrb	r2, [r3]
+    14f8:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    14fc:	ldr	r3, [r3, #4]
+    1500:	and	r1, r3, #7
+    1504:	movw	r3, #0
+    1508:	movt	r3, #0
+    150c:	ldrb	r3, [r3, r1]
+    1510:	cmp	r2, r3
+    1514:	beq	1520 <dtls1_reassemble_fragment+0x498>
+    1518:	mov	r3, #0
+    151c:	str	r3, [fp, #-28]	; 0xffffffe4
+    1520:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    1524:	cmp	r3, #0
+    1528:	beq	1588 <dtls1_reassemble_fragment+0x500>
+    152c:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    1530:	ldr	r3, [r3, #4]
+    1534:	sub	r3, r3, #1
+    1538:	asr	r3, r3, #3
+    153c:	sub	r3, r3, #1
+    1540:	str	r3, [fp, #-48]	; 0xffffffd0
+    1544:	b	157c <dtls1_reassemble_fragment+0x4f4>
+    1548:	ldr	r3, [fp, #-16]
+    154c:	ldr	r2, [r3, #48]	; 0x30
+    1550:	ldr	r3, [fp, #-48]	; 0xffffffd0
+    1554:	add	r3, r2, r3
+    1558:	ldrb	r3, [r3]
+    155c:	cmp	r3, #255	; 0xff
+    1560:	beq	1570 <dtls1_reassemble_fragment+0x4e8>
+    1564:	mov	r3, #0
+    1568:	str	r3, [fp, #-28]	; 0xffffffe4
+    156c:	b	1588 <dtls1_reassemble_fragment+0x500>
+    1570:	ldr	r3, [fp, #-48]	; 0xffffffd0
+    1574:	sub	r3, r3, #1
+    1578:	str	r3, [fp, #-48]	; 0xffffffd0
+    157c:	ldr	r3, [fp, #-48]	; 0xffffffd0
+    1580:	cmp	r3, #0
+    1584:	bge	1548 <dtls1_reassemble_fragment+0x4c0>
+    1588:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    158c:	cmp	r3, #0
+    1590:	beq	15b0 <dtls1_reassemble_fragment+0x528>
+    1594:	ldr	r3, [fp, #-16]
+    1598:	ldr	r3, [r3, #48]	; 0x30
+    159c:	mov	r0, r3
+    15a0:	bl	0 <CRYPTO_free>
+    15a4:	ldr	r3, [fp, #-16]
+    15a8:	mov	r2, #0
+    15ac:	str	r2, [r3, #48]	; 0x30
+    15b0:	ldr	r3, [fp, #-20]	; 0xffffffec
+    15b4:	cmp	r3, #0
+    15b8:	bne	1630 <dtls1_reassemble_fragment+0x5a8>
+    15bc:	sub	r3, fp, #56	; 0x38
+    15c0:	mov	r2, #8
+    15c4:	mov	r1, #0
+    15c8:	mov	r0, r3
+    15cc:	bl	0 <memset>
+    15d0:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    15d4:	ldrh	r3, [r3, #8]
+    15d8:	lsr	r3, r3, #8
+    15dc:	uxth	r3, r3
+    15e0:	uxtb	r3, r3
+    15e4:	strb	r3, [fp, #-50]	; 0xffffffce
+    15e8:	ldr	r3, [fp, #-324]	; 0xfffffebc
+    15ec:	ldrh	r3, [r3, #8]
+    15f0:	uxtb	r3, r3
+    15f4:	strb	r3, [fp, #-49]	; 0xffffffcf
+    15f8:	sub	r3, fp, #56	; 0x38
+    15fc:	ldr	r1, [fp, #-16]
+    1600:	mov	r0, r3
+    1604:	bl	0 <pitem_new>
+    1608:	str	r0, [fp, #-20]	; 0xffffffec
+    160c:	ldr	r3, [fp, #-20]	; 0xffffffec
+    1610:	cmp	r3, #0
+    1614:	beq	1658 <dtls1_reassemble_fragment+0x5d0>
+    1618:	ldr	r3, [fp, #-320]	; 0xfffffec0
+    161c:	ldr	r3, [r3, #92]	; 0x5c
+    1620:	ldr	r3, [r3, #580]	; 0x244
+    1624:	ldr	r1, [fp, #-20]	; 0xffffffec
+    1628:	mov	r0, r3
+    162c:	bl	0 <pqueue_insert>
+    1630:	mvn	r3, #2
+    1634:	b	1694 <dtls1_reassemble_fragment+0x60c>
+    1638:	nop	{0}
+    163c:	b	165c <dtls1_reassemble_fragment+0x5d4>
+    1640:	nop	{0}
+    1644:	b	165c <dtls1_reassemble_fragment+0x5d4>
+    1648:	nop	{0}
+    164c:	b	165c <dtls1_reassemble_fragment+0x5d4>
+    1650:	nop	{0}
+    1654:	b	165c <dtls1_reassemble_fragment+0x5d4>
+    1658:	nop	{0}
+    165c:	ldr	r3, [fp, #-16]
+    1660:	cmp	r3, #0
+    1664:	beq	1670 <dtls1_reassemble_fragment+0x5e8>
+    1668:	ldr	r0, [fp, #-16]
+    166c:	bl	140 <dtls1_hm_fragment_free>
+    1670:	ldr	r3, [fp, #-20]	; 0xffffffec
+    1674:	cmp	r3, #0
+    1678:	beq	1684 <dtls1_reassemble_fragment+0x5fc>
+    167c:	ldr	r0, [fp, #-20]	; 0xffffffec
+    1680:	bl	0 <CRYPTO_free>
+    1684:	ldr	r3, [fp, #-328]	; 0xfffffeb8
+    1688:	mov	r2, #0
+    168c:	str	r2, [r3]
+    1690:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1694:	mov	r0, r3
+    1698:	sub	sp, fp, #8
+    169c:	pop	{r4, fp, pc}
+
+000016a0 <dtls1_process_out_of_seq_message>:
+    16a0:	push	{r4, fp, lr}
+    16a4:	add	fp, sp, #8
+    16a8:	sub	sp, sp, #308	; 0x134
+    16ac:	str	r0, [fp, #-296]	; 0xfffffed8
+    16b0:	str	r1, [fp, #-300]	; 0xfffffed4
+    16b4:	str	r2, [fp, #-304]	; 0xfffffed0
+    16b8:	mvn	r3, #0
+    16bc:	str	r3, [fp, #-16]
+    16c0:	mov	r3, #0
+    16c4:	str	r3, [fp, #-20]	; 0xffffffec
+    16c8:	mov	r3, #0
+    16cc:	str	r3, [fp, #-24]	; 0xffffffe8
+    16d0:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    16d4:	ldr	r3, [r3, #16]
+    16d8:	str	r3, [fp, #-28]	; 0xffffffe4
+    16dc:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    16e0:	ldr	r2, [r3, #12]
+    16e4:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    16e8:	add	r2, r2, r3
+    16ec:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    16f0:	ldr	r3, [r3, #4]
+    16f4:	cmp	r2, r3
+    16f8:	bhi	19ac <dtls1_process_out_of_seq_message+0x30c>
+    16fc:	sub	r3, fp, #36	; 0x24
+    1700:	mov	r2, #8
+    1704:	mov	r1, #0
+    1708:	mov	r0, r3
+    170c:	bl	0 <memset>
+    1710:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    1714:	ldrh	r3, [r3, #8]
+    1718:	lsr	r3, r3, #8
+    171c:	uxth	r3, r3
+    1720:	uxtb	r3, r3
+    1724:	strb	r3, [fp, #-30]	; 0xffffffe2
+    1728:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    172c:	ldrh	r3, [r3, #8]
+    1730:	uxtb	r3, r3
+    1734:	strb	r3, [fp, #-29]	; 0xffffffe3
+    1738:	ldr	r3, [fp, #-296]	; 0xfffffed8
+    173c:	ldr	r3, [r3, #92]	; 0x5c
+    1740:	ldr	r3, [r3, #580]	; 0x244
+    1744:	sub	r2, fp, #36	; 0x24
+    1748:	mov	r1, r2
+    174c:	mov	r0, r3
+    1750:	bl	0 <pqueue_find>
+    1754:	str	r0, [fp, #-24]	; 0xffffffe8
+    1758:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    175c:	cmp	r3, #0
+    1760:	beq	1780 <dtls1_process_out_of_seq_message+0xe0>
+    1764:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    1768:	ldr	r2, [r3, #4]
+    176c:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    1770:	cmp	r2, r3
+    1774:	bls	1780 <dtls1_process_out_of_seq_message+0xe0>
+    1778:	mov	r3, #0
+    177c:	str	r3, [fp, #-24]	; 0xffffffe8
+    1780:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    1784:	ldrh	r2, [r3, #8]
+    1788:	ldr	r3, [fp, #-296]	; 0xfffffed8
+    178c:	ldr	r3, [r3, #92]	; 0x5c
+    1790:	add	r3, r3, #552	; 0x228
+    1794:	ldrh	r3, [r3]
+    1798:	cmp	r2, r3
+    179c:	bls	185c <dtls1_process_out_of_seq_message+0x1bc>
+    17a0:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    17a4:	ldrh	r3, [r3, #8]
+    17a8:	mov	r2, r3
+    17ac:	ldr	r3, [fp, #-296]	; 0xfffffed8
+    17b0:	ldr	r3, [r3, #92]	; 0x5c
+    17b4:	add	r3, r3, #552	; 0x228
+    17b8:	ldrh	r3, [r3]
+    17bc:	add	r3, r3, #10
+    17c0:	cmp	r2, r3
+    17c4:	bgt	185c <dtls1_process_out_of_seq_message+0x1bc>
+    17c8:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    17cc:	cmp	r3, #0
+    17d0:	bne	185c <dtls1_process_out_of_seq_message+0x1bc>
+    17d4:	ldr	r3, [fp, #-296]	; 0xfffffed8
+    17d8:	ldr	r3, [r3, #92]	; 0x5c
+    17dc:	add	r3, r3, #552	; 0x228
+    17e0:	ldrh	r3, [r3]
+    17e4:	cmp	r3, #0
+    17e8:	bne	186c <dtls1_process_out_of_seq_message+0x1cc>
+    17ec:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    17f0:	ldrb	r3, [r3]
+    17f4:	cmp	r3, #20
+    17f8:	bne	186c <dtls1_process_out_of_seq_message+0x1cc>
+    17fc:	b	185c <dtls1_process_out_of_seq_message+0x1bc>
+    1800:	ldr	r3, [fp, #-296]	; 0xfffffed8
+    1804:	ldr	r3, [r3, #8]
+    1808:	ldr	r4, [r3, #52]	; 0x34
+    180c:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    1810:	cmp	r3, #256	; 0x100
+    1814:	movcc	r3, r3
+    1818:	movcs	r3, #256	; 0x100
+    181c:	mov	r1, r3
+    1820:	sub	r2, fp, #292	; 0x124
+    1824:	mov	r3, #0
+    1828:	str	r3, [sp]
+    182c:	mov	r3, r1
+    1830:	mov	r1, #22
+    1834:	ldr	r0, [fp, #-296]	; 0xfffffed8
+    1838:	blx	r4
+    183c:	str	r0, [fp, #-16]
+    1840:	ldr	r3, [fp, #-16]
+    1844:	cmp	r3, #0
+    1848:	ble	19b4 <dtls1_process_out_of_seq_message+0x314>
+    184c:	ldr	r3, [fp, #-16]
+    1850:	ldr	r2, [fp, #-28]	; 0xffffffe4
+    1854:	sub	r3, r2, r3
+    1858:	str	r3, [fp, #-28]	; 0xffffffe4
+    185c:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    1860:	cmp	r3, #0
+    1864:	bne	1800 <dtls1_process_out_of_seq_message+0x160>
+    1868:	b	19a4 <dtls1_process_out_of_seq_message+0x304>
+    186c:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    1870:	cmp	r3, #0
+    1874:	beq	18a4 <dtls1_process_out_of_seq_message+0x204>
+    1878:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    187c:	ldr	r2, [r3, #4]
+    1880:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    1884:	cmp	r2, r3
+    1888:	bls	18a4 <dtls1_process_out_of_seq_message+0x204>
+    188c:	ldr	r2, [fp, #-304]	; 0xfffffed0
+    1890:	ldr	r1, [fp, #-300]	; 0xfffffed4
+    1894:	ldr	r0, [fp, #-296]	; 0xfffffed8
+    1898:	bl	1088 <dtls1_reassemble_fragment>
+    189c:	mov	r3, r0
+    18a0:	b	1a00 <dtls1_process_out_of_seq_message+0x360>
+    18a4:	mov	r1, #0
+    18a8:	ldr	r0, [fp, #-28]	; 0xffffffe4
+    18ac:	bl	0 <dtls1_hm_fragment_new>
+    18b0:	str	r0, [fp, #-20]	; 0xffffffec
+    18b4:	ldr	r3, [fp, #-20]	; 0xffffffec
+    18b8:	cmp	r3, #0
+    18bc:	beq	19bc <dtls1_process_out_of_seq_message+0x31c>
+    18c0:	ldr	r3, [fp, #-20]	; 0xffffffec
+    18c4:	mov	r2, #44	; 0x2c
+    18c8:	ldr	r1, [fp, #-300]	; 0xfffffed4
+    18cc:	mov	r0, r3
+    18d0:	bl	0 <memcpy>
+    18d4:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    18d8:	cmp	r3, #0
+    18dc:	beq	1930 <dtls1_process_out_of_seq_message+0x290>
+    18e0:	ldr	r3, [fp, #-296]	; 0xfffffed8
+    18e4:	ldr	r3, [r3, #8]
+    18e8:	ldr	r4, [r3, #52]	; 0x34
+    18ec:	ldr	r3, [fp, #-20]	; 0xffffffec
+    18f0:	ldr	r2, [r3, #44]	; 0x2c
+    18f4:	ldr	r1, [fp, #-28]	; 0xffffffe4
+    18f8:	mov	r3, #0
+    18fc:	str	r3, [sp]
+    1900:	mov	r3, r1
+    1904:	mov	r1, #22
+    1908:	ldr	r0, [fp, #-296]	; 0xfffffed8
+    190c:	blx	r4
+    1910:	str	r0, [fp, #-16]
+    1914:	ldr	r3, [fp, #-16]
+    1918:	cmp	r3, #0
+    191c:	ble	19c8 <dtls1_process_out_of_seq_message+0x328>
+    1920:	ldr	r2, [fp, #-16]
+    1924:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    1928:	cmp	r2, r3
+    192c:	bne	19c8 <dtls1_process_out_of_seq_message+0x328>
+    1930:	sub	r3, fp, #36	; 0x24
+    1934:	mov	r2, #8
+    1938:	mov	r1, #0
+    193c:	mov	r0, r3
+    1940:	bl	0 <memset>
+    1944:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    1948:	ldrh	r3, [r3, #8]
+    194c:	lsr	r3, r3, #8
+    1950:	uxth	r3, r3
+    1954:	uxtb	r3, r3
+    1958:	strb	r3, [fp, #-30]	; 0xffffffe2
+    195c:	ldr	r3, [fp, #-300]	; 0xfffffed4
+    1960:	ldrh	r3, [r3, #8]
+    1964:	uxtb	r3, r3
+    1968:	strb	r3, [fp, #-29]	; 0xffffffe3
+    196c:	sub	r3, fp, #36	; 0x24
+    1970:	ldr	r1, [fp, #-20]	; 0xffffffec
+    1974:	mov	r0, r3
+    1978:	bl	0 <pitem_new>
+    197c:	str	r0, [fp, #-24]	; 0xffffffe8
+    1980:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1984:	cmp	r3, #0
+    1988:	beq	19c4 <dtls1_process_out_of_seq_message+0x324>
+    198c:	ldr	r3, [fp, #-296]	; 0xfffffed8
+    1990:	ldr	r3, [r3, #92]	; 0x5c
+    1994:	ldr	r3, [r3, #580]	; 0x244
+    1998:	ldr	r1, [fp, #-24]	; 0xffffffe8
+    199c:	mov	r0, r3
+    19a0:	bl	0 <pqueue_insert>
+    19a4:	mvn	r3, #2
+    19a8:	b	1a00 <dtls1_process_out_of_seq_message+0x360>
+    19ac:	nop	{0}
+    19b0:	b	19c8 <dtls1_process_out_of_seq_message+0x328>
+    19b4:	nop	{0}
+    19b8:	b	19c8 <dtls1_process_out_of_seq_message+0x328>
+    19bc:	nop	{0}
+    19c0:	b	19c8 <dtls1_process_out_of_seq_message+0x328>
+    19c4:	nop	{0}
+    19c8:	ldr	r3, [fp, #-20]	; 0xffffffec
+    19cc:	cmp	r3, #0
+    19d0:	beq	19dc <dtls1_process_out_of_seq_message+0x33c>
+    19d4:	ldr	r0, [fp, #-20]	; 0xffffffec
+    19d8:	bl	140 <dtls1_hm_fragment_free>
+    19dc:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    19e0:	cmp	r3, #0
+    19e4:	beq	19f0 <dtls1_process_out_of_seq_message+0x350>
+    19e8:	ldr	r0, [fp, #-24]	; 0xffffffe8
+    19ec:	bl	0 <CRYPTO_free>
+    19f0:	ldr	r3, [fp, #-304]	; 0xfffffed0
+    19f4:	mov	r2, #0
+    19f8:	str	r2, [r3]
+    19fc:	ldr	r3, [fp, #-16]
+    1a00:	mov	r0, r3
+    1a04:	sub	sp, fp, #8
+    1a08:	pop	{r4, fp, pc}
+
+00001a0c <dtls1_get_message_fragment>:
+    1a0c:	push	{r4, fp, lr}
+    1a10:	add	fp, sp, #8
+    1a14:	sub	sp, sp, #116	; 0x74
+    1a18:	str	r0, [fp, #-96]	; 0xffffffa0
+    1a1c:	str	r1, [fp, #-100]	; 0xffffff9c
+    1a20:	str	r2, [fp, #-104]	; 0xffffff98
+    1a24:	str	r3, [fp, #-108]	; 0xffffff94
+    1a28:	ldr	r2, [fp, #4]
+    1a2c:	ldr	r1, [fp, #-108]	; 0xffffff94
+    1a30:	ldr	r0, [fp, #-96]	; 0xffffffa0
+    1a34:	bl	f04 <dtls1_retrieve_buffered_fragment>
+    1a38:	mov	r3, r0
+    1a3c:	str	r3, [fp, #-24]	; 0xffffffe8
+    1a40:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1a44:	cmp	r3, #0
+    1a48:	bne	1a5c <dtls1_get_message_fragment+0x50>
+    1a4c:	ldr	r3, [fp, #4]
+    1a50:	ldr	r3, [r3]
+    1a54:	cmp	r3, #0
+    1a58:	beq	1a80 <dtls1_get_message_fragment+0x74>
+    1a5c:	ldr	r3, [fp, #4]
+    1a60:	ldr	r3, [r3]
+    1a64:	cmp	r3, #0
+    1a68:	beq	1a78 <dtls1_get_message_fragment+0x6c>
+    1a6c:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    1a70:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1a74:	str	r2, [r3, #68]	; 0x44
+    1a78:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1a7c:	b	1e14 <dtls1_get_message_fragment+0x408>
+    1a80:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1a84:	ldr	r3, [r3, #8]
+    1a88:	ldr	r4, [r3, #52]	; 0x34
+    1a8c:	sub	r2, fp, #48	; 0x30
+    1a90:	mov	r3, #0
+    1a94:	str	r3, [sp]
+    1a98:	mov	r3, #12
+    1a9c:	mov	r1, #22
+    1aa0:	ldr	r0, [fp, #-96]	; 0xffffffa0
+    1aa4:	blx	r4
+    1aa8:	str	r0, [fp, #-16]
+    1aac:	ldr	r3, [fp, #-16]
+    1ab0:	cmp	r3, #0
+    1ab4:	bgt	1ad8 <dtls1_get_message_fragment+0xcc>
+    1ab8:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1abc:	mov	r2, #3
+    1ac0:	str	r2, [r3, #24]
+    1ac4:	ldr	r3, [fp, #4]
+    1ac8:	mov	r2, #0
+    1acc:	str	r2, [r3]
+    1ad0:	ldr	r3, [fp, #-16]
+    1ad4:	b	1e14 <dtls1_get_message_fragment+0x408>
+    1ad8:	ldr	r3, [fp, #-16]
+    1adc:	cmp	r3, #12
+    1ae0:	beq	1b10 <dtls1_get_message_fragment+0x104>
+    1ae4:	mov	r3, #10
+    1ae8:	str	r3, [fp, #-20]	; 0xffffffec
+    1aec:	movw	r3, #807	; 0x327
+    1af0:	str	r3, [sp]
+    1af4:	movw	r3, #0
+    1af8:	movt	r3, #0
+    1afc:	mov	r2, #244	; 0xf4
+    1b00:	mov	r1, #253	; 0xfd
+    1b04:	mov	r0, #20
+    1b08:	bl	0 <ERR_put_error>
+    1b0c:	b	1de8 <dtls1_get_message_fragment+0x3dc>
+    1b10:	sub	r2, fp, #92	; 0x5c
+    1b14:	sub	r3, fp, #48	; 0x30
+    1b18:	mov	r1, r2
+    1b1c:	mov	r0, r3
+    1b20:	bl	3240 <dtls1_get_message_header>
+    1b24:	ldrh	r2, [fp, #-84]	; 0xffffffac
+    1b28:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1b2c:	ldr	r3, [r3, #92]	; 0x5c
+    1b30:	add	r3, r3, #552	; 0x228
+    1b34:	ldrh	r3, [r3]
+    1b38:	cmp	r2, r3
+    1b3c:	beq	1b7c <dtls1_get_message_fragment+0x170>
+    1b40:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1b44:	ldr	r3, [r3, #92]	; 0x5c
+    1b48:	ldr	r3, [r3, #596]	; 0x254
+    1b4c:	cmp	r3, #0
+    1b50:	beq	1b60 <dtls1_get_message_fragment+0x154>
+    1b54:	ldrh	r3, [fp, #-84]	; 0xffffffac
+    1b58:	cmp	r3, #1
+    1b5c:	beq	1b7c <dtls1_get_message_fragment+0x170>
+    1b60:	sub	r3, fp, #92	; 0x5c
+    1b64:	ldr	r2, [fp, #4]
+    1b68:	mov	r1, r3
+    1b6c:	ldr	r0, [fp, #-96]	; 0xffffffa0
+    1b70:	bl	16a0 <dtls1_process_out_of_seq_message>
+    1b74:	mov	r3, r0
+    1b78:	b	1e14 <dtls1_get_message_fragment+0x408>
+    1b7c:	ldr	r3, [fp, #-88]	; 0xffffffa8
+    1b80:	str	r3, [fp, #-28]	; 0xffffffe4
+    1b84:	ldr	r3, [fp, #-80]	; 0xffffffb0
+    1b88:	str	r3, [fp, #-32]	; 0xffffffe0
+    1b8c:	ldr	r3, [fp, #-76]	; 0xffffffb4
+    1b90:	str	r3, [fp, #-24]	; 0xffffffe8
+    1b94:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1b98:	cmp	r3, #0
+    1b9c:	beq	1bcc <dtls1_get_message_fragment+0x1c0>
+    1ba0:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    1ba4:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    1ba8:	cmp	r2, r3
+    1bac:	bcs	1bcc <dtls1_get_message_fragment+0x1c0>
+    1bb0:	sub	r3, fp, #92	; 0x5c
+    1bb4:	ldr	r2, [fp, #4]
+    1bb8:	mov	r1, r3
+    1bbc:	ldr	r0, [fp, #-96]	; 0xffffffa0
+    1bc0:	bl	1088 <dtls1_reassemble_fragment>
+    1bc4:	mov	r3, r0
+    1bc8:	b	1e14 <dtls1_get_message_fragment+0x408>
+    1bcc:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1bd0:	ldr	r3, [r3, #36]	; 0x24
+    1bd4:	cmp	r3, #0
+    1bd8:	bne	1ccc <dtls1_get_message_fragment+0x2c0>
+    1bdc:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1be0:	ldr	r3, [r3, #92]	; 0x5c
+    1be4:	ldr	r3, [r3, #660]	; 0x294
+    1be8:	cmp	r3, #0
+    1bec:	bne	1ccc <dtls1_get_message_fragment+0x2c0>
+    1bf0:	ldrb	r3, [fp, #-48]	; 0xffffffd0
+    1bf4:	cmp	r3, #0
+    1bf8:	bne	1ccc <dtls1_get_message_fragment+0x2c0>
+    1bfc:	ldrb	r3, [fp, #-47]	; 0xffffffd1
+    1c00:	cmp	r3, #0
+    1c04:	bne	1ca0 <dtls1_get_message_fragment+0x294>
+    1c08:	ldrb	r3, [fp, #-46]	; 0xffffffd2
+    1c0c:	cmp	r3, #0
+    1c10:	bne	1ca0 <dtls1_get_message_fragment+0x294>
+    1c14:	ldrb	r3, [fp, #-45]	; 0xffffffd3
+    1c18:	cmp	r3, #0
+    1c1c:	bne	1ca0 <dtls1_get_message_fragment+0x294>
+    1c20:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1c24:	ldr	r3, [r3, #100]	; 0x64
+    1c28:	cmp	r3, #0
+    1c2c:	beq	1c70 <dtls1_get_message_fragment+0x264>
+    1c30:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1c34:	ldr	r4, [r3, #100]	; 0x64
+    1c38:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1c3c:	ldr	r1, [r3]
+    1c40:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1c44:	ldr	r3, [r3, #104]	; 0x68
+    1c48:	sub	r2, fp, #48	; 0x30
+    1c4c:	str	r3, [sp, #8]
+    1c50:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1c54:	str	r3, [sp, #4]
+    1c58:	mov	r3, #12
+    1c5c:	str	r3, [sp]
+    1c60:	mov	r3, r2
+    1c64:	mov	r2, #22
+    1c68:	mov	r0, #0
+    1c6c:	blx	r4
+    1c70:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1c74:	mov	r2, #0
+    1c78:	str	r2, [r3, #68]	; 0x44
+    1c7c:	ldr	r3, [fp, #4]
+    1c80:	str	r3, [sp]
+    1c84:	ldr	r3, [fp, #-108]	; 0xffffff94
+    1c88:	ldr	r2, [fp, #-104]	; 0xffffff98
+    1c8c:	ldr	r1, [fp, #-100]	; 0xffffff9c
+    1c90:	ldr	r0, [fp, #-96]	; 0xffffffa0
+    1c94:	bl	1a0c <dtls1_get_message_fragment>
+    1c98:	mov	r3, r0
+    1c9c:	b	1e14 <dtls1_get_message_fragment+0x408>
+    1ca0:	mov	r3, #10
+    1ca4:	str	r3, [fp, #-20]	; 0xffffffec
+    1ca8:	movw	r3, #851	; 0x353
+    1cac:	str	r3, [sp]
+    1cb0:	movw	r3, #0
+    1cb4:	movt	r3, #0
+    1cb8:	mov	r2, #244	; 0xf4
+    1cbc:	mov	r1, #253	; 0xfd
+    1cc0:	mov	r0, #20
+    1cc4:	bl	0 <ERR_put_error>
+    1cc8:	b	1de8 <dtls1_get_message_fragment+0x3dc>
+    1ccc:	sub	r3, fp, #92	; 0x5c
+    1cd0:	ldr	r2, [fp, #-108]	; 0xffffff94
+    1cd4:	mov	r1, r3
+    1cd8:	ldr	r0, [fp, #-96]	; 0xffffffa0
+    1cdc:	bl	d2c <dtls1_preprocess_fragment>
+    1ce0:	str	r0, [fp, #-20]	; 0xffffffec
+    1ce4:	ldr	r3, [fp, #-20]	; 0xffffffec
+    1ce8:	cmp	r3, #0
+    1cec:	bne	1de4 <dtls1_get_message_fragment+0x3d8>
+    1cf0:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1cf4:	ldr	r2, [fp, #-104]	; 0xffffff98
+    1cf8:	str	r2, [r3, #52]	; 0x34
+    1cfc:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1d00:	cmp	r3, #0
+    1d04:	beq	1d80 <dtls1_get_message_fragment+0x374>
+    1d08:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1d0c:	ldr	r3, [r3, #60]	; 0x3c
+    1d10:	ldr	r3, [r3, #4]
+    1d14:	add	r3, r3, #12
+    1d18:	str	r3, [fp, #-36]	; 0xffffffdc
+    1d1c:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1d20:	ldr	r3, [r3, #8]
+    1d24:	ldr	r4, [r3, #52]	; 0x34
+    1d28:	ldr	r2, [fp, #-36]	; 0xffffffdc
+    1d2c:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1d30:	add	r2, r2, r3
+    1d34:	ldr	r1, [fp, #-24]	; 0xffffffe8
+    1d38:	mov	r3, #0
+    1d3c:	str	r3, [sp]
+    1d40:	mov	r3, r1
+    1d44:	mov	r1, #22
+    1d48:	ldr	r0, [fp, #-96]	; 0xffffffa0
+    1d4c:	blx	r4
+    1d50:	str	r0, [fp, #-16]
+    1d54:	ldr	r3, [fp, #-16]
+    1d58:	cmp	r3, #0
+    1d5c:	bgt	1d88 <dtls1_get_message_fragment+0x37c>
+    1d60:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1d64:	mov	r2, #3
+    1d68:	str	r2, [r3, #24]
+    1d6c:	ldr	r3, [fp, #4]
+    1d70:	mov	r2, #0
+    1d74:	str	r2, [r3]
+    1d78:	ldr	r3, [fp, #-16]
+    1d7c:	b	1e14 <dtls1_get_message_fragment+0x408>
+    1d80:	mov	r3, #0
+    1d84:	str	r3, [fp, #-16]
+    1d88:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1d8c:	ldr	r2, [fp, #-16]
+    1d90:	cmp	r2, r3
+    1d94:	beq	1dc4 <dtls1_get_message_fragment+0x3b8>
+    1d98:	mov	r3, #47	; 0x2f
+    1d9c:	str	r3, [fp, #-20]	; 0xffffffec
+    1da0:	mov	r3, #884	; 0x374
+    1da4:	str	r3, [sp]
+    1da8:	movw	r3, #0
+    1dac:	movt	r3, #0
+    1db0:	mov	r2, #47	; 0x2f
+    1db4:	mov	r1, #253	; 0xfd
+    1db8:	mov	r0, #20
+    1dbc:	bl	0 <ERR_put_error>
+    1dc0:	b	1de8 <dtls1_get_message_fragment+0x3dc>
+    1dc4:	ldr	r3, [fp, #4]
+    1dc8:	mov	r2, #1
+    1dcc:	str	r2, [r3]
+    1dd0:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    1dd4:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1dd8:	str	r2, [r3, #68]	; 0x44
+    1ddc:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1de0:	b	1e14 <dtls1_get_message_fragment+0x408>
+    1de4:	nop	{0}
+    1de8:	ldr	r2, [fp, #-20]	; 0xffffffec
+    1dec:	mov	r1, #2
+    1df0:	ldr	r0, [fp, #-96]	; 0xffffffa0
+    1df4:	bl	0 <ssl3_send_alert>
+    1df8:	ldr	r3, [fp, #-96]	; 0xffffffa0
+    1dfc:	mov	r2, #0
+    1e00:	str	r2, [r3, #68]	; 0x44
+    1e04:	ldr	r3, [fp, #4]
+    1e08:	mov	r2, #0
+    1e0c:	str	r2, [r3]
+    1e10:	mvn	r3, #0
+    1e14:	mov	r0, r3
+    1e18:	sub	sp, fp, #8
+    1e1c:	pop	{r4, fp, pc}
+
+00001e20 <dtls1_send_finished>:
+    1e20:	push	{r4, fp, lr}
+    1e24:	add	fp, sp, #8
+    1e28:	sub	sp, sp, #44	; 0x2c
+    1e2c:	str	r0, [fp, #-32]	; 0xffffffe0
+    1e30:	str	r1, [fp, #-36]	; 0xffffffdc
+    1e34:	str	r2, [fp, #-40]	; 0xffffffd8
+    1e38:	str	r3, [fp, #-44]	; 0xffffffd4
+    1e3c:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1e40:	ldr	r2, [r3, #52]	; 0x34
+    1e44:	ldr	r3, [fp, #-36]	; 0xffffffdc
+    1e48:	cmp	r2, r3
+    1e4c:	bne	200c <dtls1_send_finished+0x1ec>
+    1e50:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1e54:	ldr	r3, [r3, #60]	; 0x3c
+    1e58:	ldr	r3, [r3, #4]
+    1e5c:	str	r3, [fp, #-16]
+    1e60:	ldr	r3, [fp, #-16]
+    1e64:	add	r3, r3, #12
+    1e68:	str	r3, [fp, #-20]	; 0xffffffec
+    1e6c:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1e70:	ldr	r3, [r3, #8]
+    1e74:	ldr	r3, [r3, #100]	; 0x64
+    1e78:	ldr	r4, [r3, #20]
+    1e7c:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1e80:	ldr	r3, [r3, #88]	; 0x58
+    1e84:	add	r3, r3, #564	; 0x234
+    1e88:	ldr	r2, [fp, #4]
+    1e8c:	ldr	r1, [fp, #-44]	; 0xffffffd4
+    1e90:	ldr	r0, [fp, #-32]	; 0xffffffe0
+    1e94:	blx	r4
+    1e98:	str	r0, [fp, #-24]	; 0xffffffe8
+    1e9c:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1ea0:	ldr	r3, [r3, #88]	; 0x58
+    1ea4:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    1ea8:	str	r2, [r3, #692]	; 0x2b4
+    1eac:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1eb0:	ldr	r3, [r3, #88]	; 0x58
+    1eb4:	add	r3, r3, #564	; 0x234
+    1eb8:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    1ebc:	mov	r1, r3
+    1ec0:	ldr	r0, [fp, #-20]	; 0xffffffec
+    1ec4:	bl	0 <memcpy>
+    1ec8:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1ecc:	ldr	r2, [fp, #-20]	; 0xffffffec
+    1ed0:	add	r3, r2, r3
+    1ed4:	str	r3, [fp, #-20]	; 0xffffffec
+    1ed8:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1edc:	str	r3, [fp, #-28]	; 0xffffffe4
+    1ee0:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1ee4:	ldr	r3, [r3, #4]
+    1ee8:	cmp	r3, #4096	; 0x1000
+    1eec:	bne	1f50 <dtls1_send_finished+0x130>
+    1ef0:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1ef4:	cmp	r3, #64	; 0x40
+    1ef8:	ble	1f14 <dtls1_send_finished+0xf4>
+    1efc:	movw	r2, #0
+    1f00:	movt	r2, #0
+    1f04:	mov	r1, #928	; 0x3a0
+    1f08:	movw	r0, #0
+    1f0c:	movt	r0, #0
+    1f10:	bl	0 <OpenSSLDie>
+    1f14:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1f18:	ldr	r3, [r3, #88]	; 0x58
+    1f1c:	add	r0, r3, #916	; 0x394
+    1f20:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1f24:	ldr	r3, [r3, #88]	; 0x58
+    1f28:	add	r3, r3, #564	; 0x234
+    1f2c:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    1f30:	mov	r1, r3
+    1f34:	bl	0 <memcpy>
+    1f38:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1f3c:	ldr	r3, [r3, #88]	; 0x58
+    1f40:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    1f44:	uxtb	r2, r2
+    1f48:	strb	r2, [r3, #980]	; 0x3d4
+    1f4c:	b	1fb0 <dtls1_send_finished+0x190>
+    1f50:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    1f54:	cmp	r3, #64	; 0x40
+    1f58:	ble	1f74 <dtls1_send_finished+0x154>
+    1f5c:	movw	r2, #0
+    1f60:	movt	r2, #0
+    1f64:	movw	r1, #935	; 0x3a7
+    1f68:	movw	r0, #0
+    1f6c:	movt	r0, #0
+    1f70:	bl	0 <OpenSSLDie>
+    1f74:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1f78:	ldr	r3, [r3, #88]	; 0x58
+    1f7c:	add	r3, r3, #980	; 0x3d4
+    1f80:	add	r3, r3, #1
+    1f84:	ldr	r2, [fp, #-32]	; 0xffffffe0
+    1f88:	ldr	r2, [r2, #88]	; 0x58
+    1f8c:	add	r1, r2, #564	; 0x234
+    1f90:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    1f94:	mov	r0, r3
+    1f98:	bl	0 <memcpy>
+    1f9c:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1fa0:	ldr	r3, [r3, #88]	; 0x58
+    1fa4:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    1fa8:	uxtb	r2, r2
+    1fac:	strb	r2, [r3, #1045]	; 0x415
+    1fb0:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    1fb4:	str	r3, [sp, #4]
+    1fb8:	mov	r3, #0
+    1fbc:	str	r3, [sp]
+    1fc0:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    1fc4:	mov	r2, #20
+    1fc8:	ldr	r1, [fp, #-16]
+    1fcc:	ldr	r0, [fp, #-32]	; 0xffffffe0
+    1fd0:	bl	2e3c <dtls1_set_message_header>
+    1fd4:	str	r0, [fp, #-16]
+    1fd8:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    1fdc:	add	r2, r3, #12
+    1fe0:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1fe4:	str	r2, [r3, #68]	; 0x44
+    1fe8:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    1fec:	mov	r2, #0
+    1ff0:	str	r2, [r3, #72]	; 0x48
+    1ff4:	mov	r1, #0
+    1ff8:	ldr	r0, [fp, #-32]	; 0xffffffe0
+    1ffc:	bl	277c <dtls1_buffer_message>
+    2000:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    2004:	ldr	r2, [fp, #-40]	; 0xffffffd8
+    2008:	str	r2, [r3, #52]	; 0x34
+    200c:	mov	r1, #22
+    2010:	ldr	r0, [fp, #-32]	; 0xffffffe0
+    2014:	bl	1d4 <dtls1_do_write>
+    2018:	mov	r3, r0
+    201c:	mov	r0, r3
+    2020:	sub	sp, fp, #8
+    2024:	pop	{r4, fp, pc}
+
+00002028 <dtls1_send_change_cipher_spec>:
+    2028:	push	{fp, lr}
+    202c:	add	fp, sp, #4
+    2030:	sub	sp, sp, #32
+    2034:	str	r0, [fp, #-16]
+    2038:	str	r1, [fp, #-20]	; 0xffffffec
+    203c:	str	r2, [fp, #-24]	; 0xffffffe8
+    2040:	ldr	r3, [fp, #-16]
+    2044:	ldr	r2, [r3, #52]	; 0x34
+    2048:	ldr	r3, [fp, #-20]	; 0xffffffec
+    204c:	cmp	r2, r3
+    2050:	bne	21a8 <dtls1_send_change_cipher_spec+0x180>
+    2054:	ldr	r3, [fp, #-16]
+    2058:	ldr	r3, [r3, #60]	; 0x3c
+    205c:	ldr	r3, [r3, #4]
+    2060:	str	r3, [fp, #-8]
+    2064:	ldr	r3, [fp, #-8]
+    2068:	add	r2, r3, #1
+    206c:	str	r2, [fp, #-8]
+    2070:	mov	r2, #1
+    2074:	strb	r2, [r3]
+    2078:	ldr	r3, [fp, #-16]
+    207c:	ldr	r1, [r3, #92]	; 0x5c
+    2080:	ldr	r3, [fp, #-16]
+    2084:	ldr	r3, [r3, #92]	; 0x5c
+    2088:	add	r3, r3, #548	; 0x224
+    208c:	add	r3, r3, #2
+    2090:	ldrh	r2, [r3]
+    2094:	mov	r3, r1
+    2098:	add	r3, r3, #548	; 0x224
+    209c:	strh	r2, [r3]
+    20a0:	ldr	r3, [fp, #-16]
+    20a4:	mov	r2, #1
+    20a8:	str	r2, [r3, #68]	; 0x44
+    20ac:	ldr	r3, [fp, #-16]
+    20b0:	ldr	r3, [r3]
+    20b4:	cmp	r3, #256	; 0x100
+    20b8:	bne	2150 <dtls1_send_change_cipher_spec+0x128>
+    20bc:	ldr	r3, [fp, #-16]
+    20c0:	ldr	r1, [r3, #92]	; 0x5c
+    20c4:	mov	r3, r1
+    20c8:	add	r3, r3, #548	; 0x224
+    20cc:	add	r3, r3, #2
+    20d0:	ldrh	r3, [r3]
+    20d4:	add	r3, r3, #1
+    20d8:	uxth	r2, r3
+    20dc:	mov	r3, r1
+    20e0:	add	r3, r3, #548	; 0x224
+    20e4:	add	r3, r3, #2
+    20e8:	strh	r2, [r3]
+    20ec:	ldr	r3, [fp, #-16]
+    20f0:	ldr	r3, [r3, #92]	; 0x5c
+    20f4:	add	r3, r3, #548	; 0x224
+    20f8:	ldrh	r3, [r3]
+    20fc:	lsr	r3, r3, #8
+    2100:	uxth	r3, r3
+    2104:	uxtb	r2, r3
+    2108:	ldr	r3, [fp, #-8]
+    210c:	strb	r2, [r3]
+    2110:	ldr	r3, [fp, #-8]
+    2114:	add	r3, r3, #1
+    2118:	ldr	r2, [fp, #-16]
+    211c:	ldr	r2, [r2, #92]	; 0x5c
+    2120:	add	r2, r2, #548	; 0x224
+    2124:	ldrh	r2, [r2]
+    2128:	uxtb	r2, r2
+    212c:	strb	r2, [r3]
+    2130:	ldr	r3, [fp, #-8]
+    2134:	add	r3, r3, #2
+    2138:	str	r3, [fp, #-8]
+    213c:	ldr	r3, [fp, #-16]
+    2140:	ldr	r3, [r3, #68]	; 0x44
+    2144:	add	r2, r3, #2
+    2148:	ldr	r3, [fp, #-16]
+    214c:	str	r2, [r3, #68]	; 0x44
+    2150:	ldr	r3, [fp, #-16]
+    2154:	mov	r2, #0
+    2158:	str	r2, [r3, #72]	; 0x48
+    215c:	ldr	r3, [fp, #-16]
+    2160:	ldr	r3, [r3, #92]	; 0x5c
+    2164:	add	r3, r3, #548	; 0x224
+    2168:	ldrh	r2, [r3]
+    216c:	mov	r3, #0
+    2170:	str	r3, [sp, #4]
+    2174:	mov	r3, #0
+    2178:	str	r3, [sp]
+    217c:	mov	r3, r2
+    2180:	mov	r2, #0
+    2184:	mov	r1, #1
+    2188:	ldr	r0, [fp, #-16]
+    218c:	bl	2f24 <dtls1_set_message_header_int>
+    2190:	mov	r1, #1
+    2194:	ldr	r0, [fp, #-16]
+    2198:	bl	277c <dtls1_buffer_message>
+    219c:	ldr	r3, [fp, #-16]
+    21a0:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    21a4:	str	r2, [r3, #52]	; 0x34
+    21a8:	mov	r1, #20
+    21ac:	ldr	r0, [fp, #-16]
+    21b0:	bl	1d4 <dtls1_do_write>
+    21b4:	mov	r3, r0
+    21b8:	mov	r0, r3
+    21bc:	sub	sp, fp, #4
+    21c0:	pop	{fp, pc}
+
+000021c4 <dtls1_add_cert_to_buf>:
+    21c4:	push	{fp, lr}
+    21c8:	add	fp, sp, #4
+    21cc:	sub	sp, sp, #32
+    21d0:	str	r0, [fp, #-16]
+    21d4:	str	r1, [fp, #-20]	; 0xffffffec
+    21d8:	str	r2, [fp, #-24]	; 0xffffffe8
+    21dc:	mov	r1, #0
+    21e0:	ldr	r0, [fp, #-24]	; 0xffffffe8
+    21e4:	bl	0 <i2d_X509>
+    21e8:	str	r0, [fp, #-8]
+    21ec:	ldr	r3, [fp, #-20]	; 0xffffffec
+    21f0:	ldr	r2, [r3]
+    21f4:	ldr	r3, [fp, #-8]
+    21f8:	add	r3, r2, r3
+    21fc:	add	r3, r3, #3
+    2200:	mov	r1, r3
+    2204:	ldr	r0, [fp, #-16]
+    2208:	bl	0 <BUF_MEM_grow_clean>
+    220c:	mov	r3, r0
+    2210:	cmp	r3, #0
+    2214:	bne	2240 <dtls1_add_cert_to_buf+0x7c>
+    2218:	movw	r3, #1010	; 0x3f2
+    221c:	str	r3, [sp]
+    2220:	movw	r3, #0
+    2224:	movt	r3, #0
+    2228:	mov	r2, #7
+    222c:	movw	r1, #295	; 0x127
+    2230:	mov	r0, #20
+    2234:	bl	0 <ERR_put_error>
+    2238:	mov	r3, #0
+    223c:	b	22d4 <dtls1_add_cert_to_buf+0x110>
+    2240:	ldr	r3, [fp, #-16]
+    2244:	ldr	r2, [r3, #4]
+    2248:	ldr	r3, [fp, #-20]	; 0xffffffec
+    224c:	ldr	r3, [r3]
+    2250:	add	r3, r2, r3
+    2254:	str	r3, [fp, #-12]
+    2258:	ldr	r3, [fp, #-12]
+    225c:	ldr	r2, [fp, #-8]
+    2260:	asr	r2, r2, #16
+    2264:	uxtb	r2, r2
+    2268:	strb	r2, [r3]
+    226c:	ldr	r3, [fp, #-12]
+    2270:	add	r3, r3, #1
+    2274:	ldr	r2, [fp, #-8]
+    2278:	asr	r2, r2, #8
+    227c:	uxtb	r2, r2
+    2280:	strb	r2, [r3]
+    2284:	ldr	r3, [fp, #-12]
+    2288:	add	r3, r3, #2
+    228c:	ldr	r2, [fp, #-8]
+    2290:	uxtb	r2, r2
+    2294:	strb	r2, [r3]
+    2298:	ldr	r3, [fp, #-12]
+    229c:	add	r3, r3, #3
+    22a0:	str	r3, [fp, #-12]
+    22a4:	sub	r3, fp, #12
+    22a8:	mov	r1, r3
+    22ac:	ldr	r0, [fp, #-24]	; 0xffffffe8
+    22b0:	bl	0 <i2d_X509>
+    22b4:	ldr	r3, [fp, #-20]	; 0xffffffec
+    22b8:	ldr	r2, [r3]
+    22bc:	ldr	r3, [fp, #-8]
+    22c0:	add	r3, r2, r3
+    22c4:	add	r2, r3, #3
+    22c8:	ldr	r3, [fp, #-20]	; 0xffffffec
+    22cc:	str	r2, [r3]
+    22d0:	mov	r3, #1
+    22d4:	mov	r0, r3
+    22d8:	sub	sp, fp, #4
+    22dc:	pop	{fp, pc}
+
+000022e0 <dtls1_output_cert_chain>:
+    22e0:	push	{fp, lr}
+    22e4:	add	fp, sp, #4
+    22e8:	sub	sp, sp, #168	; 0xa8
+    22ec:	str	r0, [fp, #-160]	; 0xffffff60
+    22f0:	str	r1, [fp, #-164]	; 0xffffff5c
+    22f4:	mov	r3, #15
+    22f8:	str	r3, [fp, #-20]	; 0xffffffec
+    22fc:	ldr	r3, [fp, #-160]	; 0xffffff60
+    2300:	ldr	r3, [r3, #60]	; 0x3c
+    2304:	str	r3, [fp, #-12]
+    2308:	mov	r1, #10
+    230c:	ldr	r0, [fp, #-12]
+    2310:	bl	0 <BUF_MEM_grow_clean>
+    2314:	mov	r3, r0
+    2318:	cmp	r3, #0
+    231c:	bne	2348 <dtls1_output_cert_chain+0x68>
+    2320:	movw	r3, #1031	; 0x407
+    2324:	str	r3, [sp]
+    2328:	movw	r3, #0
+    232c:	movt	r3, #0
+    2330:	mov	r2, #7
+    2334:	mov	r1, #255	; 0xff
+    2338:	mov	r0, #20
+    233c:	bl	0 <ERR_put_error>
+    2340:	mov	r3, #0
+    2344:	b	2578 <dtls1_output_cert_chain+0x298>
+    2348:	ldr	r3, [fp, #-164]	; 0xffffff5c
+    234c:	cmp	r3, #0
+    2350:	beq	243c <dtls1_output_cert_chain+0x15c>
+    2354:	ldr	r3, [fp, #-160]	; 0xffffff60
+    2358:	ldr	r3, [r3, #228]	; 0xe4
+    235c:	ldr	r1, [r3, #12]
+    2360:	sub	r0, fp, #156	; 0x9c
+    2364:	mov	r3, #0
+    2368:	ldr	r2, [fp, #-164]	; 0xffffff5c
+    236c:	bl	0 <X509_STORE_CTX_init>
+    2370:	mov	r3, r0
+    2374:	cmp	r3, #0
+    2378:	bne	23a4 <dtls1_output_cert_chain+0xc4>
+    237c:	mov	r3, #1040	; 0x410
+    2380:	str	r3, [sp]
+    2384:	movw	r3, #0
+    2388:	movt	r3, #0
+    238c:	mov	r2, #11
+    2390:	mov	r1, #255	; 0xff
+    2394:	mov	r0, #20
+    2398:	bl	0 <ERR_put_error>
+    239c:	mov	r3, #0
+    23a0:	b	2578 <dtls1_output_cert_chain+0x298>
+    23a4:	sub	r3, fp, #156	; 0x9c
+    23a8:	mov	r0, r3
+    23ac:	bl	0 <X509_verify_cert>
+    23b0:	bl	0 <ERR_clear_error>
+    23b4:	mov	r3, #0
+    23b8:	str	r3, [fp, #-8]
+    23bc:	b	2414 <dtls1_output_cert_chain+0x134>
+    23c0:	ldr	r3, [fp, #-72]	; 0xffffffb8
+    23c4:	ldr	r1, [fp, #-8]
+    23c8:	mov	r0, r3
+    23cc:	bl	0 <sk_value>
+    23d0:	str	r0, [fp, #-164]	; 0xffffff5c
+    23d4:	sub	r3, fp, #20
+    23d8:	ldr	r2, [fp, #-164]	; 0xffffff5c
+    23dc:	mov	r1, r3
+    23e0:	ldr	r0, [fp, #-12]
+    23e4:	bl	21c4 <dtls1_add_cert_to_buf>
+    23e8:	mov	r3, r0
+    23ec:	cmp	r3, #0
+    23f0:	bne	2408 <dtls1_output_cert_chain+0x128>
+    23f4:	sub	r3, fp, #156	; 0x9c
+    23f8:	mov	r0, r3
+    23fc:	bl	0 <X509_STORE_CTX_cleanup>
+    2400:	mov	r3, #0
+    2404:	b	2578 <dtls1_output_cert_chain+0x298>
+    2408:	ldr	r3, [fp, #-8]
+    240c:	add	r3, r3, #1
+    2410:	str	r3, [fp, #-8]
+    2414:	ldr	r3, [fp, #-72]	; 0xffffffb8
+    2418:	mov	r0, r3
+    241c:	bl	0 <sk_num>
+    2420:	mov	r2, r0
+    2424:	ldr	r3, [fp, #-8]
+    2428:	cmp	r2, r3
+    242c:	bgt	23c0 <dtls1_output_cert_chain+0xe0>
+    2430:	sub	r3, fp, #156	; 0x9c
+    2434:	mov	r0, r3
+    2438:	bl	0 <X509_STORE_CTX_cleanup>
+    243c:	mov	r3, #0
+    2440:	str	r3, [fp, #-8]
+    2444:	b	2498 <dtls1_output_cert_chain+0x1b8>
+    2448:	ldr	r3, [fp, #-160]	; 0xffffff60
+    244c:	ldr	r3, [r3, #228]	; 0xe4
+    2450:	ldr	r3, [r3, #148]	; 0x94
+    2454:	ldr	r1, [fp, #-8]
+    2458:	mov	r0, r3
+    245c:	bl	0 <sk_value>
+    2460:	str	r0, [fp, #-164]	; 0xffffff5c
+    2464:	sub	r3, fp, #20
+    2468:	ldr	r2, [fp, #-164]	; 0xffffff5c
+    246c:	mov	r1, r3
+    2470:	ldr	r0, [fp, #-12]
+    2474:	bl	21c4 <dtls1_add_cert_to_buf>
+    2478:	mov	r3, r0
+    247c:	cmp	r3, #0
+    2480:	bne	248c <dtls1_output_cert_chain+0x1ac>
+    2484:	mov	r3, #0
+    2488:	b	2578 <dtls1_output_cert_chain+0x298>
+    248c:	ldr	r3, [fp, #-8]
+    2490:	add	r3, r3, #1
+    2494:	str	r3, [fp, #-8]
+    2498:	ldr	r3, [fp, #-160]	; 0xffffff60
+    249c:	ldr	r3, [r3, #228]	; 0xe4
+    24a0:	ldr	r3, [r3, #148]	; 0x94
+    24a4:	mov	r0, r3
+    24a8:	bl	0 <sk_num>
+    24ac:	mov	r2, r0
+    24b0:	ldr	r3, [fp, #-8]
+    24b4:	cmp	r2, r3
+    24b8:	bgt	2448 <dtls1_output_cert_chain+0x168>
+    24bc:	ldr	r3, [fp, #-20]	; 0xffffffec
+    24c0:	sub	r3, r3, #15
+    24c4:	str	r3, [fp, #-20]	; 0xffffffec
+    24c8:	ldr	r3, [fp, #-12]
+    24cc:	ldr	r3, [r3, #4]
+    24d0:	add	r3, r3, #12
+    24d4:	str	r3, [fp, #-16]
+    24d8:	ldr	r3, [fp, #-20]	; 0xffffffec
+    24dc:	lsr	r3, r3, #16
+    24e0:	uxtb	r2, r3
+    24e4:	ldr	r3, [fp, #-16]
+    24e8:	strb	r2, [r3]
+    24ec:	ldr	r3, [fp, #-16]
+    24f0:	add	r3, r3, #1
+    24f4:	ldr	r2, [fp, #-20]	; 0xffffffec
+    24f8:	lsr	r2, r2, #8
+    24fc:	uxtb	r2, r2
+    2500:	strb	r2, [r3]
+    2504:	ldr	r3, [fp, #-16]
+    2508:	add	r3, r3, #2
+    250c:	ldr	r2, [fp, #-20]	; 0xffffffec
+    2510:	uxtb	r2, r2
+    2514:	strb	r2, [r3]
+    2518:	ldr	r3, [fp, #-16]
+    251c:	add	r3, r3, #3
+    2520:	str	r3, [fp, #-16]
+    2524:	ldr	r3, [fp, #-20]	; 0xffffffec
+    2528:	add	r3, r3, #3
+    252c:	str	r3, [fp, #-20]	; 0xffffffec
+    2530:	ldr	r3, [fp, #-12]
+    2534:	ldr	r3, [r3, #4]
+    2538:	str	r3, [fp, #-16]
+    253c:	ldr	r2, [fp, #-20]	; 0xffffffec
+    2540:	ldr	r3, [fp, #-20]	; 0xffffffec
+    2544:	str	r3, [sp, #4]
+    2548:	mov	r3, #0
+    254c:	str	r3, [sp]
+    2550:	mov	r3, r2
+    2554:	mov	r2, #11
+    2558:	ldr	r1, [fp, #-16]
+    255c:	ldr	r0, [fp, #-160]	; 0xffffff60
+    2560:	bl	2e3c <dtls1_set_message_header>
+    2564:	str	r0, [fp, #-16]
+    2568:	ldr	r3, [fp, #-20]	; 0xffffffec
+    256c:	add	r3, r3, #12
+    2570:	str	r3, [fp, #-20]	; 0xffffffec
+    2574:	ldr	r3, [fp, #-20]	; 0xffffffec
+    2578:	mov	r0, r3
+    257c:	sub	sp, fp, #4
+    2580:	pop	{fp, pc}
+
+00002584 <dtls1_read_failed>:
+    2584:	push	{fp, lr}
+    2588:	add	fp, sp, #4
+    258c:	sub	sp, sp, #8
+    2590:	str	r0, [fp, #-8]
+    2594:	str	r1, [fp, #-12]
+    2598:	ldr	r3, [fp, #-12]
+    259c:	cmp	r3, #0
+    25a0:	ble	25d0 <dtls1_read_failed+0x4c>
+    25a4:	movw	r3, #0
+    25a8:	movt	r3, #0
+    25ac:	ldr	r0, [r3]
+    25b0:	movw	r3, #1083	; 0x43b
+    25b4:	movw	r2, #0
+    25b8:	movt	r2, #0
+    25bc:	movw	r1, #0
+    25c0:	movt	r1, #0
+    25c4:	bl	0 <fprintf>
+    25c8:	mov	r3, #1
+    25cc:	b	2640 <dtls1_read_failed+0xbc>
+    25d0:	ldr	r0, [fp, #-8]
+    25d4:	bl	0 <dtls1_is_timer_expired>
+    25d8:	mov	r3, r0
+    25dc:	cmp	r3, #0
+    25e0:	bne	25ec <dtls1_read_failed+0x68>
+    25e4:	ldr	r3, [fp, #-12]
+    25e8:	b	2640 <dtls1_read_failed+0xbc>
+    25ec:	ldr	r0, [fp, #-8]
+    25f0:	bl	0 <SSL_state>
+    25f4:	mov	r3, r0
+    25f8:	and	r3, r3, #12288	; 0x3000
+    25fc:	cmp	r3, #0
+    2600:	bne	2634 <dtls1_read_failed+0xb0>
+    2604:	ldr	r3, [fp, #-8]
+    2608:	ldr	r3, [r3, #392]	; 0x188
+    260c:	cmp	r3, #0
+    2610:	bne	2634 <dtls1_read_failed+0xb0>
+    2614:	ldr	r0, [fp, #-8]
+    2618:	bl	0 <SSL_get_rbio>
+    261c:	mov	r3, r0
+    2620:	mov	r1, #1
+    2624:	mov	r0, r3
+    2628:	bl	0 <BIO_set_flags>
+    262c:	ldr	r3, [fp, #-12]
+    2630:	b	2640 <dtls1_read_failed+0xbc>
+    2634:	ldr	r0, [fp, #-8]
+    2638:	bl	0 <dtls1_handle_timeout>
+    263c:	mov	r3, r0
+    2640:	mov	r0, r3
+    2644:	sub	sp, fp, #4
+    2648:	pop	{fp, pc}
+
+0000264c <dtls1_get_queue_priority>:
+    264c:	push	{fp}		; (str fp, [sp, #-4]!)
+    2650:	add	fp, sp, #0
+    2654:	sub	sp, sp, #12
+    2658:	mov	r3, r0
+    265c:	str	r1, [fp, #-12]
+    2660:	strh	r3, [fp, #-6]
+    2664:	ldrh	r3, [fp, #-6]
+    2668:	lsl	r2, r3, #1
+    266c:	ldr	r3, [fp, #-12]
+    2670:	sub	r3, r2, r3
+    2674:	mov	r0, r3
+    2678:	sub	sp, fp, #0
+    267c:	pop	{fp}		; (ldr fp, [sp], #4)
+    2680:	bx	lr
+
+00002684 <dtls1_retransmit_buffered_messages>:
+    2684:	push	{fp, lr}
+    2688:	add	fp, sp, #4
+    268c:	sub	sp, sp, #32
+    2690:	str	r0, [fp, #-32]	; 0xffffffe0
+    2694:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    2698:	ldr	r3, [r3, #92]	; 0x5c
+    269c:	ldr	r3, [r3, #584]	; 0x248
+    26a0:	str	r3, [fp, #-12]
+    26a4:	mov	r3, #0
+    26a8:	str	r3, [fp, #-24]	; 0xffffffe8
+    26ac:	ldr	r0, [fp, #-12]
+    26b0:	bl	0 <pqueue_iterator>
+    26b4:	mov	r3, r0
+    26b8:	str	r3, [fp, #-20]	; 0xffffffec
+    26bc:	sub	r3, fp, #20
+    26c0:	mov	r0, r3
+    26c4:	bl	0 <pqueue_next>
+    26c8:	str	r0, [fp, #-8]
+    26cc:	b	2760 <dtls1_retransmit_buffered_messages+0xdc>
+    26d0:	ldr	r3, [fp, #-8]
+    26d4:	ldr	r3, [r3, #8]
+    26d8:	str	r3, [fp, #-16]
+    26dc:	ldr	r3, [fp, #-16]
+    26e0:	ldrh	r2, [r3, #8]
+    26e4:	ldr	r3, [fp, #-16]
+    26e8:	ldr	r3, [r3, #20]
+    26ec:	mov	r1, r3
+    26f0:	mov	r0, r2
+    26f4:	bl	264c <dtls1_get_queue_priority>
+    26f8:	mov	r3, r0
+    26fc:	uxth	r1, r3
+    2700:	sub	r3, fp, #24
+    2704:	mov	r2, #0
+    2708:	ldr	r0, [fp, #-32]	; 0xffffffe0
+    270c:	bl	2a1c <dtls1_retransmit_message>
+    2710:	mov	r3, r0
+    2714:	cmp	r3, #0
+    2718:	bgt	2750 <dtls1_retransmit_buffered_messages+0xcc>
+    271c:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    2720:	cmp	r3, #0
+    2724:	beq	2750 <dtls1_retransmit_buffered_messages+0xcc>
+    2728:	movw	r3, #0
+    272c:	movt	r3, #0
+    2730:	ldr	r3, [r3]
+    2734:	mov	r2, #34	; 0x22
+    2738:	mov	r1, #1
+    273c:	movw	r0, #0
+    2740:	movt	r0, #0
+    2744:	bl	0 <fwrite>
+    2748:	mvn	r3, #0
+    274c:	b	2770 <dtls1_retransmit_buffered_messages+0xec>
+    2750:	sub	r3, fp, #20
+    2754:	mov	r0, r3
+    2758:	bl	0 <pqueue_next>
+    275c:	str	r0, [fp, #-8]
+    2760:	ldr	r3, [fp, #-8]
+    2764:	cmp	r3, #0
+    2768:	bne	26d0 <dtls1_retransmit_buffered_messages+0x4c>
+    276c:	mov	r3, #1
+    2770:	mov	r0, r3
+    2774:	sub	sp, fp, #4
+    2778:	pop	{fp, pc}
+
+0000277c <dtls1_buffer_message>:
+    277c:	push	{fp, lr}
+    2780:	add	fp, sp, #4
+    2784:	sub	sp, sp, #24
+    2788:	str	r0, [fp, #-24]	; 0xffffffe8
+    278c:	str	r1, [fp, #-28]	; 0xffffffe4
+    2790:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    2794:	ldr	r3, [r3, #72]	; 0x48
+    2798:	cmp	r3, #0
+    279c:	beq	27b8 <dtls1_buffer_message+0x3c>
+    27a0:	movw	r2, #0
+    27a4:	movt	r2, #0
+    27a8:	movw	r1, #1171	; 0x493
+    27ac:	movw	r0, #0
+    27b0:	movt	r0, #0
+    27b4:	bl	0 <OpenSSLDie>
+    27b8:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    27bc:	ldr	r3, [r3, #68]	; 0x44
+    27c0:	mov	r1, #0
+    27c4:	mov	r0, r3
+    27c8:	bl	0 <dtls1_hm_fragment_new>
+    27cc:	str	r0, [fp, #-8]
+    27d0:	ldr	r3, [fp, #-8]
+    27d4:	ldr	r0, [r3, #44]	; 0x2c
+    27d8:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    27dc:	ldr	r3, [r3, #60]	; 0x3c
+    27e0:	ldr	r1, [r3, #4]
+    27e4:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    27e8:	ldr	r3, [r3, #68]	; 0x44
+    27ec:	mov	r2, r3
+    27f0:	bl	0 <memcpy>
+    27f4:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    27f8:	cmp	r3, #0
+    27fc:	beq	285c <dtls1_buffer_message+0xe0>
+    2800:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    2804:	ldr	r3, [r3, #92]	; 0x5c
+    2808:	ldr	r2, [r3, #608]	; 0x260
+    280c:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    2810:	ldr	r3, [r3]
+    2814:	movw	r1, #65279	; 0xfeff
+    2818:	cmp	r3, r1
+    281c:	bne	2828 <dtls1_buffer_message+0xac>
+    2820:	mov	r3, #1
+    2824:	b	282c <dtls1_buffer_message+0xb0>
+    2828:	mov	r3, #3
+    282c:	add	r3, r2, r3
+    2830:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    2834:	ldr	r2, [r2, #68]	; 0x44
+    2838:	cmp	r3, r2
+    283c:	beq	2894 <dtls1_buffer_message+0x118>
+    2840:	movw	r2, #0
+    2844:	movt	r2, #0
+    2848:	movw	r1, #1180	; 0x49c
+    284c:	movw	r0, #0
+    2850:	movt	r0, #0
+    2854:	bl	0 <OpenSSLDie>
+    2858:	b	2894 <dtls1_buffer_message+0x118>
+    285c:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    2860:	ldr	r3, [r3, #92]	; 0x5c
+    2864:	ldr	r3, [r3, #608]	; 0x260
+    2868:	add	r3, r3, #12
+    286c:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    2870:	ldr	r2, [r2, #68]	; 0x44
+    2874:	cmp	r3, r2
+    2878:	beq	2894 <dtls1_buffer_message+0x118>
+    287c:	movw	r2, #0
+    2880:	movt	r2, #0
+    2884:	movw	r1, #1185	; 0x4a1
+    2888:	movw	r0, #0
+    288c:	movt	r0, #0
+    2890:	bl	0 <OpenSSLDie>
+    2894:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    2898:	ldr	r3, [r3, #92]	; 0x5c
+    289c:	ldr	r2, [r3, #608]	; 0x260
+    28a0:	ldr	r3, [fp, #-8]
+    28a4:	str	r2, [r3, #4]
+    28a8:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    28ac:	ldr	r3, [r3, #92]	; 0x5c
+    28b0:	add	r3, r3, #612	; 0x264
+    28b4:	ldrh	r2, [r3]
+    28b8:	ldr	r3, [fp, #-8]
+    28bc:	strh	r2, [r3, #8]
+    28c0:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    28c4:	ldr	r3, [r3, #92]	; 0x5c
+    28c8:	ldrb	r2, [r3, #604]	; 0x25c
+    28cc:	ldr	r3, [fp, #-8]
+    28d0:	strb	r2, [r3]
+    28d4:	ldr	r3, [fp, #-8]
+    28d8:	mov	r2, #0
+    28dc:	str	r2, [r3, #12]
+    28e0:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    28e4:	ldr	r3, [r3, #92]	; 0x5c
+    28e8:	ldr	r2, [r3, #608]	; 0x260
+    28ec:	ldr	r3, [fp, #-8]
+    28f0:	str	r2, [r3, #16]
+    28f4:	ldr	r2, [fp, #-28]	; 0xffffffe4
+    28f8:	ldr	r3, [fp, #-8]
+    28fc:	str	r2, [r3, #20]
+    2900:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    2904:	ldr	r2, [r3, #140]	; 0x8c
+    2908:	ldr	r3, [fp, #-8]
+    290c:	str	r2, [r3, #24]
+    2910:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    2914:	ldr	r2, [r3, #144]	; 0x90
+    2918:	ldr	r3, [fp, #-8]
+    291c:	str	r2, [r3, #28]
+    2920:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    2924:	ldr	r2, [r3, #148]	; 0x94
+    2928:	ldr	r3, [fp, #-8]
+    292c:	str	r2, [r3, #32]
+    2930:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    2934:	ldr	r2, [r3, #192]	; 0xc0
+    2938:	ldr	r3, [fp, #-8]
+    293c:	str	r2, [r3, #36]	; 0x24
+    2940:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    2944:	ldr	r3, [r3, #92]	; 0x5c
+    2948:	add	r3, r3, #520	; 0x208
+    294c:	add	r3, r3, #2
+    2950:	ldrh	r2, [r3]
+    2954:	ldr	r3, [fp, #-8]
+    2958:	strh	r2, [r3, #40]	; 0x28
+    295c:	sub	r3, fp, #20
+    2960:	mov	r2, #8
+    2964:	mov	r1, #0
+    2968:	mov	r0, r3
+    296c:	bl	0 <memset>
+    2970:	ldr	r3, [fp, #-8]
+    2974:	ldrh	r2, [r3, #8]
+    2978:	ldr	r3, [fp, #-8]
+    297c:	ldr	r3, [r3, #20]
+    2980:	mov	r1, r3
+    2984:	mov	r0, r2
+    2988:	bl	264c <dtls1_get_queue_priority>
+    298c:	mov	r3, r0
+    2990:	asr	r3, r3, #8
+    2994:	uxtb	r3, r3
+    2998:	strb	r3, [fp, #-14]
+    299c:	ldr	r3, [fp, #-8]
+    29a0:	ldrh	r2, [r3, #8]
+    29a4:	ldr	r3, [fp, #-8]
+    29a8:	ldr	r3, [r3, #20]
+    29ac:	mov	r1, r3
+    29b0:	mov	r0, r2
+    29b4:	bl	264c <dtls1_get_queue_priority>
+    29b8:	mov	r3, r0
+    29bc:	uxtb	r3, r3
+    29c0:	strb	r3, [fp, #-13]
+    29c4:	sub	r3, fp, #20
+    29c8:	ldr	r1, [fp, #-8]
+    29cc:	mov	r0, r3
+    29d0:	bl	0 <pitem_new>
+    29d4:	str	r0, [fp, #-12]
+    29d8:	ldr	r3, [fp, #-12]
+    29dc:	cmp	r3, #0
+    29e0:	bne	29f4 <dtls1_buffer_message+0x278>
+    29e4:	ldr	r0, [fp, #-8]
+    29e8:	bl	140 <dtls1_hm_fragment_free>
+    29ec:	mov	r3, #0
+    29f0:	b	2a10 <dtls1_buffer_message+0x294>
+    29f4:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    29f8:	ldr	r3, [r3, #92]	; 0x5c
+    29fc:	ldr	r3, [r3, #584]	; 0x248
+    2a00:	ldr	r1, [fp, #-12]
+    2a04:	mov	r0, r3
+    2a08:	bl	0 <pqueue_insert>
+    2a0c:	mov	r3, #1
+    2a10:	mov	r0, r3
+    2a14:	sub	sp, fp, #4
+    2a18:	pop	{fp, pc}
+
+00002a1c <dtls1_retransmit_message>:
+    2a1c:	push	{fp, lr}
+    2a20:	add	fp, sp, #4
+    2a24:	sub	sp, sp, #80	; 0x50
+    2a28:	str	r0, [fp, #-64]	; 0xffffffc0
+    2a2c:	str	r2, [fp, #-72]	; 0xffffffb8
+    2a30:	str	r3, [fp, #-76]	; 0xffffffb4
+    2a34:	strh	r1, [fp, #-66]	; 0xffffffbe
+    2a38:	sub	r3, fp, #28
+    2a3c:	mov	r2, #8
+    2a40:	mov	r1, #0
+    2a44:	mov	r0, r3
+    2a48:	bl	0 <memset>
+    2a4c:	ldrh	r3, [fp, #-66]	; 0xffffffbe
+    2a50:	lsr	r3, r3, #8
+    2a54:	uxth	r3, r3
+    2a58:	uxtb	r3, r3
+    2a5c:	strb	r3, [fp, #-22]	; 0xffffffea
+    2a60:	ldrh	r3, [fp, #-66]	; 0xffffffbe
+    2a64:	uxtb	r3, r3
+    2a68:	strb	r3, [fp, #-21]	; 0xffffffeb
+    2a6c:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2a70:	ldr	r3, [r3, #92]	; 0x5c
+    2a74:	ldr	r3, [r3, #584]	; 0x248
+    2a78:	sub	r2, fp, #28
+    2a7c:	mov	r1, r2
+    2a80:	mov	r0, r3
+    2a84:	bl	0 <pqueue_find>
+    2a88:	str	r0, [fp, #-12]
+    2a8c:	ldr	r3, [fp, #-12]
+    2a90:	cmp	r3, #0
+    2a94:	bne	2acc <dtls1_retransmit_message+0xb0>
+    2a98:	movw	r3, #0
+    2a9c:	movt	r3, #0
+    2aa0:	ldr	r3, [r3]
+    2aa4:	ldrh	r2, [fp, #-66]	; 0xffffffbe
+    2aa8:	movw	r1, #0
+    2aac:	movt	r1, #0
+    2ab0:	mov	r0, r3
+    2ab4:	bl	0 <fprintf>
+    2ab8:	ldr	r3, [fp, #-76]	; 0xffffffb4
+    2abc:	mov	r2, #0
+    2ac0:	str	r2, [r3]
+    2ac4:	mov	r3, #0
+    2ac8:	b	2dbc <dtls1_retransmit_message+0x3a0>
+    2acc:	ldr	r3, [fp, #-76]	; 0xffffffb4
+    2ad0:	mov	r2, #1
+    2ad4:	str	r2, [r3]
+    2ad8:	ldr	r3, [fp, #-12]
+    2adc:	ldr	r3, [r3, #8]
+    2ae0:	str	r3, [fp, #-16]
+    2ae4:	ldr	r3, [fp, #-16]
+    2ae8:	ldr	r3, [r3, #20]
+    2aec:	cmp	r3, #0
+    2af0:	beq	2b00 <dtls1_retransmit_message+0xe4>
+    2af4:	mov	r3, #1
+    2af8:	str	r3, [fp, #-8]
+    2afc:	b	2b08 <dtls1_retransmit_message+0xec>
+    2b00:	mov	r3, #12
+    2b04:	str	r3, [fp, #-8]
+    2b08:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2b0c:	ldr	r3, [r3, #60]	; 0x3c
+    2b10:	ldr	r0, [r3, #4]
+    2b14:	ldr	r3, [fp, #-16]
+    2b18:	ldr	r1, [r3, #44]	; 0x2c
+    2b1c:	ldr	r3, [fp, #-16]
+    2b20:	ldr	r2, [r3, #4]
+    2b24:	ldr	r3, [fp, #-8]
+    2b28:	add	r3, r2, r3
+    2b2c:	mov	r2, r3
+    2b30:	bl	0 <memcpy>
+    2b34:	ldr	r3, [fp, #-16]
+    2b38:	ldr	r2, [r3, #4]
+    2b3c:	ldr	r3, [fp, #-8]
+    2b40:	add	r3, r2, r3
+    2b44:	mov	r2, r3
+    2b48:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2b4c:	str	r2, [r3, #68]	; 0x44
+    2b50:	ldr	r3, [fp, #-16]
+    2b54:	ldrb	r1, [r3]
+    2b58:	ldr	r3, [fp, #-16]
+    2b5c:	ldr	r2, [r3, #4]
+    2b60:	ldr	r3, [fp, #-16]
+    2b64:	ldrh	r0, [r3, #8]
+    2b68:	ldr	r3, [fp, #-16]
+    2b6c:	ldr	r3, [r3, #16]
+    2b70:	str	r3, [sp, #4]
+    2b74:	mov	r3, #0
+    2b78:	str	r3, [sp]
+    2b7c:	mov	r3, r0
+    2b80:	ldr	r0, [fp, #-64]	; 0xffffffc0
+    2b84:	bl	2f24 <dtls1_set_message_header_int>
+    2b88:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2b8c:	ldr	r3, [r3, #140]	; 0x8c
+    2b90:	str	r3, [fp, #-48]	; 0xffffffd0
+    2b94:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2b98:	ldr	r3, [r3, #144]	; 0x90
+    2b9c:	str	r3, [fp, #-44]	; 0xffffffd4
+    2ba0:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2ba4:	ldr	r3, [r3, #148]	; 0x94
+    2ba8:	str	r3, [fp, #-40]	; 0xffffffd8
+    2bac:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2bb0:	ldr	r3, [r3, #192]	; 0xc0
+    2bb4:	str	r3, [fp, #-36]	; 0xffffffdc
+    2bb8:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2bbc:	ldr	r3, [r3, #92]	; 0x5c
+    2bc0:	add	r3, r3, #520	; 0x208
+    2bc4:	add	r3, r3, #2
+    2bc8:	ldrh	r3, [r3]
+    2bcc:	strh	r3, [fp, #-32]	; 0xffffffe0
+    2bd0:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2bd4:	ldr	r3, [r3, #92]	; 0x5c
+    2bd8:	add	r3, r3, #520	; 0x208
+    2bdc:	add	r3, r3, #2
+    2be0:	ldrh	r3, [r3]
+    2be4:	strh	r3, [fp, #-32]	; 0xffffffe0
+    2be8:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2bec:	ldr	r3, [r3, #92]	; 0x5c
+    2bf0:	mov	r2, #1
+    2bf4:	str	r2, [r3, #736]	; 0x2e0
+    2bf8:	ldr	r3, [fp, #-16]
+    2bfc:	ldr	r2, [r3, #24]
+    2c00:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2c04:	str	r2, [r3, #140]	; 0x8c
+    2c08:	ldr	r3, [fp, #-16]
+    2c0c:	ldr	r2, [r3, #28]
+    2c10:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2c14:	str	r2, [r3, #144]	; 0x90
+    2c18:	ldr	r3, [fp, #-16]
+    2c1c:	ldr	r2, [r3, #32]
+    2c20:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2c24:	str	r2, [r3, #148]	; 0x94
+    2c28:	ldr	r3, [fp, #-16]
+    2c2c:	ldr	r2, [r3, #36]	; 0x24
+    2c30:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2c34:	str	r2, [r3, #192]	; 0xc0
+    2c38:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2c3c:	ldr	r1, [r3, #92]	; 0x5c
+    2c40:	ldr	r3, [fp, #-16]
+    2c44:	ldrh	r2, [r3, #40]	; 0x28
+    2c48:	mov	r3, r1
+    2c4c:	add	r3, r3, #520	; 0x208
+    2c50:	add	r3, r3, #2
+    2c54:	strh	r2, [r3]
+    2c58:	ldr	r3, [fp, #-16]
+    2c5c:	ldrh	r3, [r3, #40]	; 0x28
+    2c60:	mov	r2, r3
+    2c64:	ldrh	r3, [fp, #-32]	; 0xffffffe0
+    2c68:	sub	r3, r3, #1
+    2c6c:	cmp	r2, r3
+    2c70:	bne	2cb8 <dtls1_retransmit_message+0x29c>
+    2c74:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2c78:	ldr	r3, [r3, #88]	; 0x58
+    2c7c:	add	r2, r3, #84	; 0x54
+    2c80:	sub	r3, fp, #56	; 0x38
+    2c84:	ldr	r0, [r2]
+    2c88:	ldr	r1, [r2, #4]
+    2c8c:	stmia	r3!, {r0, r1}
+    2c90:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2c94:	ldr	r3, [r3, #88]	; 0x58
+    2c98:	add	r0, r3, #84	; 0x54
+    2c9c:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2ca0:	ldr	r3, [r3, #92]	; 0x5c
+    2ca4:	add	r3, r3, #552	; 0x228
+    2ca8:	add	r3, r3, #2
+    2cac:	mov	r2, #8
+    2cb0:	mov	r1, r3
+    2cb4:	bl	0 <memcpy>
+    2cb8:	ldr	r3, [fp, #-16]
+    2cbc:	ldr	r3, [r3, #20]
+    2cc0:	cmp	r3, #0
+    2cc4:	beq	2cd0 <dtls1_retransmit_message+0x2b4>
+    2cc8:	mov	r3, #20
+    2ccc:	b	2cd4 <dtls1_retransmit_message+0x2b8>
+    2cd0:	mov	r3, #22
+    2cd4:	mov	r1, r3
+    2cd8:	ldr	r0, [fp, #-64]	; 0xffffffc0
+    2cdc:	bl	1d4 <dtls1_do_write>
+    2ce0:	str	r0, [fp, #-20]	; 0xffffffec
+    2ce4:	ldr	r2, [fp, #-48]	; 0xffffffd0
+    2ce8:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2cec:	str	r2, [r3, #140]	; 0x8c
+    2cf0:	ldr	r2, [fp, #-44]	; 0xffffffd4
+    2cf4:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2cf8:	str	r2, [r3, #144]	; 0x90
+    2cfc:	ldr	r2, [fp, #-40]	; 0xffffffd8
+    2d00:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2d04:	str	r2, [r3, #148]	; 0x94
+    2d08:	ldr	r2, [fp, #-36]	; 0xffffffdc
+    2d0c:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2d10:	str	r2, [r3, #192]	; 0xc0
+    2d14:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2d18:	ldr	r3, [r3, #92]	; 0x5c
+    2d1c:	ldrh	r2, [fp, #-32]	; 0xffffffe0
+    2d20:	add	r3, r3, #520	; 0x208
+    2d24:	add	r3, r3, #2
+    2d28:	strh	r2, [r3]
+    2d2c:	ldr	r3, [fp, #-16]
+    2d30:	ldrh	r3, [r3, #40]	; 0x28
+    2d34:	mov	r2, r3
+    2d38:	ldrh	r3, [fp, #-32]	; 0xffffffe0
+    2d3c:	sub	r3, r3, #1
+    2d40:	cmp	r2, r3
+    2d44:	bne	2d90 <dtls1_retransmit_message+0x374>
+    2d48:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2d4c:	ldr	r3, [r3, #92]	; 0x5c
+    2d50:	add	r3, r3, #552	; 0x228
+    2d54:	add	r3, r3, #2
+    2d58:	ldr	r2, [fp, #-64]	; 0xffffffc0
+    2d5c:	ldr	r2, [r2, #88]	; 0x58
+    2d60:	add	r1, r2, #84	; 0x54
+    2d64:	mov	r2, #8
+    2d68:	mov	r0, r3
+    2d6c:	bl	0 <memcpy>
+    2d70:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2d74:	ldr	r3, [r3, #88]	; 0x58
+    2d78:	add	r3, r3, #84	; 0x54
+    2d7c:	mov	r2, r3
+    2d80:	sub	r3, fp, #56	; 0x38
+    2d84:	ldm	r3!, {r0, r1}
+    2d88:	str	r0, [r2]
+    2d8c:	str	r1, [r2, #4]
+    2d90:	ldr	r3, [fp, #-64]	; 0xffffffc0
+    2d94:	ldr	r3, [r3, #92]	; 0x5c
+    2d98:	mov	r2, #0
+    2d9c:	str	r2, [r3, #736]	; 0x2e0
+    2da0:	ldr	r0, [fp, #-64]	; 0xffffffc0
+    2da4:	bl	0 <SSL_get_wbio>
+    2da8:	mov	r3, #0
+    2dac:	mov	r2, #0
+    2db0:	mov	r1, #11
+    2db4:	bl	0 <BIO_ctrl>
+    2db8:	ldr	r3, [fp, #-20]	; 0xffffffec
+    2dbc:	mov	r0, r3
+    2dc0:	sub	sp, fp, #4
+    2dc4:	pop	{fp, pc}
+
+00002dc8 <dtls1_clear_record_buffer>:
+    2dc8:	push	{fp, lr}
+    2dcc:	add	fp, sp, #4
+    2dd0:	sub	sp, sp, #16
+    2dd4:	str	r0, [fp, #-16]
+    2dd8:	ldr	r3, [fp, #-16]
+    2ddc:	ldr	r3, [r3, #92]	; 0x5c
+    2de0:	ldr	r3, [r3, #584]	; 0x248
+    2de4:	mov	r0, r3
+    2de8:	bl	0 <pqueue_pop>
+    2dec:	str	r0, [fp, #-8]
+    2df0:	b	2e24 <dtls1_clear_record_buffer+0x5c>
+    2df4:	ldr	r3, [fp, #-8]
+    2df8:	ldr	r3, [r3, #8]
+    2dfc:	mov	r0, r3
+    2e00:	bl	140 <dtls1_hm_fragment_free>
+    2e04:	ldr	r0, [fp, #-8]
+    2e08:	bl	0 <pitem_free>
+    2e0c:	ldr	r3, [fp, #-16]
+    2e10:	ldr	r3, [r3, #92]	; 0x5c
+    2e14:	ldr	r3, [r3, #584]	; 0x248
+    2e18:	mov	r0, r3
+    2e1c:	bl	0 <pqueue_pop>
+    2e20:	str	r0, [fp, #-8]
+    2e24:	ldr	r3, [fp, #-8]
+    2e28:	cmp	r3, #0
+    2e2c:	bne	2df4 <dtls1_clear_record_buffer+0x2c>
+    2e30:	nop	{0}
+    2e34:	sub	sp, fp, #4
+    2e38:	pop	{fp, pc}
+
+00002e3c <dtls1_set_message_header>:
+    2e3c:	push	{fp, lr}
+    2e40:	add	fp, sp, #4
+    2e44:	sub	sp, sp, #24
+    2e48:	str	r0, [fp, #-8]
+    2e4c:	str	r1, [fp, #-12]
+    2e50:	str	r3, [fp, #-20]	; 0xffffffec
+    2e54:	mov	r3, r2
+    2e58:	strb	r3, [fp, #-13]
+    2e5c:	ldr	r3, [fp, #4]
+    2e60:	cmp	r3, #0
+    2e64:	bne	2ed4 <dtls1_set_message_header+0x98>
+    2e68:	ldr	r3, [fp, #-8]
+    2e6c:	ldr	r3, [r3, #92]	; 0x5c
+    2e70:	ldr	r3, [r3, #596]	; 0x254
+    2e74:	cmp	r3, #0
+    2e78:	bne	2ed4 <dtls1_set_message_header+0x98>
+    2e7c:	ldr	r3, [fp, #-8]
+    2e80:	ldr	r1, [r3, #92]	; 0x5c
+    2e84:	ldr	r3, [fp, #-8]
+    2e88:	ldr	r3, [r3, #92]	; 0x5c
+    2e8c:	add	r3, r3, #548	; 0x224
+    2e90:	add	r3, r3, #2
+    2e94:	ldrh	r2, [r3]
+    2e98:	mov	r3, r1
+    2e9c:	add	r3, r3, #548	; 0x224
+    2ea0:	strh	r2, [r3]
+    2ea4:	ldr	r3, [fp, #-8]
+    2ea8:	ldr	r1, [r3, #92]	; 0x5c
+    2eac:	mov	r3, r1
+    2eb0:	add	r3, r3, #548	; 0x224
+    2eb4:	add	r3, r3, #2
+    2eb8:	ldrh	r3, [r3]
+    2ebc:	add	r3, r3, #1
+    2ec0:	uxth	r2, r3
+    2ec4:	mov	r3, r1
+    2ec8:	add	r3, r3, #548	; 0x224
+    2ecc:	add	r3, r3, #2
+    2ed0:	strh	r2, [r3]
+    2ed4:	ldr	r3, [fp, #-8]
+    2ed8:	ldr	r3, [r3, #92]	; 0x5c
+    2edc:	add	r3, r3, #548	; 0x224
+    2ee0:	ldrh	r2, [r3]
+    2ee4:	ldrb	r1, [fp, #-13]
+    2ee8:	ldr	r3, [fp, #8]
+    2eec:	str	r3, [sp, #4]
+    2ef0:	ldr	r3, [fp, #4]
+    2ef4:	str	r3, [sp]
+    2ef8:	mov	r3, r2
+    2efc:	ldr	r2, [fp, #-20]	; 0xffffffec
+    2f00:	ldr	r0, [fp, #-8]
+    2f04:	bl	2f24 <dtls1_set_message_header_int>
+    2f08:	ldr	r3, [fp, #-12]
+    2f0c:	add	r3, r3, #12
+    2f10:	str	r3, [fp, #-12]
+    2f14:	ldr	r3, [fp, #-12]
+    2f18:	mov	r0, r3
+    2f1c:	sub	sp, fp, #4
+    2f20:	pop	{fp, pc}
+
+00002f24 <dtls1_set_message_header_int>:
+    2f24:	push	{fp}		; (str fp, [sp, #-4]!)
+    2f28:	add	fp, sp, #0
+    2f2c:	sub	sp, sp, #28
+    2f30:	str	r0, [fp, #-16]
+    2f34:	str	r2, [fp, #-24]	; 0xffffffe8
+    2f38:	mov	r2, r1
+    2f3c:	strb	r2, [fp, #-17]	; 0xffffffef
+    2f40:	strh	r3, [fp, #-20]	; 0xffffffec
+    2f44:	ldr	r3, [fp, #-16]
+    2f48:	ldr	r3, [r3, #92]	; 0x5c
+    2f4c:	add	r3, r3, #604	; 0x25c
+    2f50:	str	r3, [fp, #-8]
+    2f54:	ldr	r3, [fp, #-8]
+    2f58:	ldrb	r2, [fp, #-17]	; 0xffffffef
+    2f5c:	strb	r2, [r3]
+    2f60:	ldr	r3, [fp, #-8]
+    2f64:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    2f68:	str	r2, [r3, #4]
+    2f6c:	ldr	r3, [fp, #-8]
+    2f70:	ldrh	r2, [fp, #-20]	; 0xffffffec
+    2f74:	strh	r2, [r3, #8]
+    2f78:	ldr	r3, [fp, #-8]
+    2f7c:	ldr	r2, [fp, #4]
+    2f80:	str	r2, [r3, #12]
+    2f84:	ldr	r3, [fp, #-8]
+    2f88:	ldr	r2, [fp, #8]
+    2f8c:	str	r2, [r3, #16]
+    2f90:	nop	{0}
+    2f94:	sub	sp, fp, #0
+    2f98:	pop	{fp}		; (ldr fp, [sp], #4)
+    2f9c:	bx	lr
+
+00002fa0 <dtls1_fix_message_header>:
+    2fa0:	push	{fp}		; (str fp, [sp, #-4]!)
+    2fa4:	add	fp, sp, #0
+    2fa8:	sub	sp, sp, #28
+    2fac:	str	r0, [fp, #-16]
+    2fb0:	str	r1, [fp, #-20]	; 0xffffffec
+    2fb4:	str	r2, [fp, #-24]	; 0xffffffe8
+    2fb8:	ldr	r3, [fp, #-16]
+    2fbc:	ldr	r3, [r3, #92]	; 0x5c
+    2fc0:	add	r3, r3, #604	; 0x25c
+    2fc4:	str	r3, [fp, #-8]
+    2fc8:	ldr	r3, [fp, #-8]
+    2fcc:	ldr	r2, [fp, #-20]	; 0xffffffec
+    2fd0:	str	r2, [r3, #12]
+    2fd4:	ldr	r3, [fp, #-8]
+    2fd8:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    2fdc:	str	r2, [r3, #16]
+    2fe0:	nop	{0}
+    2fe4:	sub	sp, fp, #0
+    2fe8:	pop	{fp}		; (ldr fp, [sp], #4)
+    2fec:	bx	lr
+
+00002ff0 <dtls1_write_message_header>:
+    2ff0:	push	{fp}		; (str fp, [sp, #-4]!)
+    2ff4:	add	fp, sp, #0
+    2ff8:	sub	sp, sp, #20
+    2ffc:	str	r0, [fp, #-16]
+    3000:	str	r1, [fp, #-20]	; 0xffffffec
+    3004:	ldr	r3, [fp, #-16]
+    3008:	ldr	r3, [r3, #92]	; 0x5c
+    300c:	add	r3, r3, #604	; 0x25c
+    3010:	str	r3, [fp, #-8]
+    3014:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3018:	add	r2, r3, #1
+    301c:	str	r2, [fp, #-20]	; 0xffffffec
+    3020:	ldr	r2, [fp, #-8]
+    3024:	ldrb	r2, [r2]
+    3028:	strb	r2, [r3]
+    302c:	ldr	r3, [fp, #-8]
+    3030:	ldr	r3, [r3, #4]
+    3034:	lsr	r3, r3, #16
+    3038:	uxtb	r2, r3
+    303c:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3040:	strb	r2, [r3]
+    3044:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3048:	add	r3, r3, #1
+    304c:	ldr	r2, [fp, #-8]
+    3050:	ldr	r2, [r2, #4]
+    3054:	lsr	r2, r2, #8
+    3058:	uxtb	r2, r2
+    305c:	strb	r2, [r3]
+    3060:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3064:	add	r3, r3, #2
+    3068:	ldr	r2, [fp, #-8]
+    306c:	ldr	r2, [r2, #4]
+    3070:	uxtb	r2, r2
+    3074:	strb	r2, [r3]
+    3078:	ldr	r3, [fp, #-20]	; 0xffffffec
+    307c:	add	r3, r3, #3
+    3080:	str	r3, [fp, #-20]	; 0xffffffec
+    3084:	ldr	r3, [fp, #-8]
+    3088:	ldrh	r3, [r3, #8]
+    308c:	lsr	r3, r3, #8
+    3090:	uxth	r3, r3
+    3094:	uxtb	r2, r3
+    3098:	ldr	r3, [fp, #-20]	; 0xffffffec
+    309c:	strb	r2, [r3]
+    30a0:	ldr	r3, [fp, #-20]	; 0xffffffec
+    30a4:	add	r3, r3, #1
+    30a8:	ldr	r2, [fp, #-8]
+    30ac:	ldrh	r2, [r2, #8]
+    30b0:	uxtb	r2, r2
+    30b4:	strb	r2, [r3]
+    30b8:	ldr	r3, [fp, #-20]	; 0xffffffec
+    30bc:	add	r3, r3, #2
+    30c0:	str	r3, [fp, #-20]	; 0xffffffec
+    30c4:	ldr	r3, [fp, #-8]
+    30c8:	ldr	r3, [r3, #12]
+    30cc:	lsr	r3, r3, #16
+    30d0:	uxtb	r2, r3
+    30d4:	ldr	r3, [fp, #-20]	; 0xffffffec
+    30d8:	strb	r2, [r3]
+    30dc:	ldr	r3, [fp, #-20]	; 0xffffffec
+    30e0:	add	r3, r3, #1
+    30e4:	ldr	r2, [fp, #-8]
+    30e8:	ldr	r2, [r2, #12]
+    30ec:	lsr	r2, r2, #8
+    30f0:	uxtb	r2, r2
+    30f4:	strb	r2, [r3]
+    30f8:	ldr	r3, [fp, #-20]	; 0xffffffec
+    30fc:	add	r3, r3, #2
+    3100:	ldr	r2, [fp, #-8]
+    3104:	ldr	r2, [r2, #12]
+    3108:	uxtb	r2, r2
+    310c:	strb	r2, [r3]
+    3110:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3114:	add	r3, r3, #3
+    3118:	str	r3, [fp, #-20]	; 0xffffffec
+    311c:	ldr	r3, [fp, #-8]
+    3120:	ldr	r3, [r3, #16]
+    3124:	lsr	r3, r3, #16
+    3128:	uxtb	r2, r3
+    312c:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3130:	strb	r2, [r3]
+    3134:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3138:	add	r3, r3, #1
+    313c:	ldr	r2, [fp, #-8]
+    3140:	ldr	r2, [r2, #16]
+    3144:	lsr	r2, r2, #8
+    3148:	uxtb	r2, r2
+    314c:	strb	r2, [r3]
+    3150:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3154:	add	r3, r3, #2
+    3158:	ldr	r2, [fp, #-8]
+    315c:	ldr	r2, [r2, #16]
+    3160:	uxtb	r2, r2
+    3164:	strb	r2, [r3]
+    3168:	ldr	r3, [fp, #-20]	; 0xffffffec
+    316c:	add	r3, r3, #3
+    3170:	str	r3, [fp, #-20]	; 0xffffffec
+    3174:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3178:	mov	r0, r3
+    317c:	sub	sp, fp, #0
+    3180:	pop	{fp}		; (ldr fp, [sp], #4)
+    3184:	bx	lr
+
+00003188 <dtls1_min_mtu>:
+    3188:	push	{fp}		; (str fp, [sp, #-4]!)
+    318c:	add	fp, sp, #0
+    3190:	movw	r3, #0
+    3194:	movt	r3, #0
+    3198:	ldr	r3, [r3, #8]
+    319c:	mov	r0, r3
+    31a0:	sub	sp, fp, #0
+    31a4:	pop	{fp}		; (ldr fp, [sp], #4)
+    31a8:	bx	lr
+
+000031ac <dtls1_guess_mtu>:
+    31ac:	push	{fp}		; (str fp, [sp, #-4]!)
+    31b0:	add	fp, sp, #0
+    31b4:	sub	sp, sp, #20
+    31b8:	str	r0, [fp, #-16]
+    31bc:	ldr	r3, [fp, #-16]
+    31c0:	cmp	r3, #0
+    31c4:	bne	31d8 <dtls1_guess_mtu+0x2c>
+    31c8:	movw	r3, #0
+    31cc:	movt	r3, #0
+    31d0:	ldr	r3, [r3]
+    31d4:	b	3230 <dtls1_guess_mtu+0x84>
+    31d8:	mov	r3, #0
+    31dc:	str	r3, [fp, #-8]
+    31e0:	b	3220 <dtls1_guess_mtu+0x74>
+    31e4:	movw	r3, #0
+    31e8:	movt	r3, #0
+    31ec:	ldr	r2, [fp, #-8]
+    31f0:	ldr	r2, [r3, r2, lsl #2]
+    31f4:	ldr	r3, [fp, #-16]
+    31f8:	cmp	r2, r3
+    31fc:	bcs	3214 <dtls1_guess_mtu+0x68>
+    3200:	movw	r3, #0
+    3204:	movt	r3, #0
+    3208:	ldr	r2, [fp, #-8]
+    320c:	ldr	r3, [r3, r2, lsl #2]
+    3210:	b	3230 <dtls1_guess_mtu+0x84>
+    3214:	ldr	r3, [fp, #-8]
+    3218:	add	r3, r3, #1
+    321c:	str	r3, [fp, #-8]
+    3220:	ldr	r3, [fp, #-8]
+    3224:	cmp	r3, #2
+    3228:	bls	31e4 <dtls1_guess_mtu+0x38>
+    322c:	ldr	r3, [fp, #-16]
+    3230:	mov	r0, r3
+    3234:	sub	sp, fp, #0
+    3238:	pop	{fp}		; (ldr fp, [sp], #4)
+    323c:	bx	lr
+
+00003240 <dtls1_get_message_header>:
+    3240:	push	{fp, lr}
+    3244:	add	fp, sp, #4
+    3248:	sub	sp, sp, #8
+    324c:	str	r0, [fp, #-8]
+    3250:	str	r1, [fp, #-12]
+    3254:	mov	r2, #44	; 0x2c
+    3258:	mov	r1, #0
+    325c:	ldr	r0, [fp, #-12]
+    3260:	bl	0 <memset>
+    3264:	ldr	r3, [fp, #-8]
+    3268:	add	r2, r3, #1
+    326c:	str	r2, [fp, #-8]
+    3270:	ldrb	r2, [r3]
+    3274:	ldr	r3, [fp, #-12]
+    3278:	strb	r2, [r3]
+    327c:	ldr	r3, [fp, #-8]
+    3280:	ldrb	r3, [r3]
+    3284:	lsl	r2, r3, #16
+    3288:	ldr	r3, [fp, #-8]
+    328c:	add	r3, r3, #1
+    3290:	ldrb	r3, [r3]
+    3294:	lsl	r3, r3, #8
+    3298:	orr	r3, r2, r3
+    329c:	ldr	r2, [fp, #-8]
+    32a0:	add	r2, r2, #2
+    32a4:	ldrb	r2, [r2]
+    32a8:	orr	r2, r3, r2
+    32ac:	ldr	r3, [fp, #-12]
+    32b0:	str	r2, [r3, #4]
+    32b4:	ldr	r3, [fp, #-8]
+    32b8:	add	r3, r3, #3
+    32bc:	str	r3, [fp, #-8]
+    32c0:	ldr	r3, [fp, #-8]
+    32c4:	ldrb	r3, [r3]
+    32c8:	uxth	r3, r3
+    32cc:	lsl	r3, r3, #8
+    32d0:	uxth	r2, r3
+    32d4:	ldr	r3, [fp, #-8]
+    32d8:	add	r3, r3, #1
+    32dc:	ldrb	r3, [r3]
+    32e0:	uxth	r3, r3
+    32e4:	orr	r3, r2, r3
+    32e8:	uxth	r2, r3
+    32ec:	ldr	r3, [fp, #-12]
+    32f0:	strh	r2, [r3, #8]
+    32f4:	ldr	r3, [fp, #-8]
+    32f8:	add	r3, r3, #2
+    32fc:	str	r3, [fp, #-8]
+    3300:	ldr	r3, [fp, #-8]
+    3304:	ldrb	r3, [r3]
+    3308:	lsl	r2, r3, #16
+    330c:	ldr	r3, [fp, #-8]
+    3310:	add	r3, r3, #1
+    3314:	ldrb	r3, [r3]
+    3318:	lsl	r3, r3, #8
+    331c:	orr	r3, r2, r3
+    3320:	ldr	r2, [fp, #-8]
+    3324:	add	r2, r2, #2
+    3328:	ldrb	r2, [r2]
+    332c:	orr	r2, r3, r2
+    3330:	ldr	r3, [fp, #-12]
+    3334:	str	r2, [r3, #12]
+    3338:	ldr	r3, [fp, #-8]
+    333c:	add	r3, r3, #3
+    3340:	str	r3, [fp, #-8]
+    3344:	ldr	r3, [fp, #-8]
+    3348:	ldrb	r3, [r3]
+    334c:	lsl	r2, r3, #16
+    3350:	ldr	r3, [fp, #-8]
+    3354:	add	r3, r3, #1
+    3358:	ldrb	r3, [r3]
+    335c:	lsl	r3, r3, #8
+    3360:	orr	r3, r2, r3
+    3364:	ldr	r2, [fp, #-8]
+    3368:	add	r2, r2, #2
+    336c:	ldrb	r2, [r2]
+    3370:	orr	r2, r3, r2
+    3374:	ldr	r3, [fp, #-12]
+    3378:	str	r2, [r3, #16]
+    337c:	ldr	r3, [fp, #-8]
+    3380:	add	r3, r3, #3
+    3384:	str	r3, [fp, #-8]
+    3388:	nop	{0}
+    338c:	sub	sp, fp, #4
+    3390:	pop	{fp, pc}
+
+00003394 <dtls1_get_ccs_header>:
+    3394:	push	{fp, lr}
+    3398:	add	fp, sp, #4
+    339c:	sub	sp, sp, #8
+    33a0:	str	r0, [fp, #-8]
+    33a4:	str	r1, [fp, #-12]
+    33a8:	mov	r2, #4
+    33ac:	mov	r1, #0
+    33b0:	ldr	r0, [fp, #-12]
+    33b4:	bl	0 <memset>
+    33b8:	ldr	r3, [fp, #-8]
+    33bc:	add	r2, r3, #1
+    33c0:	str	r2, [fp, #-8]
+    33c4:	ldrb	r2, [r3]
+    33c8:	ldr	r3, [fp, #-12]
+    33cc:	strb	r2, [r3]
+    33d0:	nop	{0}
+    33d4:	sub	sp, fp, #4
+    33d8:	pop	{fp, pc}
+
+000033dc <dtls1_shutdown>:
+    33dc:	push	{fp, lr}
+    33e0:	add	fp, sp, #4
+    33e4:	sub	sp, sp, #16
+    33e8:	str	r0, [fp, #-16]
+    33ec:	ldr	r0, [fp, #-16]
+    33f0:	bl	0 <ssl3_shutdown>
+    33f4:	str	r0, [fp, #-8]
+    33f8:	ldr	r3, [fp, #-8]
+    33fc:	mov	r0, r3
+    3400:	sub	sp, fp, #4
+    3404:	pop	{fp, pc}
+
+00003408 <dtls1_process_heartbeat>:
+    3408:	push	{r4, fp, lr}
+    340c:	add	fp, sp, #8
+    3410:	sub	sp, sp, #68	; 0x44
+    3414:	str	r0, [fp, #-56]	; 0xffffffc8
+    3418:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    341c:	ldr	r3, [r3, #88]	; 0x58
+    3420:	ldr	r3, [r3, #280]	; 0x118
+    3424:	str	r3, [fp, #-16]
+    3428:	mov	r3, #16
+    342c:	str	r3, [fp, #-20]	; 0xffffffec
+    3430:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    3434:	ldr	r3, [r3, #100]	; 0x64
+    3438:	cmp	r3, #0
+    343c:	beq	3490 <dtls1_process_heartbeat+0x88>
+    3440:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    3444:	ldr	r4, [r3, #100]	; 0x64
+    3448:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    344c:	ldr	r1, [r3]
+    3450:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    3454:	ldr	r3, [r3, #88]	; 0x58
+    3458:	ldr	r0, [r3, #280]	; 0x118
+    345c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    3460:	ldr	r3, [r3, #88]	; 0x58
+    3464:	ldr	r3, [r3, #272]	; 0x110
+    3468:	ldr	r2, [fp, #-56]	; 0xffffffc8
+    346c:	ldr	r2, [r2, #104]	; 0x68
+    3470:	str	r2, [sp, #8]
+    3474:	ldr	r2, [fp, #-56]	; 0xffffffc8
+    3478:	str	r2, [sp, #4]
+    347c:	str	r3, [sp]
+    3480:	mov	r3, r0
+    3484:	mov	r2, #24
+    3488:	mov	r0, #0
+    348c:	blx	r4
+    3490:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    3494:	ldr	r3, [r3, #88]	; 0x58
+    3498:	ldr	r3, [r3, #272]	; 0x110
+    349c:	cmp	r3, #18
+    34a0:	bhi	34ac <dtls1_process_heartbeat+0xa4>
+    34a4:	mov	r3, #0
+    34a8:	b	36f8 <dtls1_process_heartbeat+0x2f0>
+    34ac:	ldr	r3, [fp, #-16]
+    34b0:	add	r2, r3, #1
+    34b4:	str	r2, [fp, #-16]
+    34b8:	ldrb	r3, [r3]
+    34bc:	strh	r3, [fp, #-22]	; 0xffffffea
+    34c0:	ldr	r3, [fp, #-16]
+    34c4:	ldrb	r3, [r3]
+    34c8:	lsl	r3, r3, #8
+    34cc:	ldr	r2, [fp, #-16]
+    34d0:	add	r2, r2, #1
+    34d4:	ldrb	r2, [r2]
+    34d8:	orr	r3, r3, r2
+    34dc:	str	r3, [fp, #-28]	; 0xffffffe4
+    34e0:	ldr	r3, [fp, #-16]
+    34e4:	add	r3, r3, #2
+    34e8:	str	r3, [fp, #-16]
+    34ec:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    34f0:	add	r2, r3, #19
+    34f4:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    34f8:	ldr	r3, [r3, #88]	; 0x58
+    34fc:	ldr	r3, [r3, #272]	; 0x110
+    3500:	cmp	r2, r3
+    3504:	bls	3510 <dtls1_process_heartbeat+0x108>
+    3508:	mov	r3, #0
+    350c:	b	36f8 <dtls1_process_heartbeat+0x2f0>
+    3510:	ldr	r3, [fp, #-16]
+    3514:	str	r3, [fp, #-32]	; 0xffffffe0
+    3518:	ldrh	r3, [fp, #-22]	; 0xffffffea
+    351c:	cmp	r3, #1
+    3520:	bne	3674 <dtls1_process_heartbeat+0x26c>
+    3524:	ldr	r2, [fp, #-28]	; 0xffffffe4
+    3528:	ldr	r3, [fp, #-20]	; 0xffffffec
+    352c:	add	r3, r2, r3
+    3530:	add	r3, r3, #3
+    3534:	str	r3, [fp, #-36]	; 0xffffffdc
+    3538:	ldr	r3, [fp, #-36]	; 0xffffffdc
+    353c:	cmp	r3, #16384	; 0x4000
+    3540:	bls	354c <dtls1_process_heartbeat+0x144>
+    3544:	mov	r3, #0
+    3548:	b	36f8 <dtls1_process_heartbeat+0x2f0>
+    354c:	ldr	r3, [fp, #-36]	; 0xffffffdc
+    3550:	movw	r2, #1491	; 0x5d3
+    3554:	movw	r1, #0
+    3558:	movt	r1, #0
+    355c:	mov	r0, r3
+    3560:	bl	0 <CRYPTO_malloc>
+    3564:	str	r0, [fp, #-40]	; 0xffffffd8
+    3568:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    356c:	str	r3, [fp, #-44]	; 0xffffffd4
+    3570:	ldr	r3, [fp, #-44]	; 0xffffffd4
+    3574:	add	r2, r3, #1
+    3578:	str	r2, [fp, #-44]	; 0xffffffd4
+    357c:	mov	r2, #2
+    3580:	strb	r2, [r3]
+    3584:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    3588:	lsr	r3, r3, #8
+    358c:	uxtb	r2, r3
+    3590:	ldr	r3, [fp, #-44]	; 0xffffffd4
+    3594:	strb	r2, [r3]
+    3598:	ldr	r3, [fp, #-44]	; 0xffffffd4
+    359c:	add	r3, r3, #1
+    35a0:	ldr	r2, [fp, #-28]	; 0xffffffe4
+    35a4:	uxtb	r2, r2
+    35a8:	strb	r2, [r3]
+    35ac:	ldr	r3, [fp, #-44]	; 0xffffffd4
+    35b0:	add	r3, r3, #2
+    35b4:	str	r3, [fp, #-44]	; 0xffffffd4
+    35b8:	ldr	r2, [fp, #-28]	; 0xffffffe4
+    35bc:	ldr	r1, [fp, #-32]	; 0xffffffe0
+    35c0:	ldr	r0, [fp, #-44]	; 0xffffffd4
+    35c4:	bl	0 <memcpy>
+    35c8:	ldr	r2, [fp, #-44]	; 0xffffffd4
+    35cc:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    35d0:	add	r3, r2, r3
+    35d4:	str	r3, [fp, #-44]	; 0xffffffd4
+    35d8:	ldr	r3, [fp, #-20]	; 0xffffffec
+    35dc:	mov	r1, r3
+    35e0:	ldr	r0, [fp, #-44]	; 0xffffffd4
+    35e4:	bl	0 <RAND_pseudo_bytes>
+    35e8:	ldr	r3, [fp, #-36]	; 0xffffffdc
+    35ec:	ldr	r2, [fp, #-40]	; 0xffffffd8
+    35f0:	mov	r1, #24
+    35f4:	ldr	r0, [fp, #-56]	; 0xffffffc8
+    35f8:	bl	0 <dtls1_write_bytes>
+    35fc:	str	r0, [fp, #-48]	; 0xffffffd0
+    3600:	ldr	r3, [fp, #-48]	; 0xffffffd0
+    3604:	cmp	r3, #0
+    3608:	blt	3658 <dtls1_process_heartbeat+0x250>
+    360c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    3610:	ldr	r3, [r3, #100]	; 0x64
+    3614:	cmp	r3, #0
+    3618:	beq	3658 <dtls1_process_heartbeat+0x250>
+    361c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    3620:	ldr	r4, [r3, #100]	; 0x64
+    3624:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    3628:	ldr	r1, [r3]
+    362c:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    3630:	ldr	r3, [r3, #104]	; 0x68
+    3634:	str	r3, [sp, #8]
+    3638:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    363c:	str	r3, [sp, #4]
+    3640:	ldr	r3, [fp, #-36]	; 0xffffffdc
+    3644:	str	r3, [sp]
+    3648:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    364c:	mov	r2, #24
+    3650:	mov	r0, #1
+    3654:	blx	r4
+    3658:	ldr	r0, [fp, #-40]	; 0xffffffd8
+    365c:	bl	0 <CRYPTO_free>
+    3660:	ldr	r3, [fp, #-48]	; 0xffffffd0
+    3664:	cmp	r3, #0
+    3668:	bge	36f4 <dtls1_process_heartbeat+0x2ec>
+    366c:	ldr	r3, [fp, #-48]	; 0xffffffd0
+    3670:	b	36f8 <dtls1_process_heartbeat+0x2f0>
+    3674:	ldrh	r3, [fp, #-22]	; 0xffffffea
+    3678:	cmp	r3, #2
+    367c:	bne	36f4 <dtls1_process_heartbeat+0x2ec>
+    3680:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    3684:	ldrb	r3, [r3]
+    3688:	lsl	r3, r3, #8
+    368c:	ldr	r2, [fp, #-32]	; 0xffffffe0
+    3690:	add	r2, r2, #1
+    3694:	ldrb	r2, [r2]
+    3698:	orr	r3, r3, r2
+    369c:	str	r3, [fp, #-52]	; 0xffffffcc
+    36a0:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    36a4:	add	r3, r3, #2
+    36a8:	str	r3, [fp, #-32]	; 0xffffffe0
+    36ac:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    36b0:	cmp	r3, #18
+    36b4:	bne	36f4 <dtls1_process_heartbeat+0x2ec>
+    36b8:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    36bc:	ldr	r2, [r3, #396]	; 0x18c
+    36c0:	ldr	r3, [fp, #-52]	; 0xffffffcc
+    36c4:	cmp	r2, r3
+    36c8:	bne	36f4 <dtls1_process_heartbeat+0x2ec>
+    36cc:	ldr	r0, [fp, #-56]	; 0xffffffc8
+    36d0:	bl	0 <dtls1_stop_timer>
+    36d4:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    36d8:	ldr	r3, [r3, #396]	; 0x18c
+    36dc:	add	r2, r3, #1
+    36e0:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    36e4:	str	r2, [r3, #396]	; 0x18c
+    36e8:	ldr	r3, [fp, #-56]	; 0xffffffc8
+    36ec:	mov	r2, #0
+    36f0:	str	r2, [r3, #392]	; 0x188
+    36f4:	mov	r3, #0
+    36f8:	mov	r0, r3
+    36fc:	sub	sp, fp, #8
+    3700:	pop	{r4, fp, pc}
+
+00003704 <dtls1_heartbeat>:
+    3704:	push	{r4, fp, lr}
+    3708:	add	fp, sp, #8
+    370c:	sub	sp, sp, #52	; 0x34
+    3710:	str	r0, [fp, #-40]	; 0xffffffd8
+    3714:	mov	r3, #18
+    3718:	str	r3, [fp, #-16]
+    371c:	mov	r3, #16
+    3720:	str	r3, [fp, #-20]	; 0xffffffec
+    3724:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    3728:	ldr	r3, [r3, #388]	; 0x184
+    372c:	and	r3, r3, #1
+    3730:	cmp	r3, #0
+    3734:	beq	374c <dtls1_heartbeat+0x48>
+    3738:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    373c:	ldr	r3, [r3, #388]	; 0x184
+    3740:	and	r3, r3, #2
+    3744:	cmp	r3, #0
+    3748:	beq	3774 <dtls1_heartbeat+0x70>
+    374c:	movw	r3, #1546	; 0x60a
+    3750:	str	r3, [sp]
+    3754:	movw	r3, #0
+    3758:	movt	r3, #0
+    375c:	movw	r2, #365	; 0x16d
+    3760:	movw	r1, #305	; 0x131
+    3764:	mov	r0, #20
+    3768:	bl	0 <ERR_put_error>
+    376c:	mvn	r3, #0
+    3770:	b	39b0 <dtls1_heartbeat+0x2ac>
+    3774:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    3778:	ldr	r3, [r3, #392]	; 0x188
+    377c:	cmp	r3, #0
+    3780:	beq	37ac <dtls1_heartbeat+0xa8>
+    3784:	movw	r3, #1553	; 0x611
+    3788:	str	r3, [sp]
+    378c:	movw	r3, #0
+    3790:	movt	r3, #0
+    3794:	movw	r2, #366	; 0x16e
+    3798:	movw	r1, #305	; 0x131
+    379c:	mov	r0, #20
+    37a0:	bl	0 <ERR_put_error>
+    37a4:	mvn	r3, #0
+    37a8:	b	39b0 <dtls1_heartbeat+0x2ac>
+    37ac:	ldr	r0, [fp, #-40]	; 0xffffffd8
+    37b0:	bl	0 <SSL_state>
+    37b4:	mov	r3, r0
+    37b8:	and	r3, r3, #12288	; 0x3000
+    37bc:	cmp	r3, #0
+    37c0:	bne	37d4 <dtls1_heartbeat+0xd0>
+    37c4:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    37c8:	ldr	r3, [r3, #28]
+    37cc:	cmp	r3, #0
+    37d0:	beq	37fc <dtls1_heartbeat+0xf8>
+    37d4:	movw	r3, #1560	; 0x618
+    37d8:	str	r3, [sp]
+    37dc:	movw	r3, #0
+    37e0:	movt	r3, #0
+    37e4:	mov	r2, #244	; 0xf4
+    37e8:	movw	r1, #305	; 0x131
+    37ec:	mov	r0, #20
+    37f0:	bl	0 <ERR_put_error>
+    37f4:	mvn	r3, #0
+    37f8:	b	39b0 <dtls1_heartbeat+0x2ac>
+    37fc:	ldr	r2, [fp, #-16]
+    3800:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3804:	add	r3, r2, r3
+    3808:	movw	r2, #16381	; 0x3ffd
+    380c:	cmp	r3, r2
+    3810:	bls	382c <dtls1_heartbeat+0x128>
+    3814:	movw	r2, #0
+    3818:	movt	r2, #0
+    381c:	movw	r1, #1567	; 0x61f
+    3820:	movw	r0, #0
+    3824:	movt	r0, #0
+    3828:	bl	0 <OpenSSLDie>
+    382c:	ldr	r2, [fp, #-16]
+    3830:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3834:	add	r3, r2, r3
+    3838:	add	r3, r3, #3
+    383c:	movw	r2, #1578	; 0x62a
+    3840:	movw	r1, #0
+    3844:	movt	r1, #0
+    3848:	mov	r0, r3
+    384c:	bl	0 <CRYPTO_malloc>
+    3850:	str	r0, [fp, #-24]	; 0xffffffe8
+    3854:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    3858:	str	r3, [fp, #-28]	; 0xffffffe4
+    385c:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    3860:	add	r2, r3, #1
+    3864:	str	r2, [fp, #-28]	; 0xffffffe4
+    3868:	mov	r2, #1
+    386c:	strb	r2, [r3]
+    3870:	ldr	r3, [fp, #-16]
+    3874:	lsr	r3, r3, #8
+    3878:	uxtb	r2, r3
+    387c:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    3880:	strb	r2, [r3]
+    3884:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    3888:	add	r3, r3, #1
+    388c:	ldr	r2, [fp, #-16]
+    3890:	uxtb	r2, r2
+    3894:	strb	r2, [r3]
+    3898:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    389c:	add	r3, r3, #2
+    38a0:	str	r3, [fp, #-28]	; 0xffffffe4
+    38a4:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    38a8:	ldr	r3, [r3, #396]	; 0x18c
+    38ac:	lsr	r3, r3, #8
+    38b0:	uxtb	r2, r3
+    38b4:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    38b8:	strb	r2, [r3]
+    38bc:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    38c0:	add	r3, r3, #1
+    38c4:	ldr	r2, [fp, #-40]	; 0xffffffd8
+    38c8:	ldr	r2, [r2, #396]	; 0x18c
+    38cc:	uxtb	r2, r2
+    38d0:	strb	r2, [r3]
+    38d4:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    38d8:	add	r3, r3, #2
+    38dc:	str	r3, [fp, #-28]	; 0xffffffe4
+    38e0:	mov	r1, #16
+    38e4:	ldr	r0, [fp, #-28]	; 0xffffffe4
+    38e8:	bl	0 <RAND_pseudo_bytes>
+    38ec:	ldr	r3, [fp, #-28]	; 0xffffffe4
+    38f0:	add	r3, r3, #16
+    38f4:	str	r3, [fp, #-28]	; 0xffffffe4
+    38f8:	ldr	r3, [fp, #-20]	; 0xffffffec
+    38fc:	mov	r1, r3
+    3900:	ldr	r0, [fp, #-28]	; 0xffffffe4
+    3904:	bl	0 <RAND_pseudo_bytes>
+    3908:	ldr	r2, [fp, #-16]
+    390c:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3910:	add	r3, r2, r3
+    3914:	add	r3, r3, #3
+    3918:	ldr	r2, [fp, #-24]	; 0xffffffe8
+    391c:	mov	r1, #24
+    3920:	ldr	r0, [fp, #-40]	; 0xffffffd8
+    3924:	bl	0 <dtls1_write_bytes>
+    3928:	str	r0, [fp, #-32]	; 0xffffffe0
+    392c:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    3930:	cmp	r3, #0
+    3934:	blt	39a4 <dtls1_heartbeat+0x2a0>
+    3938:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    393c:	ldr	r3, [r3, #100]	; 0x64
+    3940:	cmp	r3, #0
+    3944:	beq	3990 <dtls1_heartbeat+0x28c>
+    3948:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    394c:	ldr	r4, [r3, #100]	; 0x64
+    3950:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    3954:	ldr	r1, [r3]
+    3958:	ldr	r2, [fp, #-16]
+    395c:	ldr	r3, [fp, #-20]	; 0xffffffec
+    3960:	add	r3, r2, r3
+    3964:	add	r3, r3, #3
+    3968:	ldr	r2, [fp, #-40]	; 0xffffffd8
+    396c:	ldr	r2, [r2, #104]	; 0x68
+    3970:	str	r2, [sp, #8]
+    3974:	ldr	r2, [fp, #-40]	; 0xffffffd8
+    3978:	str	r2, [sp, #4]
+    397c:	str	r3, [sp]
+    3980:	ldr	r3, [fp, #-24]	; 0xffffffe8
+    3984:	mov	r2, #24
+    3988:	mov	r0, #1
+    398c:	blx	r4
+    3990:	ldr	r0, [fp, #-40]	; 0xffffffd8
+    3994:	bl	0 <dtls1_start_timer>
+    3998:	ldr	r3, [fp, #-40]	; 0xffffffd8
+    399c:	mov	r2, #1
+    39a0:	str	r2, [r3, #392]	; 0x188
+    39a4:	ldr	r0, [fp, #-24]	; 0xffffffe8
+    39a8:	bl	0 <CRYPTO_free>
+    39ac:	ldr	r3, [fp, #-32]	; 0xffffffe0
+    39b0:	mov	r0, r3
+    39b4:	sub	sp, fp, #8
+    39b8:	pop	{r4, fp, pc}
