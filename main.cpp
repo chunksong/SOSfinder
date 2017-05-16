@@ -5,15 +5,12 @@
 #include <algorithm>
 using namespace std;
 
-int main(int argc, char* argv[])
+int TargetTokenize(fstream &fsTarget, std::string szTargetString)
 {
-	string szTargetString;
-	string str;
-	fstream filename("inin.txt");
-
+	std::string str;
 	int cnt;
 
-	while (getline(filename, str))
+	while (getline(fsTarget, str))
 	{
 		if (str.find("mov") != -1)
 			szTargetString += "mov";
@@ -94,7 +91,10 @@ int main(int argc, char* argv[])
 		else if (str.find("b.") != -1)
 			szTargetString += "b";
 		else
-			szTargetString += "instruction";
+		{
+			szTargetString += "instruction\n";
+			continue;
+		}
 
 		if ((str.find(",") != -1) && (str.find("#") != -1))
 		{
@@ -104,15 +104,48 @@ int main(int argc, char* argv[])
 				if (str.at(i) == ',')
 					cnt++;
 			}
-			if (cnt == 1)
+			szTargetString += "\t";
+			for (int j = 0; j < cnt; j++)
+				szTargetString += "r";
+			szTargetString += "c";
+			/*if (cnt == 1)
 				szTargetString += "\trc";
 			else
-				szTargetString += "\trrc";
+				szTargetString += "\trrc";*/
 		}
 		else if ((str.find(",") != -1) && (str.find("#") == -1))
-			szTargetString += "\trr";
+		{
+			cnt = 0;
+			for (size_t i = 0; i < str.length(); i++)
+			{
+				if (str.at(i) == ',')
+					cnt++;
+			}
+			szTargetString += "\tr";
+			for (int j = 0; j < cnt; j++)
+				szTargetString += "r";
+		}
 		szTargetString += "\n";
 	}
+
 	cout << szTargetString;
+	return 1;
+}
+
+void inputFile(fstream &fsTarget)
+{
+	fsTarget.open("inin.txt", ios::in);
+}
+
+int main(int argc, char* argv[])
+{
+	string szTargetString;
+	//string str;
+	fstream filename;
+	filename.open("inin.txt", ios::in);
+
+	TargetTokenize(filename, szTargetString);
+	
+	//cout << szTargetString;
 	filename.close();
 }
