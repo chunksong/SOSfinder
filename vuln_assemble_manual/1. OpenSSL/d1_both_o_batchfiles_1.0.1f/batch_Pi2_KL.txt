@@ -1,0 +1,76 @@
+#! /bin/bash
+
+rm -rf /home/pi/outputBin
+mkdir /home/pi/outputBin
+cd /home/pi/
+
+cd /home/pi/openssl-1.0.1f
+./config --prefix=/home/pi/openssl
+make
+make install_sw
+cd ssl
+objdump -S --no-show-raw-insn d1_both.o > /home/pi/outputBin/d1_both_Pi2_KL_gcc_O3.txt
+cd /home/pi/openssl/bin
+objdump -S --no-show-raw-insn openssl > /home/pi/outputBin/openssl_Pi2_KL_gcc_O3.txt
+
+cd /home/pi/openssl-1.0.1f
+make clean
+./config --prefix=/home/pi/openssl
+rm -R Makefile
+cp Makefile0 Makefile
+make
+make install_sw
+cd ssl
+objdump -S --no-show-raw-insn d1_both.o > /home/pi/outputBin/d1_both_Pi2_KL_gcc_O0.txt
+cd /home/pi/openssl/bin
+objdump -S --no-show-raw-insn openssl > /home/pi/outputBin/openssl_Pi2_KL_gcc_O0.txt
+
+cd /home/pi/openssl-1.0.1f
+make clean
+./config --prefix=/home/pi/openssl
+rm -R Makefile
+cp Makefile1 Makefile
+make
+make install_sw
+cd ssl
+objdump -S --no-show-raw-insn d1_both.o > /home/pi/outputBin/d1_both_Pi2_KL_gcc_O1.txt
+cd /home/pi/openssl/bin
+objdump -S --no-show-raw-insn openssl > /home/pi/outputBin/openssl_Pi2_KL_gcc_O1.txt
+
+cd /home/pi/openssl-1.0.1f
+make clean
+./config --prefix=/home/pi/openssl
+rm -R Makefile
+cp Makefile2 Makefile
+make
+make install_sw
+cd ssl
+objdump -S --no-show-raw-insn d1_both.o > /home/pi/outputBin/d1_both_Pi2_KL_gcc_O2.txt
+cd /home/pi/openssl/bin
+objdump -S --no-show-raw-insn openssl > /home/pi/outputBin/openssl_Pi2_KL_gcc_O2.txt
+
+cd /home/pi/openssl-1.0.1f
+make clean
+./config --prefix=/home/pi/openssl
+rm -R Makefile
+cp Makefilef Makefile
+make
+make install_sw
+cd ssl
+objdump -S --no-show-raw-insn d1_both.o > /home/pi/outputBin/d1_both_Pi2_KL_gcc_Of.txt
+cd /home/pi/openssl/bin
+objdump -S --no-show-raw-insn openssl > /home/pi/outputBin/openssl_Pi2_KL_gcc_Of.txt
+
+cd /home/pi/openssl-1.0.1f
+make clean
+./config --prefix=/home/pi/openssl
+rm -R Makefile
+cp Makefiles Makefile
+make
+make install_sw
+cd ssl
+objdump -S --no-show-raw-insn d1_both.o > /home/pi/outputBin/d1_both_Pi2_KL_gcc_Os.txt
+cd /home/pi/openssl/bin
+objdump -S --no-show-raw-insn openssl > /home/pi/outputBin/openssl_Pi2_KL_gcc_Os.txt
+
+halt

@@ -1,0 +1,62 @@
+#! /bin/bash
+
+rm -rf /home/pi/outputBin
+mkdir /home/pi/outputBin
+cd /home/pi/
+
+tar xvzf freetype-2.5.2.tar.gz
+mkdir freetype
+
+cd /home/pi/freetype-2.5.2
+./configure --prefix=/home/pi/freetype --without-png
+find ./ -name "*" -exec sed -i 's/O2/O0/g' {} \;
+make
+make install
+cd objs
+objdump -S --no-show-raw-insn cff.o > /home/pi/outputBin/cff_Pi2_KL_gcc_O0.txt
+
+cd /home/pi/freetype-2.5.2
+make clean
+./configure --prefix=/home/pi/freetype --without-png
+find ./ -name "*" -exec sed -i 's/O2/O1/g' {} \;
+make
+make install
+cd objs
+objdump -S --no-show-raw-insn cff.o > /home/pi/outputBin/cff_Pi2_KL_gcc_O1.txt
+
+cd /home/pi/freetype-2.5.2
+make clean
+./configure --prefix=/home/pi/freetype --without-png
+make
+make install
+cd objs
+objdump -S --no-show-raw-insn cff.o > /home/pi/outputBin/cff_Pi2_KL_gcc_O2.txt
+
+cd /home/pi/freetype-2.5.2
+make clean
+./configure --prefix=/home/pi/freetype --without-png
+find ./ -name "*" -exec sed -i 's/O2/O3/g' {} \;
+make
+make install
+cd objs
+objdump -S --no-show-raw-insn cff.o > /home/pi/outputBin/cff_Pi2_KL_gcc_O3.txt
+
+cd /home/pi/freetype-2.5.2
+make clean
+./configure --prefix=/home/pi/freetype --without-png
+find ./ -name "*" -exec sed -i 's/O2/Ofast/g' {} \;
+make
+make install
+cd objs
+objdump -S --no-show-raw-insn cff.o > /home/pi/outputBin/cff_Pi2_KL_gcc_Of.txt
+
+cd /home/pi/freetype-2.5.2
+make clean
+./configure --prefix=/home/pi/freetype --without-png
+find ./ -name "*" -exec sed -i 's/O2/Os/g' {} \;
+make
+make install
+cd objs
+objdump -S --no-show-raw-insn cff.o > /home/pi/outputBin/cff_Pi2_KL_gcc_Os.txt
+
+halt

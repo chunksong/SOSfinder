@@ -1,0 +1,54 @@
+tar xvf openssh-5.6p1.tar.gz
+
+컴파일옵션 2개중 선택
+
+./configure ?prefix=/usr/local/openssh ?with-tcp-wrappers ?with-pam ?with-md5-passwords
+
+or 
+
+./configure ?prefix=/usr/local/openssh
+
+make && make install
+
+ 
+
+설치 디렉토리에서 init.d 스크립트 복사
+
+cd (설치디렉토리)/openssh-5.6p1/contrib/redhat
+
+cp /usr/local/src/openssh-5.3p1/contrib/sshd.pam.generic /etc/pam.d/sshd
+
+cp sshd.init /etc/init.d/sshd
+
+ 
+
+ 
+
+vi /etc/init.d/sshd
+
+ 
+
+ 
+
+아래 내용으로 수정해 줍니다.
+
+ 
+
+ 
+
+ln -s /usr/local/openssh/bin/* /usr/bin
+
+ln -s /usr/local/openssh/sbin/* /usr/sbin
+
+ln -s /usr/local/openssh/etc/ /etc/ssh
+
+chkconfig ?add sshd
+ 
+설정파일 경로
+/usr/local/openssh/etc/sshd_config
+ 
+ssh 및 sshd PATH 추가
+
+vi /etc/profile
+
+export PATH=/usr/loca/openssh/bin:/usr/local/openssh/sbin:$PATH

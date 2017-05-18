@@ -1,0 +1,39 @@
+2017/04/21 라즈베리파이에서 openssl-1.0.1f 바이너리 코드 추출 메뉴얼 및 기록
+
+*이왕이면 시작하는 디렉토리는 /home/pi로 하자.
+*sudo su -로 슈퍼 권한을 획득한 후 하자.
+*kali/arch linux는 /home/pi 디렉토리를 만들어주어야 한다.
+	
+<mount하는 방법>
+1)우선 usb라는 디렉토리를 만든다.
+2)"fdisk -l"로 어떤 스토리지인지 확인 후, "mount /dev/sda1 usb"하면 usb 디렉토리로 mount된다.
+3)마운트 해제: "umount /dev/sda1"
+
+USB에 있는 openssl tar파일과 플랫폼에 맞는 배치파일을 cp명령어를 통해 가지고 온다.
+"tar xvzf openssl-1.0.1f.tar.gz" 명령어로 압축해제를 한다.
+"mkdir /home/pi/openssl" openssl이 설치되는 폴더를 만들자.
+
+"cd /home/pi/openssl-1.0.1f" 실행
+이후에는 configure를 해야 한다.
+"./config --prefix=/home/pi/openssl"
+
+여기서 중요하다. openssl-1.0.1f에 있는 Makefile을 Makefile0, Makefile1, Makefile2, Makefilef, Makefiles로 복사하고, 각각의 compile option을 O0, O1, O2, Of, Os로 바꿔준 후 저장하자.
+Tip: vi 명령어 중, 다음 장으로 넘어가기: Ctrl+f, 한 단어 넘어가기: w
+
+이후는 플랫폼에 맞는 배치파일을 실행한다.
+배치파일은 그냥 실행할 수 없다. 윈도우에서 가져온 파일이므로, 다음 명령을 하자.
+배치파일을 vi로 편집 후 "맨 뒤에 ^M지우기는?? :%s/^M$//g"
+편집을 마친 후에는 실행 가능하도록 "chmod +x filename"을 취한다.
+
+*kali linux의 처음 로그인 정보: root/toor
+*arch linux의 처음 로그인 정보: root/root
+*kali/arch linux는 gcc와 make 패키지가 없다. 유선랜을 꼽고 심어주어야 한다.
+
+<Arch linux에 gcc와 make설치하는 메뉴얼>
+1) pacman -Syy
+2) pacman -Syu gcc
+3) pacman -Syu make
+
+<Kali linux에 gcc와 make설치하는 메뉴얼>
+1) apt-get update
+2) apt-get install gcc make -y
