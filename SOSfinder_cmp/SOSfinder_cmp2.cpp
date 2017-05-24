@@ -18,7 +18,7 @@ int main(int argc, char* argv[]) {
 	int iWindowSize = 8;
 	
 //	CASE1 : use when you want to check assembly file's vulnerability
-//	compile : g++ - o SOSfinder SOSfinder_cmp2.cpp -lmysqlclient 
+//	compile : g++ -o SOSfinder SOSfinder_cmp2.cpp -lmysqlclient 
 // 	usage : SOSfinder <input file name> 
 	
 	if (argc != 2) {
@@ -32,17 +32,18 @@ int main(int argc, char* argv[]) {
 	GetSimilarity(szTargetString, iWindowSize);
 	if (iRtn == D_FAIL) return -1;
 
-//	CASE2 : use when you want to insert data to DB
-//	compile : g++ - o SOSfinder_input SOSfinder_cmp2.cpp -lmysqlclient 
-//	usage : SOSfinder_input <input file name>
 
-/*	InsertSignature(argv[1]);
+//	CASE2 : use when you want to insert data to DB
+//	compile : g++ -o SOSfinder_input SOSfinder_cmp2.cpp -lmysqlclient 
+//	usage : SOSfinder_input <input file name>
+/*
+	InsertSignature(argv[1]);
 	if (argc != 2) {
 		std::cout << "Usage : SOSfinder_input <input file name>" << std::endl;
 		return -1;
 	}
-*/
 
+*/
 	return 0;
 
 }
@@ -271,14 +272,14 @@ int GetSimilarity(std::string &szTargetStr, int iWindowSize) {
 	std::cout << "letter\tfrequency" << std::endl;
 	while ((row = mysql_fetch_row(res)) != NULL) {
 		
-		
 		iRtn = GetSignature(row,stSigObject);		 
 		if (iRtn == D_FAIL) {
 			std::cout << "Read SignatureFile from DB error.." << std::endl;
 		}
+
 		szCurrentCVE = stSigObject.szSigCVENum;
 		if(szFrontCVE != "" && szFrontCVE != szCurrentCVE){
-			std::cout << stSigObject.szSigCVENum << "\t" << dJaccardOfCVE << std::endl;			
+			std::cout << szFrontCVE << "\t" << dJaccardOfCVE << std::endl;			
 //			std::cout << "\t\t{ " << "\"CVEnumber\"" << ": \"" << stSigObject.szSigCVENum << "\",\"similarity\"" <<": " << dJaccardOfCVE << " }," << std::endl;
 			dJaccardOfCVE = 0;
 		}
@@ -499,7 +500,7 @@ int InsertSignature(std::string szFileName) {
 	std::string szLine;
 	std::string szVulnName;
 	FileName = szFileName;
-	CVENum = "CVE-2014-0160";
+	CVENum = "CVE-2014-1692";
 	BinCode = "";
 
 	fsSignatureFile.open(szFileName.c_str(), std::ios::in);
